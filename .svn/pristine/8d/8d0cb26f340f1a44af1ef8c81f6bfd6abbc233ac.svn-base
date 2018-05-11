@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.infore.csep.pojo.mapper.FactsewahisdayMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.infore.csep.pojo.entity.Factsewahisday">
+        <id column="id" property="id" />
+        <result column="revTime" property="revTime" />
+        <result column="equmSeq" property="equmSeq" />
+        <result column="equmID" property="equmID" />
+        <result column="equmType" property="equmType" />
+        <result column="factNum" property="factNum" />
+        <result column="equmNum" property="equmNum" />
+        <result column="dataType" property="dataType" />
+        <result column="valCod" property="valCod" />
+        <result column="valCodMax" property="valCodMax" />
+        <result column="valCodMin" property="valCodMin" />
+        <result column="valCodAvg" property="valCodAvg" />
+        <result column="valNitr" property="valNitr" />
+        <result column="valNitrMax" property="valNitrMax" />
+        <result column="valNitrMin" property="valNitrMin" />
+        <result column="valNitrAvg" property="valNitrAvg" />
+        <result column="valNih" property="valNih" />
+        <result column="valNihMax" property="valNihMax" />
+        <result column="valNihMin" property="valNihMin" />
+        <result column="valNihAvg" property="valNihAvg" />
+        <result column="valPho" property="valPho" />
+        <result column="valPhoMax" property="valPhoMax" />
+        <result column="valPhoMin" property="valPhoMin" />
+        <result column="valPhoAvg" property="valPhoAvg" />
+        <result column="valOutss" property="valOutss" />
+        <result column="valOutssMax" property="valOutssMax" />
+        <result column="valOutssMin" property="valOutssMin" />
+        <result column="valOutssAvg" property="valOutssAvg" />
+        <result column="valOutBy" property="valOutBy" />
+        <result column="valOutByMax" property="valOutByMax" />
+        <result column="valOutByMin" property="valOutByMin" />
+        <result column="valOutByAvg" property="valOutByAvg" />
+        <result column="valOutTemp" property="valOutTemp" />
+        <result column="valOutTempMax" property="valOutTempMax" />
+        <result column="valOutTempMin" property="valOutTempMin" />
+        <result column="valOutTempAvg" property="valOutTempAvg" />
+        <result column="valRuntime" property="valRuntime" />
+        <result column="valRuntimeMax" property="valRuntimeMax" />
+        <result column="valRuntimeMin" property="valRuntimeMin" />
+        <result column="valRuntimeAvg" property="valRuntimeAvg" />
+        <result column="valSrc" property="valSrc" />
+        <result column="valSrcMax" property="valSrcMax" />
+        <result column="valSrcMin" property="valSrcMin" />
+        <result column="valSrcAvg" property="valSrcAvg" />
+        <result column="valPowpt" property="valPowpt" />
+        <result column="valPowptMax" property="valPowptMax" />
+        <result column="valPowptMin" property="valPowptMin" />
+        <result column="valPowptAvg" property="valPowptAvg" />
+        <result column="valPower" property="valPower" />
+        <result column="valPowerMax" property="valPowerMax" />
+        <result column="valPowerMin" property="valPowerMin" />
+        <result column="valPowerAvg" property="valPowerAvg" />
+        <result column="valMBR1" property="valMBR1" />
+        <result column="valMBR1Max" property="valMBR1Max" />
+        <result column="valMBR1Min" property="valMBR1Min" />
+        <result column="valMBR1Avg" property="valMBR1Avg" />
+        <result column="valMBR2" property="valMBR2" />
+        <result column="valMBR2Max" property="valMBR2Max" />
+        <result column="valMBR2Min" property="valMBR2Min" />
+        <result column="valMBR2Avg" property="valMBR2Avg" />
+        <result column="valMBR3" property="valMBR3" />
+        <result column="valMBR3Max" property="valMBR3Max" />
+        <result column="valMBR3Min" property="valMBR3Min" />
+        <result column="valMBR3Avg" property="valMBR3Avg" />
+        <result column="valMBR4" property="valMBR4" />
+        <result column="valMBR4Max" property="valMBR4Max" />
+        <result column="valMBR4Min" property="valMBR4Min" />
+        <result column="valMBR4Avg" property="valMBR4Avg" />
+        <result column="valMBR5" property="valMBR5" />
+        <result column="valMBR5Max" property="valMBR5Max" />
+        <result column="valMBR5Min" property="valMBR5Min" />
+        <result column="valMBR5Avg" property="valMBR5Avg" />
+        <result column="valMBR6" property="valMBR6" />
+        <result column="valMBR6Max" property="valMBR6Max" />
+        <result column="valMBR6Min" property="valMBR6Min" />
+        <result column="valMBR6Avg" property="valMBR6Avg" />
+        <result column="valMBR7" property="valMBR7" />
+        <result column="valMBR7Max" property="valMBR7Max" />
+        <result column="valMBR7Min" property="valMBR7Min" />
+        <result column="valMBR7Avg" property="valMBR7Avg" />
+        <result column="valMBR8" property="valMBR8" />
+        <result column="valMBR8Max" property="valMBR8Max" />
+        <result column="valMBR8Min" property="valMBR8Min" />
+        <result column="valMBR8Avg" property="valMBR8Avg" />
+        <result column="valMBR9" property="valMBR9" />
+        <result column="valMBR9Max" property="valMBR9Max" />
+        <result column="valMBR9Min" property="valMBR9Min" />
+        <result column="valMBR9Avg" property="valMBR9Avg" />
+        <result column="valMBR10" property="valMBR10" />
+        <result column="valMBR10Max" property="valMBR10Max" />
+        <result column="valMBR10Min" property="valMBR10Min" />
+        <result column="valMBR10Avg" property="valMBR10Avg" />
+        <result column="valMBRsum1" property="valMBRsum1" />
+        <result column="valMBRsum1Max" property="valMBRsum1Max" />
+        <result column="valMBRsum1Min" property="valMBRsum1Min" />
+        <result column="valMBRsum1Avg" property="valMBRsum1Avg" />
+        <result column="valMBRsum2" property="valMBRsum2" />
+        <result column="valMBRsum2Max" property="valMBRsum2Max" />
+        <result column="valMBRsum2Min" property="valMBRsum2Min" />
+        <result column="valMBRsum2Avg" property="valMBRsum2Avg" />
+        <result column="valMBRsum3" property="valMBRsum3" />
+        <result column="valMBRsum3Max" property="valMBRsum3Max" />
+        <result column="valMBRsum3Min" property="valMBRsum3Min" />
+        <result column="valMBRsum3Avg" property="valMBRsum3Avg" />
+        <result column="valMBRsum4" property="valMBRsum4" />
+        <result column="valMBRsum4Max" property="valMBRsum4Max" />
+        <result column="valMBRsum4Min" property="valMBRsum4Min" />
+        <result column="valMBRsum4Avg" property="valMBRsum4Avg" />
+        <result column="valMBRsum5" property="valMBRsum5" />
+        <result column="valMBRsum5Max" property="valMBRsum5Max" />
+        <result column="valMBRsum5Min" property="valMBRsum5Min" />
+        <result column="valMBRsum5Avg" property="valMBRsum5Avg" />
+        <result column="valMBRsum6" property="valMBRsum6" />
+        <result column="valMBRsum6Max" property="valMBRsum6Max" />
+        <result column="valMBRsum6Min" property="valMBRsum6Min" />
+        <result column="valMBRsum6Avg" property="valMBRsum6Avg" />
+        <result column="valMBRsum7" property="valMBRsum7" />
+        <result column="valMBRsum7Max" property="valMBRsum7Max" />
+        <result column="valMBRsum7Min" property="valMBRsum7Min" />
+        <result column="valMBRsum7Avg" property="valMBRsum7Avg" />
+        <result column="valMBRsum8" property="valMBRsum8" />
+        <result column="valMBRsum8Max" property="valMBRsum8Max" />
+        <result column="valMBRsum8Min" property="valMBRsum8Min" />
+        <result column="valMBRsum8Avg" property="valMBRsum8Avg" />
+        <result column="valMBRsum9" property="valMBRsum9" />
+        <result column="valMBRsum9Max" property="valMBRsum9Max" />
+        <result column="valMBRsum9Min" property="valMBRsum9Min" />
+        <result column="valMBRsum9Avg" property="valMBRsum9Avg" />
+        <result column="valMBRsum10" property="valMBRsum10" />
+        <result column="valMBRsum10Max" property="valMBRsum10Max" />
+        <result column="valMBRsum10Min" property="valMBRsum10Min" />
+        <result column="valMBRsum10Avg" property="valMBRsum10Avg" />
+        <result column="allFlag" property="allFlag" />
+        <result column="allFlagMax" property="allFlagMax" />
+        <result column="allFlagMin" property="allFlagMin" />
+        <result column="allFlagAvg" property="allFlagAvg" />
+        <result column="valInBL" property="valInBL" />
+        <result column="valInBLMax" property="valInBLMax" />
+        <result column="valInBLMin" property="valInBLMin" />
+        <result column="valInBLAvg" property="valInBLAvg" />
+        <result column="valPoolBL" property="valPoolBL" />
+        <result column="valPoolBLMax" property="valPoolBLMax" />
+        <result column="valPoolBLMin" property="valPoolBLMin" />
+        <result column="valPoolBLAvg" property="valPoolBLAvg" />
+        <result column="valSandBL" property="valSandBL" />
+        <result column="valSandBLMax" property="valSandBLMax" />
+        <result column="valSandBLMin" property="valSandBLMin" />
+        <result column="valSandBLAvg" property="valSandBLAvg" />
+        <result column="valSdgBL" property="valSdgBL" />
+        <result column="valSdgBLMax" property="valSdgBLMax" />
+        <result column="valSdgBLMin" property="valSdgBLMin" />
+        <result column="valSdgBLAvg" property="valSdgBLAvg" />
+        <result column="count" property="count" />
+        <result column="genCycle" property="genCycle" />
+        <result column="insertTime" property="insertTime" />
+    </resultMap>
+
+    <select id="findByTime" resultType="com.infore.csep.pojo.entity.Factsewahisday">
+        SELECT
+            factNum,
+            equmNum,
+            MAX(valCodMax) AS valCodMax,
+            MIN(valCodMin) AS valCodMin,
+            AVG(valCodAvg) AS valCodAvg,
+            MAX(valNitrMax) AS valNitrMax,
+            MIN(valNitrMin) AS valNitrMin,
+            AVG(valNitrAvg) AS valNitrAvg,
+            MAX(valNihMax) AS valNihMax,
+            MIN(valNihMin) AS valNihMin,
+            AVG(valNihAvg) AS valNihAvg,
+            MAX(valPhoMax) AS valPhoMax,
+            MIN(valPhoMin) AS valPhoMin,
+            AVG(valPhoAvg) AS valPhoAvg,
+            MAX(valOutssMax) AS valOutssMax,
+            MIN(valOutssMin) AS valOutssMin,
+            AVG(valOutssAvg) AS valOutssAvg,
+            MAX(valOutByMax) AS valOutByMax,
+            MIN(valOutByMin) AS valOutByMin,
+            AVG(valOutByAvg) AS valOutByAvg,
+            MAX(valOutTempMax) AS valOutTempMax,
+            MIN(valOutTempMin) AS valOutTempMin,
+            AVG(valOutTempAvg) AS valOutTempAvg,
+            MAX(valRuntimeMax) AS valRuntimeMax,
+            MIN(valRuntimeMin) AS valRuntimeMin,
+            AVG(valRuntimeAvg) AS valRuntimeAvg,
+            MAX(valSrcMax) AS valSrcMax,
+            MIN(valSrcMin) AS valSrcMin,
+            AVG(valSrcAvg) AS valSrcAvg,
+            MAX(valPowptMax) AS valPowptMax,
+            MIN(valPowptMin) AS valPowptMin,
+            AVG(valPowptAvg) AS valPowptAvg,
+            MAX(valPowerMax) AS valPowerMax,
+            MIN(valPowerMin) AS valPowerMin,
+            AVG(valPowerAvg) AS valPowerAvg,
+            MAX(valMBR1Max) AS valMBR1Max,
+            MIN(valMBR1Min) AS valMBR1Min,
+            AVG(valMBR1Avg) AS valMBR1Avg,
+            MAX(valMBR2Max) AS valMBR2Max,
+            MIN(valMBR2Min) AS valMBR2Min,
+            AVG(valMBR2Avg) AS valMBR2Avg,
+            MAX(valMBR3Max) AS valMBR3Max,
+            MIN(valMBR3Min) AS valMBR3Min,
+            AVG(valMBR3Avg) AS valMBR3Avg,
+            MAX(valMBR4Max) AS valMBR4Max,
+            MIN(valMBR4Min) AS valMBR4Min,
+            AVG(valMBR4Avg) AS valMBR4Avg,
+            MAX(valMBR5Max) AS valMBR5Max,
+            MIN(valMBR5Min) AS valMBR5Min,
+            AVG(valMBR5Avg) AS valMBR5Avg,
+            MAX(valMBR6Max) AS valMBR6Max,
+            MIN(valMBR6Min) AS valMBR6Min,
+            AVG(valMBR6Avg) AS valMBR6Avg,
+            MAX(valMBR7Max) AS valMBR7Max,
+            MIN(valMBR7Min) AS valMBR7Min,
+            AVG(valMBR7Avg) AS valMBR7Avg,
+            MAX(valMBR8Max) AS valMBR8Max,
+            MIN(valMBR8Min) AS valMBR8Min,
+            AVG(valMBR8Avg) AS valMBR8Avg,
+            MAX(valMBR9Max) AS valMBR9Max,
+            MIN(valMBR9Min) AS valMBR9Min,
+            AVG(valMBR9Avg) AS valMBR9Avg,
+            MAX(valMBR10Max) AS valMBR10Max,
+            MIN(valMBR10Min) AS valMBR10Min,
+            AVG(valMBR10Avg) AS valMBR10Avg,
+            MAX(valMBRsum1Max) AS valMBRsum1Max,
+            MIN(valMBRsum1Min) AS valMBRsum1Min,
+            AVG(valMBRsum1Avg) AS valMBRsum1Avg,
+            MAX(valMBRsum2Max) AS valMBRsum2Max,
+            MIN(valMBRsum2Min) AS valMBRsum2Min,
+            AVG(valMBRsum2Avg) AS valMBRsum2Avg,
+            MAX(valMBRsum3Max) AS valMBRsum3Max,
+            MIN(valMBRsum3Min) AS valMBRsum3Min,
+            AVG(valMBRsum3Avg) AS valMBRsum3Avg,
+            MAX(valMBRsum4Max) AS valMBRsum4Max,
+            MIN(valMBRsum4Min) AS valMBRsum4Min,
+            AVG(valMBRsum4Avg) AS valMBRsum4Avg,
+            MAX(valMBRsum5Max) AS valMBRsum5Max,
+            MIN(valMBRsum5Min) AS valMBRsum5Min,
+            AVG(valMBRsum5Avg) AS valMBRsum5Avg,
+            MAX(valMBRsum6Max) AS valMBRsum6Max,
+            MIN(valMBRsum6Min) AS valMBRsum6Min,
+            AVG(valMBRsum6Avg) AS valMBRsum6Avg,
+            MAX(valMBRsum7Max) AS valMBRsum7Max,
+            MIN(valMBRsum7Min) AS valMBRsum7Min,
+            AVG(valMBRsum7Avg) AS valMBRsum7Avg,
+            MAX(valMBRsum8Max) AS valMBRsum8Max,
+            MIN(valMBRsum8Min) AS valMBRsum8Min,
+            AVG(valMBRsum8Avg) AS valMBRsum8Avg,
+            MAX(valMBRsum9Max) AS valMBRsum9Max,
+            MIN(valMBRsum9Min) AS valMBRsum9Min,
+            AVG(valMBRsum9Avg) AS valMBRsum9Avg,
+            MAX(valMBRsum10Max) AS valMBRsum10Max,
+            MIN(valMBRsum10Min) AS valMBRsum10Min,
+            AVG(valMBRsum10Avg) AS valMBRsum10Avg,
+            MAX(allFlagMax) AS allFlagMax,
+            MIN(allFlagMin) AS allFlagMin,
+            AVG(allFlagAvg) AS allFlagAvg,
+            MAX(valInBLMax) AS valInBLMax,
+            MIN(valInBLMin) AS valInBLMin,
+            AVG(valInBLAvg) AS valInBLAvg,
+            MAX(valPoolBLMax) AS valPoolBLMax,
+            MIN(valPoolBLMin) AS valPoolBLMin,
+            AVG(valPoolBLAvg) AS valPoolBLAvg,
+            MAX(valSandBLMax) AS valSandBLMax,
+            MIN(valSandBLMin) AS valSandBLMin,
+            AVG(valSandBLAvg) AS valSandBLAvg,
+            MAX(valSdgBLMax) AS valSdgBLMax,
+            MIN(valSdgBLMin) AS valSdgBLMin,
+            AVG(valSdgBLAvg) AS valSdgBLAvg
+        FROM
+            factsewahishour
+        WHERE
+            revTime &gt;= #{beginTime} AND revTime &lt; #{endTime}
+        GROUP BY factNum , equmNum;
+
+    </select>
+
+</mapper>

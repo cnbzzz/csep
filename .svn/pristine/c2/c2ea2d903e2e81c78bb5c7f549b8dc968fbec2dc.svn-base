@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.infore.csep.pojo.mapper.GpssewarunhisMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.infore.csep.pojo.entity.Gpssewarunhis">
+        <id column="id" property="id" />
+        <result column="factNum" property="factNum" />
+        <result column="equmNum" property="equmNum" />
+        <result column="setBitname" property="setBitname" />
+        <result column="sTime" property="sTime" />
+        <result column="eTime" property="eTime" />
+    </resultMap>
+
+</mapper>

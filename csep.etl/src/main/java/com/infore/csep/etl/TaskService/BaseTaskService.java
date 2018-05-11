@@ -1,0 +1,169 @@
+package com.infore.csep.etl.TaskService;
+
+import com.infore.csep.common.service.IGenDataBaseService;
+import com.infore.csep.common.service.ITaskStatusService;
+import com.infore.csep.common.constant.TaskTypeConstant;
+import com.infore.csep.pojo.entity.TaskStatus;
+
+import lombok.Data;
+import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.time.DateFormatUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import java.util.Calendar;
+import java.util.Date;
+
+/**
+ * Created by steven ma
+ * 2018/4/19 14:15
+ */
+
+/**
+ * 定时任务基础类
+ */
+@Slf4j
+@Data
+public class BaseTaskService<M extends IGenDataBaseService> {
+
+    @Autowired
+    private M genDataService;
+
+    private String task_name; //任务名称
+
+    private int taskType; //任务类型
+    private int intervalHour = 2; //间隔时间（小时）
+    private int intervalDay = 1;
+    private int intervalMonth = 1;
+    private int intervalYear = 1;
+
+
+    @Autowired
+    private ITaskStatusService taskStatusService;
+
+
+    /**
+     * 根据开始时间和间隔时间，计算结束时间
+     *
+     * @param beginTime
+     * @return
+     */
+    public Date calcEndTime(Date beginTime) {
+
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(beginTime);
+
+        switch (taskType) {
+            case TaskTypeConstant.TASK_HOUR:
+                cal.add(Calendar.HOUR, intervalHour);// 24小时制
+                break;
+
+            case TaskTypeConstant.TASK_DAY:
+                cal.add(Calendar.DAY_OF_MONTH, intervalDay);
+                break;
+
+            case TaskTypeConstant.TASK_MONTH:
+                cal.add(Calendar.MONTH, intervalMonth);
+                break;
+
+            case TaskTypeConstant.TASK_YEAR:
+                cal.add(Calendar.YEAR, intervalYear);
+                break;
+
+            default:
+                log.error("error task type:{}", taskType);
+                break;
+        }
+        Date edate = cal.getTime();
+
+        return edate;
+    }
+
+    /**
+     * 根据结束时间和当前时间决定是否可以开始任务
+     *
+     * @param endTime
+     * @return
+     */
+    private boolean isTimeToRun(Date endTime, Date taskStopTime) {
+        // Date now = new Date();
+
+        //结束时间在当前时间之前，证明数据已经准备完成
+        if (endTime.before(taskStopTime)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    /**
+     * 在指定的时间段在跑任务
+     *
+     * @param taskStopTime 任务结束时间
+     */
+    public void runTask(Date taskStopTime) {
+       // log.info("task name:{}", task_name);
+
+        while (true) {
+
+           //当本次小任务执行条件不成功时，就结束本次大任务
+           if(genData(taskStopTime) != 0) {
+               break;
+           }
+        }
+    }
+
+    /**
+     * 从指定时间到当前执行任务
+     */
+    public void runTask() {
+        log.info("-------------Task begin [{}]---------------------------", task_name);
+        runTask(new Date());
+        log.info("-------------Task end [{}]---------------------------", task_name);
+    }
+
+    /**
+     * 根据开始时间计算结束时间，并决定是否开启任务
+     */
+    public int genData(Date taskStopTime) {
+
+        //获取数据库任务状态纪录
+        TaskStatus taskStatus =  taskStatusService.getTaskStatus(task_name, taskType);
+        Date beginTime = taskStatus.getNextRunTime();
+
+
+        log.info("beginTime:{}", DateFormatUtils.format(beginTime, "yyyy-MM-dd HH:mm:ss"));
+
+        Date endTime = calcEndTime(beginTime);
+        log.info("endTime:{}", DateFormatUtils.format(endTime, "yyyy-MM-dd HH:mm:ss"));
+
+
+        if (isTimeToRun(endTime, taskStopTime)) {
+            //可以开跑
+            //TODO: do sth... 业务逻辑
+            doJob(beginTime, endTime);
+
+            //更新结束时间为下次启动时间(数据库)
+            taskStatus.setNextRunTime(endTime);
+            taskStatus.setUpdateTime(new Date());
+            taskStatusService.updateById(taskStatus);
+            return 0;
+
+        } else {
+            //还没到时间
+            log.info("It's not time to run");
+            return 1;
+        }
+
+    }
+
+    /**
+     * 根据开始时间结束时间执行具体的任何，具体继承的类实现相应的逻辑
+     *
+     * @param beginTime
+     * @param endTime
+     */
+    public void doJob(Date beginTime, Date endTime) {
+        log.info("BaseTaskService:{}", genDataService.getClass().getName());
+        genDataService.genData(beginTime, endTime);
+    }
+}

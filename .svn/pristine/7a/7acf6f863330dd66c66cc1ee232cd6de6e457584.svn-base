@@ -1,0 +1,145 @@
+package com.infore.csep.receiver.service.impl;
+
+import com.github.cnbzzz.spring.boot.starter.rocketmq.core.RocketMQTemplate;
+import com.infore.csep.common.UnpackUtils;
+import com.infore.csep.common.netty.dto.*;
+import com.infore.csep.common.netty.dto.CsepPack.Commond;
+import com.infore.csep.pojo.rocketmq.TopicName;
+import com.infore.csep.receiver.service.IUpChannelService;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+/**
+ * This file is part of csep Project
+ * Created by cnbzzz (cnbzzz@126.com) on 2018/4/13 11:23
+ * Copyright (c) 2018 github.com/cnbzzz
+ */
+@Service
+@Slf4j
+public class UpChannelServiceImpl implements IUpChannelService {
+
+    @Autowired
+    private RocketMQTemplate rocketMQTemplate;
+
+    public CsepPack handler(CsepPack pack) throws Exception {
+        Commond commond = Commond.valueOf(pack.getCommond());
+
+        log.info(this.getClass().getSimpleName() + " {}", pack);
+
+        byte[] content = pack.getContent();
+
+        switch (commond) {
+            case GETWAY_LOGIN:
+                //网关登录
+                rocketMQTemplate.convertAndSend(TopicName.GETWAY_LOGIN, pack);
+                break;
+
+            case GETWAY_UP:
+                //平台下发指令返回
+                break;
+
+            case PLC_TIMER:
+                //PLC定时上传
+            case PLC_NOW:
+                //即时上传
+            case PLC_RECALL:
+                //工况召回数据
+
+                PlcPack plcPack = getPlcPack(pack.getContentLength(), content);
+                handlePlcPack(pack, plcPack);
+                break;
+
+            default:
+                throw new RuntimeException(String.format("commond {} not found, nothing to do. ", commond));
+        }
+        return pack;
+    }
+
+    public void handlePlcPack(CsepPack pack, PlcPack plcPack) throws Exception {
+        int dataType = plcPack.getDataType();
+
+        switch (dataType) {
+            case 0x20:
+                //渗滤液处理厂站:工况数据
+                sendPackToMq(pack, plcPack, FactleachPack.class, TopicName.PLC_20);
+                break;
+
+            case 0x22:
+                //渗滤液处理厂站:灌系统参数
+                sendPackToMq(pack, plcPack, FactleachSyspPPack.class, TopicName.PLC_22);
+                break;
+
+            case 0x23:
+                //渗滤液处理厂站:一级系统参数
+                sendPackToMq(pack, plcPack, FactleachSysaPPack.class, TopicName.PLC_23);
+
+                break;
+
+            case 0x24:
+                //渗滤液处理厂站:二级系统参数
+                sendPackToMq(pack, plcPack, FactleachSysbPPack.class, TopicName.PLC_24);
+                break;
+
+            case 0x30:
+                //乡镇污水处理厂站:设备工况数据
+                sendPackToMq(pack, plcPack, FactSewaPack.class, TopicName.PLC_30);
+                break;
+
+            case 0x10:
+                //乡镇污水一体化设备
+                sendPackToMq(pack, plcPack, GpsSewaPack.class, TopicName.PLC_10);
+                break;
+
+            default:
+                throw new RuntimeException(String.format("dataType [%s] not found, nothing to do. ", dataType));
+
+        }
+    }
+
+    private void sendPackToMq(CsepPack pack, PlcPack plcPack, Class<? extends FactleachBasePack> clazz, String topicName) throws Exception {
+        byte[] content = plcPack.getContent();
+        FactleachBasePack basePack = UnpackUtils.unPack(content, clazz);
+        basePack.setCommand(pack.getCommond());
+        basePack.setEqumSeq(pack.getFromNum());
+        basePack.setEqumID(pack.getClientId());
+        basePack.setFactNum(plcPack.getFactoryId());
+        basePack.setEqumNum(plcPack.getDeviceId());
+        basePack.setDataType(plcPack.getDataType());
+        log.info("{} is {}", basePack.getClass().getSimpleName(), basePack);
+
+        rocketMQTemplate.convertAndSend(topicName, basePack);
+    }
+
+    public PlcPack getPlcPack(int contentLength, byte[] bytes) throws Exception {
+        int start = UnpackUtils.getValFromBytes(bytes, 0, 2, int.class);
+        Integer deviceType = UnpackUtils.getValFromBytes(bytes, 2, 3, int.class);
+        int factoryId = UnpackUtils.getValFromBytes(bytes, 3, 7, int.class);
+        String deviceId = UnpackUtils.getValFromBytes(bytes, 7, 19, String.class);
+        Integer _commond = UnpackUtils.getValFromBytes(bytes, 19, 20, int.class);
+        Integer dataType = UnpackUtils.getValFromBytes(bytes, 20, 21, int.class);
+        int pre = 21;
+        int suf = 5;
+        int _contentLength = contentLength - pre - suf;
+        int to = pre + _contentLength;
+        byte[] b = UnpackUtils.getValFromBytes(bytes, pre, to, byte[].class);
+
+        int countFrom = to;
+        int countEnd = countFrom + 4;
+        Integer count = UnpackUtils.getValFromBytes(bytes, countFrom, countEnd, Integer.class);
+        Integer end = UnpackUtils.getValFromBytes(bytes, countEnd, countEnd, Integer.class);
+
+        PlcPack plcPack = new PlcPack();
+        plcPack.setStart(start);
+        plcPack.setDeviceType(deviceType);
+        plcPack.setFactoryId(factoryId);
+        plcPack.setDeviceId(deviceId);
+        plcPack.setCommond(_commond);
+        plcPack.setDataType(dataType);
+        plcPack.setContent(b);
+        plcPack.setCount(count);
+        plcPack.setEnd(end);
+
+        return plcPack;
+    }
+}

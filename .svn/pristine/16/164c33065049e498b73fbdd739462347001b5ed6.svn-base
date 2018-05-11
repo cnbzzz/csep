@@ -1,0 +1,32 @@
+package com.infore.csep.etl.TaskService;
+
+import com.infore.csep.etl.constant.TaskNameConstant;
+import com.infore.csep.common.constant.TaskTypeConstant;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Service;
+
+import java.util.Date;
+
+/**
+ * Created by steven ma
+ * 2018/4/19 14:31
+ */
+@Slf4j
+@Service
+public class GPSSewaHisHourTaskService extends BaseTaskService {
+
+    public GPSSewaHisHourTaskService() {
+        setTask_name(TaskNameConstant.GPS_SEWA_HOUR); //任务名称
+        setTaskType(TaskTypeConstant.TASK_HOUR); //任务类型
+    }
+
+    /**
+     * “GPS污水设备小时表”数据的业务逻辑
+     * @param beginTime
+     * @param endTime
+     */
+    @Override
+    public void doJob(Date beginTime , Date endTime){
+        log.info("GPSSewaHisHourTaskService");
+    }
+}

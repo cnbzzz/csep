@@ -1,0 +1,180 @@
+package com.infore.csep.common;
+
+import com.google.common.base.Preconditions;
+import com.infore.csep.common.netty.annotation.Unpack;
+import com.infore.csep.common.netty.dto.CsepPack;
+import org.apache.commons.beanutils.BeanUtils;
+import org.apache.commons.lang3.ArrayUtils;
+import org.apache.commons.lang3.StringUtils;
+
+import java.io.UnsupportedEncodingException;
+import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
+import java.util.*;
+
+/**
+ * This file is part of csep Project
+ * Created by cnbzzz (cnbzzz@126.com) on 2018/3/29 10:21
+ * Copyright (c) 2018 github.com/cnbzzz
+ */
+public class UnpackUtils {
+
+    public static <T> T unPack(byte[] bytes, Class<T> clazz) throws Exception {
+        T result = clazz.newInstance();
+
+        Map<Field, Unpack> map = getUnpackField(clazz);
+        Set<Map.Entry<Field, Unpack>> entries = map.entrySet();
+        for (Map.Entry<Field, Unpack> entry : entries) {
+            Field field = entry.getKey();
+            Unpack val = entry.getValue();
+
+            String typeName = field.getGenericType().getTypeName();
+
+            int index = val.index();
+            int len = val.length();
+            String idxRef = val.idxRef();
+            String lenRef = val.lenRef();
+
+            index = getIdxProp(result, index, idxRef);
+
+            len = getLenProp(result, len, lenRef);
+
+            Object fieldVal = null;
+            if (len > 1) {
+                int from = index;
+                int to = index + len;
+
+                int length = bytes.length;
+                Preconditions.checkArgument(from < length && to <= length, "length not enough. length [%s], from [%s],to [%s]", length, from, to);
+
+                byte[] b = Arrays.copyOfRange(bytes, from, to);
+                fieldVal = getFieldVal(typeName, b);
+            } else {
+                byte b = bytes[index];
+                if (typeName.equals("java.lang.String")) {
+                    fieldVal = (char) b;
+                } else {
+                    fieldVal = b & 0xff;
+                }
+            }
+            BeanUtils.setProperty(result, field.getName(), fieldVal);
+        }
+        return result;
+    }
+
+    public static <T> int getIdxProp(T result, int original, String ref) throws IllegalAccessException, InvocationTargetException, NoSuchMethodException, NoSuchFieldException {
+        if (StringUtils.isNotBlank(ref)) {
+            Field field = result.getClass().getDeclaredField(ref);
+            Unpack annotation = field.getAnnotation(Unpack.class);
+            int idx = annotation.index();
+            String idxRef = annotation.idxRef();
+            if (idx == -1) {
+                idx = getIdxProp(result, idx, idxRef);
+            }
+            int len = annotation.length();
+            String lenRef = annotation.lenRef();
+            return idx + getLenProp(result, len, lenRef);
+        } else {
+            return original;
+        }
+    }
+
+
+    public static <T> int getLenProp(T result, int original, String ref) throws IllegalAccessException, InvocationTargetException, NoSuchMethodException {
+        if (StringUtils.isNotBlank(ref)) {
+            String prop = BeanUtils.getProperty(result, ref);
+            return Integer.parseInt(prop);
+        } else {
+            return original;
+        }
+    }
+
+    public static Object getFieldVal(String typeName, byte[] b) throws UnsupportedEncodingException {
+        Object fieldVal = null;
+        switch (typeName) {
+            case "String":
+            case "java.lang.String":
+                fieldVal = new String(b, "UTF-8");
+                break;
+            case "byte[]":
+                fieldVal = b;
+                break;
+            case "int":
+            case "Integer":
+            case "java.lang.Integer":
+                fieldVal = ByteUtils.byte2Int(b);
+                break;
+            case "long":
+            case "Long":
+            case "java.lang.Long":
+                fieldVal = ByteUtils.byte2Long(b);
+                break;
+            case "short":
+            case "Short":
+            case "java.lang.Short":
+                fieldVal = ByteUtils.byte2Short(b);
+                break;
+            default:
+                fieldVal = null;
+        }
+        return fieldVal;
+    }
+
+    public static <T> Map<Field, Unpack> getUnpackField(Class<T> clazz) {
+        Field[] fields = clazz.getDeclaredFields();
+        Map<Field, Unpack> map = new LinkedHashMap<>();
+        for (Field field : fields) {
+            boolean hasAnno = field.isAnnotationPresent(Unpack.class);
+            if (hasAnno) {
+                Unpack anno = field.getAnnotation(Unpack.class);
+                map.put(field, anno);
+            }
+        }
+        return map;
+    }
+
+    public static <T> T getValFromBytes(byte[] bytes, int from, int to, Class<T> clazz) throws UnsupportedEncodingException {
+        byte[] b = Arrays.copyOfRange(bytes, from, to);
+        String typeName = clazz.getSimpleName();
+        return (T) getFieldVal(typeName, b);
+    }
+
+    /**
+     * 字符串转化成为16进制字符串
+     * @param s
+     * @return
+     */
+    public static String strTo16(String s) {
+        String str = "";
+        for (int i = 0; i < s.length(); i++) {
+            int ch = (int) s.charAt(i);
+            String s4 = Integer.toHexString(ch);
+            str += s4;
+        }
+        return str;
+    }
+
+    public static void main(String[] args) throws Exception {
+        byte[] b = testArray();
+
+        System.err.printf("%016x%n", 98876);
+        System.err.printf("%s%n", strTo16("asdfzxcv"));
+
+        CsepPack csepPack = unPack(b, CsepPack.class);
+        System.err.println(csepPack);
+
+    }
+
+    public static byte[] testArray() {
+        byte[] b = new byte[0];
+        b = ArrayUtils.addAll(b, (byte) 0x5a, (byte) 0x4c);
+        b = ArrayUtils.addAll(b, (byte) 0xc0);
+        b = ArrayUtils.addAll(b, (byte) 0x00, (byte) 0x00, (byte) 0x25, (byte) 0x37);
+        b = ArrayUtils.addAll(b, (byte) 0x61, (byte) 0x73, (byte) 0x64, (byte) 0x66, (byte) 0x7a, (byte) 0x78, (byte) 0x63, (byte) 0x76);
+        b = ArrayUtils.addAll(b, (byte) 0x00, (byte) 0x03);
+        b = ArrayUtils.addAll(b, (byte) 0x61, (byte) 0x62, (byte) 0x63);
+        b = ArrayUtils.addAll(b, (byte) 0x61);
+        b = ArrayUtils.addAll(b, (byte) 0x0d);
+        return b;
+    }
+}

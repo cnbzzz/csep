@@ -1,0 +1,49 @@
+package com.infore.csep.test.client;
+
+import com.infore.csep.common.CommonUtils;
+import com.infore.csep.common.netty.dto.CsepPack;
+import io.netty.channel.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.extern.slf4j.Slf4j;
+
+/**
+ * This file is part of tsp Project
+ * Created by bzzz (bzzz@space-walker.cn) on 2017/8/31 4:17
+ * Copyright (c) 2017 www.space-walker.cn
+ */
+@Slf4j
+@Data
+@AllArgsConstructor
+public class NettyClientHandler extends SimpleChannelInboundHandler<CsepPack> {
+
+    private NettyClient nettyClient;
+
+    protected void channelRead0(ChannelHandlerContext ctx, CsepPack msg) throws Exception {
+        log.info(this.getClass().getSimpleName() + " {}", msg);
+    }
+
+    public void channelActive(ChannelHandlerContext ctx) throws Exception {
+        CsepPack csepPack = new CsepPack();
+        csepPack.setStart("ZL");
+        csepPack.setCommond(0x19);
+        csepPack.setFromNum(99987);
+        String clientId = CommonUtils.genRandomCode(8);
+        csepPack.setClientId(clientId);
+
+        String content = "我在人民广场吃炸鸡";
+        csepPack.setContent(content.getBytes("UTF-8"));
+
+        ctx.writeAndFlush(csepPack);
+        super.channelActive(ctx);
+    }
+
+    public void channelInactive(ChannelHandlerContext ctx) throws Exception {
+        nettyClient.doConnect();
+        super.channelInactive(ctx);
+    }
+
+    public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
+        super.exceptionCaught(ctx, cause);
+    }
+}

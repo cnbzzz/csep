@@ -1,0 +1,29 @@
+package com.infore.csep.receiver;
+
+import com.infore.csep.receiver.netty.NettyServer;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class ReceiverApplication implements CommandLineRunner {
+
+	@Autowired
+	private NettyServer nettyServer;
+//
+//	@Autowired
+//	private RocketMQTemplate rocketMQTemplate;
+
+	public static void main(String[] args) {
+		SpringApplication.run(ReceiverApplication.class, args);
+	}
+
+	public void run(String... args) throws Exception {
+//		rocketMQTemplate.convertAndSend("topic1", "Hello, World!");
+//		rocketMQTemplate.send("topic1", MessageBuilder.withPayload("Hello, World! I'm from spring message").build());
+//		rocketMQTemplate.convertAndSend("topic2", new OrderPaidEvent("T_001", new BigDecimal("88.00")));
+//		System.err.println("hahahahahahahahaha");
+		nettyServer.start();
+	}
+}

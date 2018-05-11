@@ -1,0 +1,461 @@
+package com.infore.csep.pojo.entity;
+
+import java.util.Date;
+import com.baomidou.mybatisplus.activerecord.Model;
+import java.io.Serializable;
+
+/**
+ * <p>
+ * 
+ * </p>
+ *
+ * @author bzzz
+ * @since 2018-04-17
+ */
+public class Factleachsysbphis extends Model<Factleachsysbphis> {
+
+    private static final long serialVersionUID = 1L;
+
+    private Long id;
+    private Integer command;
+    private Date revTime;
+    private Integer equmSeq;
+    private Long equmID;
+    private Integer equmType;
+    private Integer factNum;
+    private String equmNum;
+    private Integer dataType;
+    private Integer sysbRec;
+    private Integer sysbIncomedelay;
+    private Integer sysbHpumpadelay;
+    private Integer sysbValvedelay;
+    private Integer sysbValvesetdelay;
+    private Integer sysbSrcwTime;
+    private Integer sysbAutodelay;
+    private Integer sysbChemPTime;
+    private Integer sysbWashBl;
+    private Integer sysbHpumpdelay;
+    private Integer sysbChemrec;
+    private Integer sysbChemimmtime;
+    private Integer sysbChemTime;
+    private Integer sysbSrcByh;
+    private Integer sysbPremBn;
+    private Integer sysbChemTempdelay;
+    private Integer sysbChemTemp;
+    private Integer sysbRunTempl;
+    private Integer sysbRunTempldelay;
+    private Integer sysbRunTemph;
+    private Integer sysbRunTemphdelay;
+    private Integer sysbOutBnh;
+    private Integer sysbOutBnhdelay;
+    private Integer sysbPremBlldelay;
+    private Integer sysbPremBll;
+    private Integer sysbPremBlhdelay;
+    private Integer sysbPremBlh;
+    private Integer sysbInclosedelay;
+    private Integer sysbPressH;
+    private Integer sysbPremBpdelay;
+    private Integer sysbValveClose;
+    private Integer cout;
+    private String equipmentNo;
+    private Integer plcComm;
+
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Integer getCommand() {
+        return command;
+    }
+
+    public void setCommand(Integer command) {
+        this.command = command;
+    }
+
+    public Date getRevTime() {
+        return revTime;
+    }
+
+    public void setRevTime(Date revTime) {
+        this.revTime = revTime;
+    }
+
+    public Integer getEqumSeq() {
+        return equmSeq;
+    }
+
+    public void setEqumSeq(Integer equmSeq) {
+        this.equmSeq = equmSeq;
+    }
+
+    public Long getEqumID() {
+        return equmID;
+    }
+
+    public void setEqumID(Long equmID) {
+        this.equmID = equmID;
+    }
+
+    public Integer getEqumType() {
+        return equmType;
+    }
+
+    public void setEqumType(Integer equmType) {
+        this.equmType = equmType;
+    }
+
+    public Integer getFactNum() {
+        return factNum;
+    }
+
+    public void setFactNum(Integer factNum) {
+        this.factNum = factNum;
+    }
+
+    public String getEqumNum() {
+        return equmNum;
+    }
+
+    public void setEqumNum(String equmNum) {
+        this.equmNum = equmNum;
+    }
+
+    public Integer getDataType() {
+        return dataType;
+    }
+
+    public void setDataType(Integer dataType) {
+        this.dataType = dataType;
+    }
+
+    public Integer getSysbRec() {
+        return sysbRec;
+    }
+
+    public void setSysbRec(Integer sysbRec) {
+        this.sysbRec = sysbRec;
+    }
+
+    public Integer getSysbIncomedelay() {
+        return sysbIncomedelay;
+    }
+
+    public void setSysbIncomedelay(Integer sysbIncomedelay) {
+        this.sysbIncomedelay = sysbIncomedelay;
+    }
+
+    public Integer getSysbHpumpadelay() {
+        return sysbHpumpadelay;
+    }
+
+    public void setSysbHpumpadelay(Integer sysbHpumpadelay) {
+        this.sysbHpumpadelay = sysbHpumpadelay;
+    }
+
+    public Integer getSysbValvedelay() {
+        return sysbValvedelay;
+    }
+
+    public void setSysbValvedelay(Integer sysbValvedelay) {
+        this.sysbValvedelay = sysbValvedelay;
+    }
+
+    public Integer getSysbValvesetdelay() {
+        return sysbValvesetdelay;
+    }
+
+    public void setSysbValvesetdelay(Integer sysbValvesetdelay) {
+        this.sysbValvesetdelay = sysbValvesetdelay;
+    }
+
+    public Integer getSysbSrcwTime() {
+        return sysbSrcwTime;
+    }
+
+    public void setSysbSrcwTime(Integer sysbSrcwTime) {
+        this.sysbSrcwTime = sysbSrcwTime;
+    }
+
+    public Integer getSysbAutodelay() {
+        return sysbAutodelay;
+    }
+
+    public void setSysbAutodelay(Integer sysbAutodelay) {
+        this.sysbAutodelay = sysbAutodelay;
+    }
+
+    public Integer getSysbChemPTime() {
+        return sysbChemPTime;
+    }
+
+    public void setSysbChemPTime(Integer sysbChemPTime) {
+        this.sysbChemPTime = sysbChemPTime;
+    }
+
+    public Integer getSysbWashBl() {
+        return sysbWashBl;
+    }
+
+    public void setSysbWashBl(Integer sysbWashBl) {
+        this.sysbWashBl = sysbWashBl;
+    }
+
+    public Integer getSysbHpumpdelay() {
+        return sysbHpumpdelay;
+    }
+
+    public void setSysbHpumpdelay(Integer sysbHpumpdelay) {
+        this.sysbHpumpdelay = sysbHpumpdelay;
+    }
+
+    public Integer getSysbChemrec() {
+        return sysbChemrec;
+    }
+
+    public void setSysbChemrec(Integer sysbChemrec) {
+        this.sysbChemrec = sysbChemrec;
+    }
+
+    public Integer getSysbChemimmtime() {
+        return sysbChemimmtime;
+    }
+
+    public void setSysbChemimmtime(Integer sysbChemimmtime) {
+        this.sysbChemimmtime = sysbChemimmtime;
+    }
+
+    public Integer getSysbChemTime() {
+        return sysbChemTime;
+    }
+
+    public void setSysbChemTime(Integer sysbChemTime) {
+        this.sysbChemTime = sysbChemTime;
+    }
+
+    public Integer getSysbSrcByh() {
+        return sysbSrcByh;
+    }
+
+    public void setSysbSrcByh(Integer sysbSrcByh) {
+        this.sysbSrcByh = sysbSrcByh;
+    }
+
+    public Integer getSysbPremBn() {
+        return sysbPremBn;
+    }
+
+    public void setSysbPremBn(Integer sysbPremBn) {
+        this.sysbPremBn = sysbPremBn;
+    }
+
+    public Integer getSysbChemTempdelay() {
+        return sysbChemTempdelay;
+    }
+
+    public void setSysbChemTempdelay(Integer sysbChemTempdelay) {
+        this.sysbChemTempdelay = sysbChemTempdelay;
+    }
+
+    public Integer getSysbChemTemp() {
+        return sysbChemTemp;
+    }
+
+    public void setSysbChemTemp(Integer sysbChemTemp) {
+        this.sysbChemTemp = sysbChemTemp;
+    }
+
+    public Integer getSysbRunTempl() {
+        return sysbRunTempl;
+    }
+
+    public void setSysbRunTempl(Integer sysbRunTempl) {
+        this.sysbRunTempl = sysbRunTempl;
+    }
+
+    public Integer getSysbRunTempldelay() {
+        return sysbRunTempldelay;
+    }
+
+    public void setSysbRunTempldelay(Integer sysbRunTempldelay) {
+        this.sysbRunTempldelay = sysbRunTempldelay;
+    }
+
+    public Integer getSysbRunTemph() {
+        return sysbRunTemph;
+    }
+
+    public void setSysbRunTemph(Integer sysbRunTemph) {
+        this.sysbRunTemph = sysbRunTemph;
+    }
+
+    public Integer getSysbRunTemphdelay() {
+        return sysbRunTemphdelay;
+    }
+
+    public void setSysbRunTemphdelay(Integer sysbRunTemphdelay) {
+        this.sysbRunTemphdelay = sysbRunTemphdelay;
+    }
+
+    public Integer getSysbOutBnh() {
+        return sysbOutBnh;
+    }
+
+    public void setSysbOutBnh(Integer sysbOutBnh) {
+        this.sysbOutBnh = sysbOutBnh;
+    }
+
+    public Integer getSysbOutBnhdelay() {
+        return sysbOutBnhdelay;
+    }
+
+    public void setSysbOutBnhdelay(Integer sysbOutBnhdelay) {
+        this.sysbOutBnhdelay = sysbOutBnhdelay;
+    }
+
+    public Integer getSysbPremBlldelay() {
+        return sysbPremBlldelay;
+    }
+
+    public void setSysbPremBlldelay(Integer sysbPremBlldelay) {
+        this.sysbPremBlldelay = sysbPremBlldelay;
+    }
+
+    public Integer getSysbPremBll() {
+        return sysbPremBll;
+    }
+
+    public void setSysbPremBll(Integer sysbPremBll) {
+        this.sysbPremBll = sysbPremBll;
+    }
+
+    public Integer getSysbPremBlhdelay() {
+        return sysbPremBlhdelay;
+    }
+
+    public void setSysbPremBlhdelay(Integer sysbPremBlhdelay) {
+        this.sysbPremBlhdelay = sysbPremBlhdelay;
+    }
+
+    public Integer getSysbPremBlh() {
+        return sysbPremBlh;
+    }
+
+    public void setSysbPremBlh(Integer sysbPremBlh) {
+        this.sysbPremBlh = sysbPremBlh;
+    }
+
+    public Integer getSysbInclosedelay() {
+        return sysbInclosedelay;
+    }
+
+    public void setSysbInclosedelay(Integer sysbInclosedelay) {
+        this.sysbInclosedelay = sysbInclosedelay;
+    }
+
+    public Integer getSysbPressH() {
+        return sysbPressH;
+    }
+
+    public void setSysbPressH(Integer sysbPressH) {
+        this.sysbPressH = sysbPressH;
+    }
+
+    public Integer getSysbPremBpdelay() {
+        return sysbPremBpdelay;
+    }
+
+    public void setSysbPremBpdelay(Integer sysbPremBpdelay) {
+        this.sysbPremBpdelay = sysbPremBpdelay;
+    }
+
+    public Integer getSysbValveClose() {
+        return sysbValveClose;
+    }
+
+    public void setSysbValveClose(Integer sysbValveClose) {
+        this.sysbValveClose = sysbValveClose;
+    }
+
+    public Integer getCout() {
+        return cout;
+    }
+
+    public void setCout(Integer cout) {
+        this.cout = cout;
+    }
+
+    public String getEquipmentNo() {
+        return equipmentNo;
+    }
+
+    public void setEquipmentNo(String equipmentNo) {
+        this.equipmentNo = equipmentNo;
+    }
+
+    public Integer getPlcComm() {
+        return plcComm;
+    }
+
+    public void setPlcComm(Integer plcComm) {
+        this.plcComm = plcComm;
+    }
+
+    @Override
+    protected Serializable pkVal() {
+        return this.id;
+    }
+
+    @Override
+    public String toString() {
+        return "Factleachsysbphis{" +
+        "id=" + id +
+        ", command=" + command +
+        ", revTime=" + revTime +
+        ", equmSeq=" + equmSeq +
+        ", equmID=" + equmID +
+        ", equmType=" + equmType +
+        ", factNum=" + factNum +
+        ", equmNum=" + equmNum +
+        ", dataType=" + dataType +
+        ", sysbRec=" + sysbRec +
+        ", sysbIncomedelay=" + sysbIncomedelay +
+        ", sysbHpumpadelay=" + sysbHpumpadelay +
+        ", sysbValvedelay=" + sysbValvedelay +
+        ", sysbValvesetdelay=" + sysbValvesetdelay +
+        ", sysbSrcwTime=" + sysbSrcwTime +
+        ", sysbAutodelay=" + sysbAutodelay +
+        ", sysbChemPTime=" + sysbChemPTime +
+        ", sysbWashBl=" + sysbWashBl +
+        ", sysbHpumpdelay=" + sysbHpumpdelay +
+        ", sysbChemrec=" + sysbChemrec +
+        ", sysbChemimmtime=" + sysbChemimmtime +
+        ", sysbChemTime=" + sysbChemTime +
+        ", sysbSrcByh=" + sysbSrcByh +
+        ", sysbPremBn=" + sysbPremBn +
+        ", sysbChemTempdelay=" + sysbChemTempdelay +
+        ", sysbChemTemp=" + sysbChemTemp +
+        ", sysbRunTempl=" + sysbRunTempl +
+        ", sysbRunTempldelay=" + sysbRunTempldelay +
+        ", sysbRunTemph=" + sysbRunTemph +
+        ", sysbRunTemphdelay=" + sysbRunTemphdelay +
+        ", sysbOutBnh=" + sysbOutBnh +
+        ", sysbOutBnhdelay=" + sysbOutBnhdelay +
+        ", sysbPremBlldelay=" + sysbPremBlldelay +
+        ", sysbPremBll=" + sysbPremBll +
+        ", sysbPremBlhdelay=" + sysbPremBlhdelay +
+        ", sysbPremBlh=" + sysbPremBlh +
+        ", sysbInclosedelay=" + sysbInclosedelay +
+        ", sysbPressH=" + sysbPressH +
+        ", sysbPremBpdelay=" + sysbPremBpdelay +
+        ", sysbValveClose=" + sysbValveClose +
+        ", cout=" + cout +
+        ", equipmentNo=" + equipmentNo +
+        ", plcComm=" + plcComm +
+        "}";
+    }
+}

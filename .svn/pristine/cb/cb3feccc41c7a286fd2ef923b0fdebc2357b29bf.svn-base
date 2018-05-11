@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.infore.csep.pojo.mapper.GpssewahisMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.infore.csep.pojo.entity.Gpssewahis">
+        <id column="id" property="id" />
+        <result column="command" property="command" />
+        <result column="revTime" property="revTime" />
+        <result column="equmSeq" property="equmSeq" />
+        <result column="equmID" property="equmID" />
+        <result column="equmType" property="equmType" />
+        <result column="gpsNum" property="gpsNum" />
+        <result column="valRunHour" property="valRunHour" />
+        <result column="valPower" property="valPower" />
+        <result column="valWal" property="valWal" />
+        <result column="allFlag" property="allFlag" />
+        <result column="valCln" property="valCln" />
+        <result column="valPip" property="valPip" />
+        <result column="valTankL" property="valTankL" />
+        <result column="setSubBlowS" property="setSubBlowS" />
+        <result column="setSubBlowE" property="setSubBlowE" />
+        <result column="setPiPumpS" property="setPiPumpS" />
+        <result column="setPiPumpR" property="setPiPumpR" />
+        <result column="setPiPumpE" property="setPiPumpE" />
+        <result column="setAgit1R" property="setAgit1R" />
+        <result column="setAgit1E" property="setAgit1E" />
+        <result column="setAgit2R" property="setAgit2R" />
+        <result column="setAgit2E" property="setAgit2E" />
+        <result column="setLiPumpS" property="setLiPumpS" />
+        <result column="setMvR" property="setMvR" />
+        <result column="setMvE" property="setMvE" />
+        <result column="setPiPumpPH" property="setPiPumpPH" />
+        <result column="setPiPumpPHH" property="setPiPumpPHH" />
+        <result column="setTankLL" property="setTankLL" />
+        <result column="setTankLLdelay" property="setTankLLdelay" />
+        <result column="setPiPumpPdelay" property="setPiPumpPdelay" />
+        <result column="setPiPumpOldelay" property="setPiPumpOldelay" />
+        <result column="setLiPumpdelay" property="setLiPumpdelay" />
+        <result column="setTankldelay" property="setTankldelay" />
+        <result column="setPiPumpP2delay" property="setPiPumpP2delay" />
+        <result column="setSubBlowOldelay" property="setSubBlowOldelay" />
+        <result column="setUvOldelay" property="setUvOldelay" />
+        <result column="setAgit1Oldelay" property="setAgit1Oldelay" />
+        <result column="setAgit2Oldelay" property="setAgit2Oldelay" />
+        <result column="sewaNo" property="sewaNo" />
+        <result column="count" property="count" />
+    </resultMap>
+
+</mapper>

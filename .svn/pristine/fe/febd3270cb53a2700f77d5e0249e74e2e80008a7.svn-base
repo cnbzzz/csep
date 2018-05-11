@@ -1,0 +1,20 @@
+package com.infore.csep.pojo.service.impl;
+
+import com.infore.csep.pojo.entity.Factleachsyspphis;
+import com.infore.csep.pojo.mapper.FactleachsyspphisMapper;
+import com.infore.csep.pojo.service.IFactleachsyspphisService;
+import com.baomidou.mybatisplus.service.impl.ServiceImpl;
+import org.springframework.stereotype.Service;
+
+/**
+ * <p>
+ *  服务实现类
+ * </p>
+ *
+ * @author bzzz
+ * @since 2018-04-17
+ */
+@Service
+public class FactleachsyspphisServiceImpl extends ServiceImpl<FactleachsyspphisMapper, Factleachsyspphis> implements IFactleachsyspphisService {
+
+}

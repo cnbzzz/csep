@@ -1,0 +1,65 @@
+package com.infore.csep.etl.TaskService;
+
+import lombok.extern.slf4j.Slf4j;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+import static org.junit.Assert.*;
+
+@RunWith(SpringRunner.class)
+@SpringBootTest
+@Slf4j
+public class FactLeachHisHourTaskServiceTest {
+
+    @Autowired
+    private FactLeachHisHourTaskService factLeachHisHourTaskService;
+
+    @Autowired
+    private FactSewaHisHourTaskService factSewaHisHourTaskService;
+
+    @Autowired
+    private GPSSewaHisHourTaskService gpsSewaHisHourTaskService;
+
+    @Test
+    public void genDateByBeginTime() throws ParseException {
+
+        //设置开始时间
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String beginDate = "2018-04-19 01:00:00";
+        Date beginTaskTime = sdf.parse(beginDate);
+
+
+       // Date stopTaskTime = new Date();
+
+        String stopDate = "2018-04-19 04:00:00";
+        Date stopTaskTime = sdf.parse(stopDate);
+
+        factLeachHisHourTaskService.runTask(beginTaskTime, stopTaskTime);
+
+//        while (nextBDate != null) {
+//            //获取下次启动时间(正式情况下应该从数据库获取)
+//            nextBDate = factLeachHisHourTaskService.genDateByBeginTime(nextBDate, new Date());
+//        }
+    }
+
+    @Test
+    public void runTask() throws ParseException {
+
+        //设置开始时间
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String beginDate = "2018-04-19 01:00:00";
+        Date beginTaskTime = sdf.parse(beginDate);
+
+        factLeachHisHourTaskService.runTask(beginTaskTime);
+        factSewaHisHourTaskService.runTask(beginTaskTime);
+        gpsSewaHisHourTaskService.runTask(beginTaskTime);
+    }
+
+}

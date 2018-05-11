@@ -1,0 +1,203 @@
+package com.infore.csep.common.service.impl;
+
+import com.baomidou.mybatisplus.mapper.EntityWrapper;
+import com.baomidou.mybatisplus.mapper.Wrapper;
+import com.google.common.base.Joiner;
+import com.infore.csep.common.ByteUtils;
+import com.infore.csep.common.netty.dto.FactleachPack;
+import com.infore.csep.common.service.*;
+import com.infore.csep.pojo.entity.*;
+import com.infore.csep.pojo.mapper.FactleachMapper;
+import com.baomidou.mybatisplus.service.impl.ServiceImpl;
+import lombok.NonNull;
+import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.beanutils.BeanUtils;
+import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
+import java.text.SimpleDateFormat;
+import java.util.*;
+
+/**
+ * <p>
+ * 服务实现类
+ * </p>
+ *
+ * @author bzzz
+ * @since 2018-04-17
+ */
+@Service
+@Slf4j
+public class FactleachServiceImpl extends ServiceImpl<FactleachMapper, Factleach> implements IFactleachService {
+
+    @Autowired
+    private IFactleachhisService factleachhisService;
+
+    @Autowired
+    private IFactleachtimeService factleachtimeService;
+
+    @Autowired
+    private IFactleachrunhisService factleachrunhisService;
+
+    @Autowired
+    private IFactleachalarmService factleachalarmService;
+
+    @Transactional
+    public boolean handleFactleachInfo(@NonNull FactleachPack pack) {
+        boolean result = true;
+        try {
+            Factleach factleach = handleFactleach(pack);
+
+            Factleachhis factleachhis = handleFactleachhis(pack, factleach);
+
+            handleFactleachtime(factleachhis);
+
+            IJsWorker jsWorker = JsWorker.getJsWorker();
+            List<Factleachalarm> factleachalarms = jsWorker.gainFactleachalarmArray(factleach);
+
+            factleachalarmService.insertBatch(factleachalarms);
+        } catch (Exception e) {
+            result = false;
+            log.error(e.getMessage(), e);
+        }
+        return result;
+    }
+
+    private Factleach handleFactleach(@NonNull FactleachPack pack) throws IllegalAccessException, InvocationTargetException {
+        Factleach factleach = new Factleach();
+        BeanUtils.copyProperties(factleach, pack);
+
+        StringBuilder sb = new StringBuilder();
+        byte[] bytes = pack.getFlagAll();
+        for (int i = 0; i < bytes.length; i++) {
+            sb.append(ByteUtils.byteToBit(bytes[i]));
+        }
+        String flagAll = sb.toString();
+        factleach.setFlagAll(flagAll);
+
+        Long equmID = factleach.getEqumID(); // 客户端id
+        Wrapper<Factleach> condition = new EntityWrapper<Factleach>().eq("equmID", equmID);
+        Factleach one = selectOne(condition);
+
+        if (one == null) {
+            insert(factleach);
+        } else {
+            update(factleach, condition);
+        }
+        return factleach;
+    }
+
+    private void handleFactleachtime(Factleachhis factleachhis) throws Exception {
+        Integer factNum = factleachhis.getFactNum();//厂站编号
+        String equmNum = factleachhis.getEqumNum();//设备出厂编号
+
+        Factleachtime factleachtime = factleachtimeService.selectOne(new EntityWrapper<Factleachtime>().eq("factNum", factNum).eq("equmNum", equmNum));
+        if (factleachtime == null) {
+            factleachtime = new Factleachtime();
+            factleachtime.setFactNum(factNum);
+            factleachtime.setEqumNum(equmNum);
+        }
+
+        String flagAll = factleachhis.getFlagAll();
+        for (int i = 0; i < PROP_NAME_LIST.size(); i++) {
+            String propName = PROP_NAME_LIST.get(i);
+            if (StringUtils.isBlank(propName)) {
+                continue;
+            }
+            String newVal = flagAll.substring(i, i + 1);
+            handleFactleachrunhis(factleachtime, propName, Integer.parseInt(newVal));
+        }
+        if(factleachtime.getId() == null) {
+            factleachtimeService.insert(factleachtime);
+        } else {
+            factleachtimeService.updateById(factleachtime);
+        }
+    }
+
+    private Factleachhis handleFactleachhis(@NonNull FactleachPack pack, Factleach factleach) throws Exception {
+        Factleachhis factleachhis = new Factleachhis();
+        BeanUtils.copyProperties(factleachhis, factleach);
+        factleachhis.setCommand(pack.getCommand());
+        factleachhis.setDataType(pack.getDataType());
+        factleachhis.setEqumSeq(pack.getEqumSeq());
+        factleachhisService.insert(factleachhis);
+        return factleachhis;
+    }
+
+    private void handleFactleachrunhis(Object bean, String propName, Integer newVal) throws
+            Exception {
+        if (newVal == null) {
+            return;
+        }
+        String oldVal = BeanUtils.getProperty(bean, propName);
+        if (!(newVal.toString().equals(oldVal))) {
+            BeanUtils.setProperty(bean, propName, newVal);
+            Date now = new Date();
+            String sTimePropName = propName + "s";
+            String eTimePropName = propName + "e";
+            if (oldVal == null) {
+                BeanUtils.setProperty(bean,
+                        sTimePropName, now);
+                BeanUtils.setProperty(bean,
+                        eTimePropName, now);
+            }
+            if ("0".equals(oldVal) && newVal == 1) { //从0变成1
+                BeanUtils.setProperty(bean,
+                        sTimePropName, now);
+
+            }
+            if ("1".equals(oldVal) && newVal == 0) { //从1变成0
+                BeanUtils.setProperty(bean,
+                        eTimePropName, now);
+
+                Factleachrunhis factleachrunhis = new Factleachrunhis();
+                BeanUtils.copyProperties(factleachrunhis, bean);
+                factleachrunhis.setSetBitname(propName);
+                String sTimeStr = BeanUtils.getProperty(bean, sTimePropName);
+                factleachrunhis.setsTime(propToDate(sTimeStr));
+                factleachrunhis.seteTime(now);
+                factleachrunhisService.insert(factleachrunhis);
+            }
+        }
+    }
+
+    public static Date propToDate(String str) throws Exception {
+        return new SimpleDateFormat("E MMM dd hh:mm:ss z yyyy", Locale.US).parse(str);
+    }
+
+    private List<String> PROP_NAME_LIST = Arrays.asList("factMan", "factAuto", "factOnestep", "syspBoot", "sysaBoot", "sysbBoot", "sysaWash", "sysaSand", "sysaChem", "sysbChem", "factTermn", "factRest", "factOnefin", "syspTermn", "sysaTermn", "", "sysbTermn", "", "", "sysaChemtermn", "", "sysbChemtermn", "", "", "syspStfin", "", "sysaStfin", "", "", "sysbStfin", "", "sysbTermnfin", "", "", "sysaTermnfin", "syspTermnfin", "sysaWashfin", "sysaSandfin", "sysaSandSrcfin", "sysaSandWfin", "sysaChemTfin", "sysbChemTfin", "resvF1", "factLock", "syspSpumpS", "syspSrcpumpS", "syspClnpumpS", "syspHeat", "sysaPpumpS", "sysaSandAS", "sysaOpumpS", "sysaOutAS", "syspApresS", "sysaHpumpS", "sysbHpumpS", "syspScapumpS", "syspAcpumpS", "syspSrcpumpaS", "syspCpumpaS", "syspCpumpcS", "syspSpumpr", "syspSrcpumpr", "syspClnpumpr", "sysaPpumpr", "sysaSandAr", "sysaOpumpr", "sysaOutAr", "syspApresr", "syspCpumpar", "syspCpumpcr", "sysaHpumpr", "sysbHpumpr", "syspApresT", "sysaEspT", "sysbHpumpreT", "sysbPremT", "syspAlT", "syspScaT", "syspSrcT", "syspSrcreT", "syspClnT", "sysaPpumpT", "syspClnTQS", "sysbHpumpTQS", "sysaSandAQS", "sysaEspTQS", "QV17031S", "QV19411S", "sysaPpumpTQS", "QV13111S", "QV13151S", "QV13121S", "QV13081S", "QV13161S", "QV17011S", "sysaPremTQS", "sysaPremTaQS", "QV27011S", "QV21011S", "sysbPremTQS", "sysbPremTaQS", "sysbValveTQS", "sysaValveTQOS", "sysaValveTQCS", "sysaValveTaQOS", "sysaValveTaQCS", "sysbValveTaQOS", "sysbValveTaQCS", "syspClnTQr", "sysbHpumpTQr", "sysaSandAQr", "sysaEspTQr", "QV17031r", "QV19411r", "sysaPpumpTQr", "QV13111r", "QV13151r", "QV13121r", "QV13081r", "QV13161r", "QV17011r", "sysaPremTQr", "sysaPremTaQr", "QV27011r", "QV21011r", "sysbPremTQr", "sysbPremTaQr", "sysbValveTQr", "sysaValveTQOr", "sysaValveTQCr", "sysaValveTaQOr", "sysaValveTaQCr", "sysbValveTaQOr", "sysbValveTaQCr");
+
+    private List<Integer> ALARM_INDEX = Arrays.asList(48, 50, 52, 54, 56, 58, 60, 62, 64, 66, 68, 70, 136, 137, 138, 139, 140, 141, 142, 143, 144, 145, 146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 156, 157, 158, 159, 160, 161, 162, 163, 164, 165, 166, 167, 168, 169, 170, 171, 172, 173, 174, 175, 176, 177, 178, 179, 180, 181, 182, 183, 184, 185, 186, 187, 188, 189, 190, 191, 192, 193, 194, 195, 196, 197, 198, 199, 200, 201, 202, 203, 204, 205, 206, 207, 208, 209, 210, 211, 212, 213, 214);
+
+    public static void main(String[] args) throws Exception {
+        Field[] declaredFields = Factleachtime.class.getDeclaredFields();
+
+        List<String> flagFieldList = new ArrayList<>();
+        List<Integer> ignoreIndexList = Arrays.asList(48, 50, 52, 54, 56, 58, 60, 62, 64, 66, 68, 70);
+        for (int i = 3; i < declaredFields.length; i++) {
+            if (ignoreIndexList.indexOf(i) != -1) {
+                flagFieldList.add("\"\"");
+            }
+
+            Field field = declaredFields[i];
+            String simpleName = field.getType().getSimpleName();
+            if ("Integer".equals(simpleName)) {
+                flagFieldList.add("\"" + field.getName() + "\"");
+            }
+        }
+
+        System.err.println(flagFieldList.size());
+        System.err.println(Joiner.on(", ").join(flagFieldList));
+
+        Factleachtime aa = new Factleachtime();
+        aa.setFactLocke(new Date());
+
+        String factLocke = BeanUtils.getProperty(aa, "factLocke");
+        System.err.println(factLocke);
+        new SimpleDateFormat("E MMM dd hh:mm:ss z yyyy", Locale.US).parse(factLocke);
+    }
+}

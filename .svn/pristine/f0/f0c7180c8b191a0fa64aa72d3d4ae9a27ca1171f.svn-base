@@ -1,0 +1,23 @@
+package com.infore.csep.pojo.rocketmq;
+
+/**
+ * This file is part of csep Project
+ * Created by cnbzzz (cnbzzz@126.com) on 2018/4/13 16:59
+ * Copyright (c) 2018 github.com/cnbzzz
+ */
+public class TopicName {
+
+    public static final String GETWAY_LOGIN = "0x19";
+
+    public static final String GETWAY_LOGIN_RESP = "0x14";
+
+    public static final String GETWAY_RESP = "0xC0";
+
+    public static final String PLC_TIMER = "0xC1";
+
+    public static final String PLC_NOW = "0xC2";
+
+    public static final String PLC_RECALL = "0xC3";
+
+
+}

@@ -1,0 +1,20 @@
+package com.infore.csep.common.service.impl;
+
+import com.infore.csep.pojo.entity.Gpssewarunhis;
+import com.infore.csep.pojo.mapper.GpssewarunhisMapper;
+import com.infore.csep.common.service.IGpssewarunhisService;
+import com.baomidou.mybatisplus.service.impl.ServiceImpl;
+import org.springframework.stereotype.Service;
+
+/**
+ * <p>
+ *  服务实现类
+ * </p>
+ *
+ * @author bzzz
+ * @since 2018-04-17
+ */
+@Service
+public class GpssewarunhisServiceImpl extends ServiceImpl<GpssewarunhisMapper, Gpssewarunhis> implements IGpssewarunhisService {
+
+}

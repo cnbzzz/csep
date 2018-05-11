@@ -1,0 +1,103 @@
+package com.infore.csep.test.client;
+
+import com.infore.csep.common.ByteUtils;
+import com.infore.csep.common.CommonUtils;
+import com.infore.csep.common.netty.dto.CsepPack;
+import io.netty.channel.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.ArrayUtils;
+
+/**
+ * This file is part of tsp Project
+ * Created by bzzz (bzzz@space-walker.cn) on 2017/8/31 4:17
+ * Copyright (c) 2017 www.space-walker.cn
+ */
+@Slf4j
+@Data
+@AllArgsConstructor
+public class NettyClientHandler extends SimpleChannelInboundHandler<CsepPack> {
+
+    private NettyClient nettyClient;
+
+    protected void channelRead0(ChannelHandlerContext ctx, CsepPack msg) throws Exception {
+        log.info(this.getClass().getSimpleName() + " {}", msg);
+    }
+
+    public void channelActive(ChannelHandlerContext ctx) throws Exception {
+        CsepPack csepPack = new CsepPack();
+        csepPack.setStart("ZL");
+        csepPack.setCommond(0xC1);
+        csepPack.setFromNum(99987);
+        String clientId = CommonUtils.genRandomCode(8);
+        csepPack.setClientId(clientId);
+
+        csepPack.setContent(genL2Pack());
+
+        ctx.writeAndFlush(csepPack);
+    }
+
+    public void channelInactive(ChannelHandlerContext ctx) throws Exception {
+        nettyClient.doConnect();
+        super.channelInactive(ctx);
+    }
+
+    public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
+        super.exceptionCaught(ctx, cause);
+    }
+
+    public static byte[] genL2Pack() throws Exception {
+        byte[] b = new byte[0];
+
+        b = ArrayUtils.addAll(b, (byte) 0x02, (byte) 0xee);
+        b = ArrayUtils.addAll(b, (byte) 0x00);
+        b = ArrayUtils.addAll(b, ByteUtils.int2Byte(12));
+        b = ArrayUtils.addAll(b, "qwerasdfzxcv".getBytes());
+        b = ArrayUtils.addAll(b, (byte) 0x00);
+        b = ArrayUtils.addAll(b, (byte) 0x20);
+
+        b = ArrayUtils.addAll(b, genL3Pack());
+
+        b = ArrayUtils.addAll(b, ByteUtils.int2Byte(47));
+        b = ArrayUtils.addAll(b, (byte) 0x03);
+        return b;
+    }
+
+    public static byte[] genL3Pack() throws Exception {
+        byte[] b = new byte[0];
+        b = ArrayUtils.addAll(b, (byte) 0x02);
+        b = ArrayUtils.addAll(b, "asdfzx".getBytes("UTF-8"));
+        b = ArrayUtils.addAll(b, ByteUtils.short2Byte((short) 152));
+        b = ArrayUtils.addAll(b, (byte) 0x00);
+
+        String oddStr = "01010101";
+        String evenStr = "10101010";
+
+        for (int i = 0; i < 28; i++) {
+            String hexStr = evenStr;
+            if ((i & 1) != 0) {
+                hexStr = oddStr;
+            }
+            b = ArrayUtils.addAll(b, ByteUtils.bit2Byte(hexStr));
+        }
+
+        for(int i = 0; i < 31; i++){
+            b = ArrayUtils.addAll(b, ByteUtils.short2Byte((short) 152));
+        }
+
+        for(int i = 0; i < 7; i++){
+            b = ArrayUtils.addAll(b, ByteUtils.int2Byte(263));
+        }
+
+        for(int i = 0; i < 6; i++){
+            b = ArrayUtils.addAll(b, ByteUtils.short2Byte((short) 152));
+        }
+
+        b = ArrayUtils.addAll(b, "poiuytrewqlk".getBytes("UTF-8"));
+        b = ArrayUtils.addAll(b, (byte) 0x03);
+        b = ArrayUtils.addAll(b, (byte) 0x03);
+
+        return b;
+    }
+}

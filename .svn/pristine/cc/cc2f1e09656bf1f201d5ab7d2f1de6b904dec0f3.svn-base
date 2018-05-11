@@ -1,0 +1,27 @@
+#spring:
+#  datasource:
+#    type: com.zaxxer.hikari.HikariDataSource
+##    url: jdbc:mysql://rm-wz983su0j25p2sazlo.mysql.rds.aliyuncs.com:3306/csep?useUnicode=true&characterEncoding=utf-8&useSSL=false
+##    username: bzzz
+##    password: iL!he*LLLNCEvBG@
+#    url: jdbc:mysql://192.168.0.167:3306/csep?useUnicode=true&characterEncoding=utf-8&useSSL=false
+#    username: swalker
+#    password: 20170328
+#    driver-class-name: com.mysql.jdbc.Driver
+#    platform: mysql
+#
+#  devtools:
+#      restart:
+#        enabled: true
+
+jobs:
+  #5s
+  fixedDelay: 5000
+  cron: 0 50 * * * ?
+GpsServer:
+  apiuser: openapi
+  apiusermd5: ed40065902934b4eb7d7bb12b20f1900
+  serverurl: http://113.247.222.45:8088/hjwulian/app3des
+  KEY_3DESENCODE: 5690dddfa28ae085d23518a035707282babd4a84418fb04015ac773f7459727ce9bc0e13a8a16cbb07b175d92a1131269554fadfa56c4e61a49d8edfdc6466e6
+  KEY_3DESDECODE: 909bcf2b1b20235c74b2ffa1b93edf015f0c2682065376c531b4d4aa6d582ec45f0c2682065376c531b4d4aa6d582ec4dc483e80a7a0bd9ef71d8cf973673924
+

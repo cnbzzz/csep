@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.infore.csep.pojo.mapper.FactleachsysbphisMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.infore.csep.pojo.entity.Factleachsysbphis">
+        <id column="id" property="id" />
+        <result column="command" property="command" />
+        <result column="revTime" property="revTime" />
+        <result column="equmSeq" property="equmSeq" />
+        <result column="equmID" property="equmID" />
+        <result column="equmType" property="equmType" />
+        <result column="factNum" property="factNum" />
+        <result column="equmNum" property="equmNum" />
+        <result column="dataType" property="dataType" />
+        <result column="sysbRec" property="sysbRec" />
+        <result column="sysbIncomedelay" property="sysbIncomedelay" />
+        <result column="sysbHpumpadelay" property="sysbHpumpadelay" />
+        <result column="sysbValvedelay" property="sysbValvedelay" />
+        <result column="sysbValvesetdelay" property="sysbValvesetdelay" />
+        <result column="sysbSrcwTime" property="sysbSrcwTime" />
+        <result column="sysbAutodelay" property="sysbAutodelay" />
+        <result column="sysbChemPTime" property="sysbChemPTime" />
+        <result column="sysbWashBl" property="sysbWashBl" />
+        <result column="sysbHpumpdelay" property="sysbHpumpdelay" />
+        <result column="sysbChemrec" property="sysbChemrec" />
+        <result column="sysbChemimmtime" property="sysbChemimmtime" />
+        <result column="sysbChemTime" property="sysbChemTime" />
+        <result column="sysbSrcByh" property="sysbSrcByh" />
+        <result column="sysbPremBn" property="sysbPremBn" />
+        <result column="sysbChemTempdelay" property="sysbChemTempdelay" />
+        <result column="sysbChemTemp" property="sysbChemTemp" />
+        <result column="sysbRunTempl" property="sysbRunTempl" />
+        <result column="sysbRunTempldelay" property="sysbRunTempldelay" />
+        <result column="sysbRunTemph" property="sysbRunTemph" />
+        <result column="sysbRunTemphdelay" property="sysbRunTemphdelay" />
+        <result column="sysbOutBnh" property="sysbOutBnh" />
+        <result column="sysbOutBnhdelay" property="sysbOutBnhdelay" />
+        <result column="sysbPremBlldelay" property="sysbPremBlldelay" />
+        <result column="sysbPremBll" property="sysbPremBll" />
+        <result column="sysbPremBlhdelay" property="sysbPremBlhdelay" />
+        <result column="sysbPremBlh" property="sysbPremBlh" />
+        <result column="sysbInclosedelay" property="sysbInclosedelay" />
+        <result column="sysbPressH" property="sysbPressH" />
+        <result column="sysbPremBpdelay" property="sysbPremBpdelay" />
+        <result column="sysbValveClose" property="sysbValveClose" />
+        <result column="cout" property="cout" />
+        <result column="equipmentNo" property="equipmentNo" />
+        <result column="plcComm" property="plcComm" />
+    </resultMap>
+
+</mapper>

@@ -1,0 +1,49 @@
+package com.infore.csep.common.netty;
+
+import com.infore.csep.common.ByteUtils;
+import com.infore.csep.common.netty.dto.CsepPack;
+import io.netty.buffer.ByteBuf;
+import io.netty.channel.ChannelHandlerContext;
+import io.netty.handler.codec.MessageToByteEncoder;
+import org.apache.commons.lang3.ArrayUtils;
+
+/**
+ * This file is part of csep Project
+ * Created by cnbzzz (cnbzzz@126.com) on 2018/3/30 11:11
+ * Copyright (c) 2018 github.com/cnbzzz
+ */
+public class CsepEncoder extends MessageToByteEncoder<CsepPack> {
+
+    @Override
+    protected void encode(ChannelHandlerContext channelHandlerContext, CsepPack csepPack, ByteBuf byteBuf) throws Exception {
+        byte[] start = csepPack.getStart().getBytes();
+        byte commond = (byte) csepPack.getCommond();
+        byte[] fromNum = ByteUtils.int2Byte(csepPack.getFromNum());
+        byte[] clientId = csepPack.getClientId().getBytes();
+
+        byte[] content = csepPack.getContent();
+        byte[] contentLength = ByteUtils.short2Byte((short)content.length);
+
+        byte[] b = new byte[0];
+        b = ArrayUtils.addAll(b, start);
+        b = ArrayUtils.addAll(b, commond);
+        b = ArrayUtils.addAll(b, fromNum);
+        b = ArrayUtils.addAll(b, clientId);
+        b = ArrayUtils.addAll(b, contentLength);
+        b = ArrayUtils.addAll(b, content);
+
+        byte checkByte = ByteUtils.xorCsepCheckByte(b);
+
+        b = ArrayUtils.addAll(b, checkByte);
+        int end = 0x0d;
+        b = ArrayUtils.addAll(b, (byte) end);
+
+        System.err.println(ByteUtils.bytes2HexStr(b));
+
+        byteBuf.writeBytes(b);
+
+        csepPack.setContentLength(ByteUtils.byte2Short(contentLength));
+        csepPack.setCheckByte(checkByte);
+        csepPack.setEnd(end);
+    }
+}

@@ -1,0 +1,20 @@
+spring:
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+#    url: jdbc:mysql://rm-wz983su0j25p2sazlo.mysql.rds.aliyuncs.com:3306/csep?useUnicode=true&characterEncoding=utf-8&useSSL=false
+#    username: bzzz
+#    password: iL!he*LLLNCEvBG@
+    url: jdbc:mysql://192.168.0.167:3306/csep?useUnicode=true&characterEncoding=utf-8&useSSL=false
+    username: swalker
+    password: 20170328
+    driver-class-name: com.mysql.jdbc.Driver
+    platform: mysql
+
+  devtools:
+      restart:
+        enabled: true
+
+jobs:
+  #5s
+  fixedDelay: 5000
+  cron: 0 50 * * * ?

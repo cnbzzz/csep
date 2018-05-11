@@ -1,0 +1,153 @@
+package com.infore.csep.common.service.impl;
+
+import com.baomidou.mybatisplus.mapper.EntityWrapper;
+import com.baomidou.mybatisplus.mapper.Wrapper;
+import com.infore.csep.common.MyDateUtils;
+import com.infore.csep.pojo.entity.FactLeachHisHour;
+import com.infore.csep.pojo.entity.Factleachhis;
+import com.infore.csep.pojo.mapper.FactLeachHisHourMapper;
+import com.infore.csep.pojo.mapper.FactleachhisMapper;
+import com.infore.csep.common.service.IFactLeachHisHourService;
+import com.baomidou.mybatisplus.service.impl.ServiceImpl;
+import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.time.DateFormatUtils;
+import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+
+import java.util.Date;
+import java.util.List;
+
+/**
+ * <p>
+ * 服务实现类
+ * </p>
+ *
+ * @author bzzz
+ * @since 2018-04-17
+ */
+@Service
+@Slf4j
+public class FactLeachHisHourServiceImpl extends ServiceImpl<FactLeachHisHourMapper, FactLeachHisHour> implements IFactLeachHisHourService {
+
+    @Autowired
+    private FactleachhisMapper factleachhisMapper;
+
+    @Autowired
+    private FactLeachHisHourMapper factLeachHisHourMapper;
+
+    @Override
+    public List<Factleachhis> findFactleachhisByDate(Date beginDate, Date endDate) {
+
+        log.info("findFactleachhisByDate:{}|{}",
+                DateFormatUtils.format(beginDate, "yyyy-MM-dd HH:mm:ss"),
+                DateFormatUtils.format(endDate, "yyyy-MM-dd HH:mm:ss"));
+
+        Wrapper<Factleachhis> wrapper = new EntityWrapper<Factleachhis>().ge("revTime", beginDate).lt("revTime", endDate);
+
+        return factleachhisMapper.selectList(wrapper);
+
+    }
+
+    /**
+     * 根据厂站编码和设备编码，在时间范围内查询最新的一条记录
+     *
+     * @param factNum
+     * @param equmNum
+     * @param beginTime
+     * @param endTime
+     * @return
+     */
+    @Override
+    public Factleachhis findOneByFactNumAndEqumNum(Integer factNum, String equmNum, Date beginTime, Date endTime) {
+
+        Wrapper<Factleachhis> wrapper = new EntityWrapper<Factleachhis>()
+                .eq("factNum", factNum).eq("equmNum", equmNum)
+                .ge("revTime", beginTime).lt("revTime", endTime)
+                .orderBy("revTime", false)
+                .last("limit 1");
+
+        //log.info("sql:{}", wrapper.getSqlSegment());
+
+        List<Factleachhis> factleachhis = factleachhisMapper.selectList(wrapper);
+
+        if (factleachhis.size() == 0) {
+            return null;
+        } else {
+            return factleachhis.get(0);
+        }
+
+    }
+
+    /**
+     * 查询时间范围内小时报表
+     * @param factNum
+     * @param equmNum
+     * @param beginTime
+     * @param endTime
+     * @return
+     */
+    @Override
+    public List<FactLeachHisHour> findByFactNumAndEqumNum(Integer factNum, String equmNum, Date beginTime, Date endTime) {
+
+        Wrapper<FactLeachHisHour> wrapper = new EntityWrapper<FactLeachHisHour>()
+                .eq("factNum", factNum)
+                .ge("revTime", beginTime).lt("revTime", endTime)
+                .orderBy("revTime", true);
+
+        if(!equmNum.isEmpty()) {
+            wrapper.eq("equmNum", equmNum);
+        } else {
+            log.debug("equmNum is empty: {}", equmNum);
+        }
+
+        return  selectList(wrapper);
+
+    }
+
+    @Override
+    @Transactional
+    public void genData(Date beginTime, Date endTime) {
+
+        //1.获取历史表在“时间范围内”各项指示的最大值，最小值，平均值
+        List<FactLeachHisHour> factLeachHisHours = factLeachHisHourMapper.findByTime(beginTime, endTime);
+
+        for (FactLeachHisHour item : factLeachHisHours) {
+            //2.根据厂站编码和设备编码，在时间范围内查询最新的一条记录
+            Factleachhis factleachhis = findOneByFactNumAndEqumNum(item.getFactNum(),
+                    item.getEqumNum(), beginTime, endTime);
+
+
+            if (factleachhis != null) {
+                //3.根据1,2的结果生成小时表纪录
+                //复制属性
+                BeanUtils.copyProperties(factleachhis, item);
+            }else {
+                log.warn("findOneByFactNumAndEqumNum is null:{}|{}", item.getFactNum(),
+                        item.getEqumNum());
+            }
+
+
+            //重新设置一些属性
+            item.setId(null); //id重新生成
+            //设置时间为结束时间（考虑重跑的情况，不然可以设置为当前时间)
+            item.setRevTime(endTime);
+            item.setGenCycle(MyDateUtils.Date2yyyyMMddHH(endTime));
+
+            //设置插入时间为当前时间
+            item.setInsertTime(new Date());
+        }
+
+        for (FactLeachHisHour factHour : factLeachHisHours) {
+            log.info("facthour: {}", factHour);
+        }
+
+        //4.插入小时表(批量提交)
+        if(!factLeachHisHours.isEmpty()) {
+            insertBatch(factLeachHisHours);
+        }
+
+    }
+}

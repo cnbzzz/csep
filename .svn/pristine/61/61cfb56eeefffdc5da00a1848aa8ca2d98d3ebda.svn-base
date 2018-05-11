@@ -1,0 +1,15 @@
+package com.infore.csep.handler;
+
+import org.mybatis.spring.annotation.MapperScan;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+@MapperScan(basePackages = "com.infore.csep.pojo.mapper")
+public class HandlerApplication {
+
+    public static void main(String[] args) {
+        SpringApplication.run(HandlerApplication.class, args);
+    }
+
+}

@@ -1,0 +1,87 @@
+package com.infore.csep.pojo.entity;
+
+import java.util.Date;
+import com.baomidou.mybatisplus.activerecord.Model;
+import java.io.Serializable;
+
+import com.baomidou.mybatisplus.annotations.Version;
+
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.experimental.Accessors;
+
+/**
+ * <p>
+ * 
+ * </p>
+ *
+ * @author bzzz
+ * @since 2018-04-17
+ */
+@Data
+@Accessors(chain = true)
+public class Factleach extends Model<Factleach> {
+
+    private static final long serialVersionUID = 1L;
+
+    private Long id;
+    private Date revTime;
+    private Long equmID;
+    private Integer equmType;
+    private Integer factNum;
+    private String equmNum;
+    private String flagAll;
+    private Integer syspInBy;
+    private Integer syspSrcBy;
+    private Integer syspClnBy;
+    private Integer sysaEspBy;
+    private Integer sysaPreSandBp;
+    private Integer sysaPosSandBp;
+    private Integer sysaHpumpPre;
+    private Integer sysaHpumpPos;
+    private Integer sysaOpumpP;
+    private Integer sysaPremBp;
+    private Integer sysbHpumpPos;
+    private Integer syspSrcBl;
+    private Integer syspBufBl;
+    private Integer syspClnBl;
+    private Integer syspSrcBn;
+    private Integer sysaPreSandBn;
+    private Integer sysaPremBn;
+    private Integer sysaEspBn;
+    private Integer sysbPremBn;
+    private Integer sysbEspBn;
+    private Integer sysaPremBf;
+    private Integer sysbPremBf;
+    private Integer sysaTemp;
+    private Integer sysbTemp;
+    private Integer sysaHpumpHz;
+    private Integer sysbHpumpHz;
+    private Integer syspAcpumpHz;
+    private Integer syspAlpumpHz;
+    private Integer reservV1;
+    private Integer reservV2;
+    private Integer reservV3;
+    private Integer factRunHour;
+    private Integer factOut;
+    private Integer factPower;
+    private Integer factIn;
+    private Integer factSrc;
+    private Integer factEsp;
+    private Integer factCln;
+    private Integer factCod;
+    private Integer factNitr;
+    private Integer reservV4;
+    private Integer reservV5;
+    private Integer reservV6;
+    private Integer cout;
+    private String equipmentNo;
+    private Integer plcComm;
+
+
+    @Override
+    protected Serializable pkVal() {
+        return this.id;
+    }
+
+}

@@ -1,0 +1,58 @@
+package com.infore.csep.receiver.service.impl;
+
+import com.github.cnbzzz.spring.boot.starter.rocketmq.core.RocketMQTemplate;
+import com.infore.csep.common.netty.dto.CsepPack;
+import com.infore.csep.pojo.rocketmq.TopicName;
+import com.infore.csep.receiver.service.IUpChannelService;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import com.infore.csep.common.netty.dto.CsepPack.Commond;
+
+import static com.infore.csep.common.netty.dto.CsepPack.Commond.*;
+
+/**
+ * This file is part of csep Project
+ * Created by cnbzzz (cnbzzz@126.com) on 2018/4/13 11:23
+ * Copyright (c) 2018 github.com/cnbzzz
+ */
+@Service
+@Slf4j
+public class UpChannelServiceImpl implements IUpChannelService {
+
+    @Autowired
+    private RocketMQTemplate rocketMQTemplate;
+
+    public CsepPack handler(CsepPack pack) {
+        Commond commond = Commond.valueOf(pack.getCommond());
+
+        switch (commond) {
+            case GETWAY_LOGIN:
+                //网关登录
+                rocketMQTemplate.convertAndSend(TopicName.GETWAY_LOGIN, pack);
+                log.info(this.getClass().getSimpleName() + " {}", pack);
+                break;
+
+            case GETWAY_RESP:
+                //平台下发指令返回
+                break;
+
+            case PLC_TIMER:
+                //PLC定时上传
+                break;
+
+            case PLC_NOW:
+                //即时上传
+                break;
+
+            case PLC_RECALL:
+                //工况召回数据
+                break;
+
+            default:
+                log.error("commond {} not found, nothing to do. ", commond);
+                break;
+        }
+        return pack;
+    }
+}

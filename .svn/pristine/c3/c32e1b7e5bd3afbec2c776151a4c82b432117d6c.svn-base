@@ -1,0 +1,76 @@
+package com.infore.csep.receiver.netty;
+
+import com.infore.csep.common.netty.dto.CsepPack;
+import com.infore.csep.common.netty.CsepChannelRepository;
+import io.netty.channel.Channel;
+import io.netty.channel.ChannelHandlerContext;
+import io.netty.channel.SimpleChannelInboundHandler;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.extern.slf4j.Slf4j;
+
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
+
+/**
+ * This file is part of tsp Project
+ * Created by bzzz (bzzz@space-walker.cn) on 2017/8/31 4:15
+ * Copyright (c) 2017 www.space-walker.cn
+ */
+@Slf4j
+@Data
+@AllArgsConstructor
+public class NettyServerHandler extends SimpleChannelInboundHandler<CsepPack> {
+
+    private CsepChannelRepository csepChannelRepository;
+
+    /*
+        * 收到消息时，返回信息
+        */
+    protected void channelRead0(ChannelHandlerContext ctx, CsepPack msg)
+            throws Exception {
+        Channel channel = ctx.channel();
+        csepChannelRepository.put(channel.id().asLongText(), channel);
+
+        // 收到消息直接打印输出
+//        log.info("服务端接受的消息 : {}", msg);
+//        log.info("channel : {}", ctx.channel());
+        log.info("111channelRepository size : {}", csepChannelRepository.size());
+
+        msg.setCommond(0x14);
+
+        byte[] content = new byte[]{0x19, 0x00};
+        msg.setContent(content);
+        // 返回客户端消息
+        ctx.writeAndFlush(msg);
+    }
+
+    @Override
+    public void channelActive(ChannelHandlerContext ctx) throws Exception {
+//        log.info("连接的客户端地址:" + ctx.channel().remoteAddress());
+//        ctx.writeAndFlush("客户端" + InetAddress.getLocalHost().getHostName() + "成功与服务端建立连接！ \n");
+    }
+
+    @Override
+    public void channelInactive(ChannelHandlerContext ctx) throws Exception {
+        Map<String, Channel> map = csepChannelRepository.map();
+        Set<Map.Entry<String, Channel>> set = map.entrySet();
+        Iterator<Map.Entry<String, Channel>> iterator = set.iterator();
+        while(iterator.hasNext()) {
+            Map.Entry<String, Channel> next = iterator.next();
+            Channel value = next.getValue();
+            if(!value.isActive()) {
+                iterator.remove();
+            }
+        }
+        log.info("222channelRepository size {} ", csepChannelRepository.size());
+        super.channelInactive(ctx);
+    }
+
+    public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
+        log.error(cause.getMessage(), cause);
+        ctx.close();
+    }
+
+}

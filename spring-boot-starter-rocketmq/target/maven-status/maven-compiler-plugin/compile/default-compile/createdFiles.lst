@@ -1,0 +1,17 @@
+com\github\cnbzzz\spring\boot\starter\rocketmq\core\DefaultRocketMQListenerContainer$DefaultMessageListenerConcurrently.class
+com\github\cnbzzz\spring\boot\starter\rocketmq\RocketMQProperties$Producer.class
+com\github\cnbzzz\spring\boot\starter\rocketmq\core\RocketMQListenerContainer.class
+com\github\cnbzzz\spring\boot\starter\rocketmq\enums\ConsumeMode.class
+com\github\cnbzzz\spring\boot\starter\rocketmq\core\DefaultRocketMQListenerContainer.class
+com\github\cnbzzz\spring\boot\starter\rocketmq\core\DefaultRocketMQListenerContainerConstants.class
+com\github\cnbzzz\spring\boot\starter\rocketmq\core\RocketMQTemplate.class
+com\github\cnbzzz\spring\boot\starter\rocketmq\RocketMQAutoConfiguration.class
+com\github\cnbzzz\spring\boot\starter\rocketmq\RocketMQProperties.class
+com\github\cnbzzz\spring\boot\starter\rocketmq\core\DefaultRocketMQListenerContainer$DefaultMessageListenerOrderly.class
+com\github\cnbzzz\spring\boot\starter\rocketmq\annotation\RocketMQMessageListener.class
+com\github\cnbzzz\spring\boot\starter\rocketmq\core\RocketMQListener.class
+com\github\cnbzzz\spring\boot\starter\rocketmq\core\DefaultRocketMQListenerContainer$1.class
+com\github\cnbzzz\spring\boot\starter\rocketmq\core\RocketMQConsumerLifecycleListener.class
+com\github\cnbzzz\spring\boot\starter\rocketmq\RocketMQAutoConfiguration$ListenerContainerConfiguration.class
+com\github\cnbzzz\spring\boot\starter\rocketmq\core\RocketMQPushConsumerLifecycleListener.class
+com\github\cnbzzz\spring\boot\starter\rocketmq\enums\SelectorType.class

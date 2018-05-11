@@ -1,0 +1,14 @@
+spring:
+    rocketmq:
+      name-server: 39.108.106.70:9876
+      producer:
+        group: cnbzzz
+        retry-times-when-send-async-failed: 0
+        send-msg-timeout: 300000
+        compress-msg-body-over-howmuch: 4096
+        max-message-size: 4194304
+        retry-another-broker-when-not-store-ok: false
+        retry-times-when-send-failed: 3
+
+topic:
+  GETWAY_LOGIN: 0x19

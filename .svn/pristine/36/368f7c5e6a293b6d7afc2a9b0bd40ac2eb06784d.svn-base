@@ -1,0 +1,32 @@
+package com.infore.csep.restful.VO;
+
+import lombok.Data;
+
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
+
+/**
+ * Created by steven ma
+ * 2018/4/9 15:29
+ */
+
+@Data
+public class ActionReqVO {
+
+    //流水号
+    @NotBlank(message = "流水号 {constraint.sid.not.empty}")
+    //@Size(min=6, max=6, message="密码长度应为{min} - {max}位")
+    private String sid;
+    //设备编号(网关)
+    private String equmNo;
+    //控制指令
+    private String command;
+    //PLC IP地址
+    private String plcIP;
+    //PLC寄存器地址
+    private String plcAdress;
+    //命令内容
+    private String value;
+    //设备类型
+    private String equmType;
+}

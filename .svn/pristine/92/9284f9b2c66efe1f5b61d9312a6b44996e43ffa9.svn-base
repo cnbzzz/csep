@@ -1,0 +1,236 @@
+/**
+ * This file is part of csep Project
+ * Created by cnbzzz (cnbzzz@126.com) on 2018/4/23 18:04
+ * Copyright (c) 2018 github.com/cnbzzz
+ *
+ */
+
+var Factleachalarm = Java.type("com.infore.csep.pojo.entity.Factleachalarm")
+
+var Factsewaalarm = Java.type("com.infore.csep.pojo.entity.Factsewaalarm")
+
+var JDate = Java.type("java.util.Date")
+
+
+function gainFactleachalarmArray(factleach) {
+    var flagAll = factleach.getFlagAll()
+    var arr = getLeachalarmData(factleach);
+
+    var result = []
+
+    for(var i = 0; i < arr.length; i++){
+        var tmp = arr[i]
+        var val = flagAll.substr(tmp.start, 1)
+        if(val == 1){
+            var factNum = factleach.getFactNum()
+            var equmNum = factleach.getEqumNum()
+            var revTime = factleach.getRevTime()
+            var refID = factleach.getId()
+            var equmType = factleach.getEqumType()
+
+            var alarm = new Factleachalarm()
+            alarm.setFactNum(factNum)
+            alarm.setEqumNum(equmNum)
+            alarm.setRevTime(revTime)
+            alarm.setRefID(refID)
+            alarm.setType(equmType)
+            alarm.setBytes(tmp.bytes)
+            alarm.setValue(tmp.value)
+            alarm.setMemo(tmp.memo)
+
+            result.push(alarm)
+        }
+    }
+
+    return result;
+
+}
+
+function gainFactsewaalarmArray(swea) {
+
+    var allFlag = swea.getAllFlag()
+
+    var result = []
+    var arr = getSewaalarmData()
+
+    for(var i = 0; i < arr.length; i++){
+        var tmp = arr[i]
+        var val = allFlag.substr(tmp.start, 1)
+        if(val == 1){
+            var factNum = swea.getFactNum()
+            var equmNum = swea.getEqumNum()
+            var revTime = swea.getRevTime()
+            var refID = swea.getId()
+            var equmType = swea.getEqumType()
+
+            var alarm = new Factsewaalarm()
+            alarm.setFactNum(factNum)
+            alarm.setEqumNum(equmNum)
+            alarm.setRevTime(revTime)
+            alarm.setRefID(refID)
+            alarm.setType(equmType)
+            alarm.setBytes(tmp.bytes)
+            alarm.setValue(tmp.value)
+            alarm.setMemo(tmp.memo)
+
+            result.push(alarm)
+        }
+    }
+
+    return result
+}
+
+function getSewaalarmData(){
+    var arr = []
+    arr.push({bytes:'122-0', value:1, memo:'回转式格栅除污机1#故障', start: 192})
+    arr.push({bytes:'122-1', value:1, memo:'回转式格栅除污机2#故障', start: 193})
+    arr.push({bytes:'122-2', value:1, memo:'潜水式吸砂泵1#故障', start: 194})
+    arr.push({bytes:'122-3', value:1, memo:'潜水式吸砂泵2#故障', start: 195})
+    arr.push({bytes:'122-4', value:1, memo:'无轴螺旋输送机故障', start: 196})
+    arr.push({bytes:'122-5', value:1, memo:'螺旋砂水分离器故障', start: 197})
+    arr.push({bytes:'122-6', value:1, memo:'搅拌机故障', start: 198})
+    arr.push({bytes:'122-7', value:1, memo:'污泥泵故障', start: 199})
+    arr.push({bytes:'123-0', value:1, memo:'潜污泵1#故障', start: 200})
+    arr.push({bytes:'123-1', value:1, memo:'潜污泵2#故障', start: 201})
+    arr.push({bytes:'123-2', value:1, memo:'潜污泵3#故障', start: 202})
+    arr.push({bytes:'123-3', value:1, memo:'自清洗过滤器故障', start: 203})
+    arr.push({bytes:'123-4', value:1, memo:'反冲洗泵故障', start: 204})
+    arr.push({bytes:'123-5', value:1, memo:'酸罐计量泵1故障', start: 205})
+    arr.push({bytes:'123-6', value:1, memo:'碱罐计量泵2故障', start: 206})
+    arr.push({bytes:'123-7', value:1, memo:'PAC加药搅拌电机故障', start: 207})
+    arr.push({bytes:'124-0', value:1, memo:'PAC加药泵故障', start: 208})
+    arr.push({bytes:'124-1', value:1, memo:'反冲洗电动阀1故障', start: 209})
+    arr.push({bytes:'124-2', value:1, memo:'反冲洗电动阀2故障', start: 210})
+    arr.push({bytes:'124-3', value:1, memo:'反冲洗电动阀3故障', start: 211})
+    arr.push({bytes:'124-4', value:1, memo:'反冲洗进水电磁阀故障', start: 212})
+    arr.push({bytes:'124-5', value:1, memo:'PAC进水电磁阀故障', start: 213})
+
+    return arr
+}
+
+function getLeachalarmData(factleach) {
+    var arr = []
+
+    arr.push({bytes: '16-0', value: 1, memo: '潜水泵过载M02411', start: 48})
+    arr.push({bytes: '16-2', value: 1, memo: '原水循环泵过载M02211', start: 50})
+    arr.push({bytes: '16-4', value: 1, memo: '清水泵过载M09711', start: 52})
+    arr.push({bytes: '16-6', value: 1, memo: '预增压泵过载M13011', start: 54})
+    arr.push({bytes: '17-0', value: 1, memo: '砂滤风机过载M13811', start: 56})
+    arr.push({bytes: '17-2', value: 1, memo: '在线泵过载M16111', start: 58})
+    arr.push({bytes: '17-4', value: 1, memo: '脱气塔风机过载M09311', start: 60})
+    arr.push({bytes: '17-6', value: 1, memo: '空压机过载M00811', start: 62})
+    arr.push({bytes: '18-0', value: 1, memo: '清洗剂A泵过载M01211', start: 64})
+    arr.push({bytes: '18-2', value: 1, memo: '清洗剂C泵过载M01311', start: 66})
+    arr.push({bytes: '18-4', value: 1, memo: '一级高压泵过载M16011', start: 68})
+    arr.push({bytes: '18-6', value: 1, memo: '二级高压泵过载M26011', start: 70})
+    arr.push({bytes: '27-0', value: factleach.syspSrcBl, memo: '原水罐液位BL02211高报警', start: 136})
+    arr.push({bytes: '27-1', value: 1, memo: '原水进水流量SF02311过低报警', start: 137})
+    arr.push({
+        bytes: '27-2',
+        value: factleach.sysaPosSandBp - factleach.sysaPreSandBp,
+        memo: '砂滤压差BP13011-BP1401高报警',
+        start: 138
+    })
+    arr.push({bytes: '27-3', value: factleach.sysaTemp, memo: '一级化洗清洗水温BT17021高报警', start: 139})
+    arr.push({
+        bytes: '27-4',
+        value: factleach.sysaPosSandBp - factleach.sysaHpumpPre,
+        memo: '芯滤压差BP14011-BP15011高报警',
+        start: 140
+    })
+    arr.push({bytes: '27-5', value: factleach.sysaPreSandBp, memo: '砂滤前流量SF13011过低报警', start: 141})
+    arr.push({bytes: '27-6', value: factleach.sysaPreSandBn, memo: '砂滤进水电导率BN13021高报警', start: 142})
+    arr.push({bytes: '27-7', value: factleach.sysaEspBy, memo: '一级化洗一级浓缩液PH值BY17021过低报警', start: 143})
+    arr.push({bytes: '28-0', value: 1, memo: '调节池液位低报警', start: 144})
+    arr.push({bytes: '28-1', value: factleach.syspSrcBy, memo: '原水罐PH值BY02221过低报警', start: 145})
+    arr.push({bytes: '28-2', value: factleach.syspSrcBl, memo: '原水罐液位BL02211低于停止液位报警', start: 146})
+    arr.push({bytes: '28-3', value: 1, memo: '原水罐循环流量SF02211过低报警', start: 147})
+    arr.push({bytes: '28-4', value: 1, memo: 'A清洗剂罐G01211液位低报警', start: 148})
+    arr.push({bytes: '28-5', value: 1, memo: 'C清洗剂罐G01311液位低报警', start: 149})
+    arr.push({bytes: '28-6', value: 1, memo: '碱罐G00211液位低报警', start: 150})
+    arr.push({bytes: '28-7', value: 1, memo: '阻垢剂罐G00411液位低报警', start: 151})
+    arr.push({bytes: '29-0', value: factleach.sysaEspBy, memo: '一级运行一级浓缩液PH值BY17021过低报警', start: 152})
+    arr.push({bytes: '29-1', value: factleach.sysaTemp, memo: '一级运行温度高报警', start: 153})
+    arr.push({bytes: '29-2', value: factleach.sysbPremBf, memo: '二级透过液流量BF28021低于设定值报警', start: 154})
+    arr.push({bytes: '29-3', value: 1, memo: '一级系统停机后MV16921未全开报警', start: 155})
+    arr.push({
+        bytes: '29-4',
+        value: factleach.sysaOpumpP - factleach.sysaHpumpPos,
+        memo: '一级膜柱压差BP16111-BP16011大报警',
+        start: 156
+    })
+    arr.push({bytes: '29-5', value: factleach.sysaPremBn, memo: '一级透过液电导率BN18021高报警', start: 157})
+    arr.push({bytes: '29-6', value: factleach.sysaPremBf, memo: '一级透过液流量BF18021低报警', start: 158})
+    arr.push({bytes: '29-7', value: factleach.sysaTemp, memo: '一级运行温度低报警', start: 159})
+    arr.push({bytes: '30-0', value: factleach.syspClnBl, memo: '清水罐液位BL09711高报警', start: 160})
+    arr.push({bytes: '30-1', value: factleach.syspClnBl, memo: '清水罐液位BL09711低报警', start: 161})
+    arr.push({bytes: '30-2', value: factleach.syspClnBy, memo: '清水罐出水PH值BY09721过低报警', start: 162})
+    arr.push({bytes: '30-3', value: factleach.syspBufBl, memo: '清洗罐液位BL11011高报警', start: 163})
+    arr.push({bytes: '30-4', value: factleach.sysbTemp, memo: '二级化洗清洗水温BT27021高报警', start: 164})
+    arr.push({bytes: '30-5', value: 1, memo: '二级系统停机后MV26921阀未全开报警', start: 165})
+    arr.push({bytes: '30-6', value: factleach.sysbPremBn, memo: '二级透过液电导率BN28021高报警', start: 166})
+    arr.push({bytes: '30-7', value: factleach.sysbTemp, memo: '二级系统运行温度BT27021高报警', start: 167})
+    arr.push({bytes: '31-0', value: factleach.sysbTemp, memo: '二级系统运行温度BT27021低报警', start: 168})
+    arr.push({bytes: '31-1', value: factleach.sysaTemp, memo: '一级运行温度高报警时间超时', start: 169})
+    arr.push({
+        bytes: '31-2',
+        value: factleach.sysaOpumpP - factleach.sysaHpumpPos,
+        memo: '一级膜柱压差BP16111-BP16011大报警时间超时',
+        start: 170
+    })
+    arr.push({bytes: '31-3', value: factleach.sysaPremBn, memo: '一级透过液电导率BN18021报警时间超时', start: 171})
+    arr.push({bytes: '31-4', value: factleach.sysbTemp, memo: '二级运行温度BT27021高报警时间超时', start: 172})
+    arr.push({bytes: '31-5', value: factleach.sysaPremBf, memo: '一级透过液流量BF18021高报警', start: 173})
+    arr.push({bytes: '31-6', value: 1, memo: '电机、泵过载报警', start: 174})
+    arr.push({bytes: '31-7', value: factleach.sysaPremBf, memo: '一级透过液流量BF18021低于设定值报警时间超时', start: 175})
+    arr.push({bytes: '32-0', value: factleach.sysaPremBn, memo: '二级透过液电导率BN18021高报警时间超时', start: 176})
+    arr.push({bytes: '32-1', value: factleach.sysbPremBf, memo: '二级透过液流量BF28021低于设定值报警时间超时', start: 177})
+    arr.push({bytes: '32-2', value: factleach.syspSrcBy, memo: '原水罐PH值BY02221过低报警时间超时', start: 178})
+    arr.push({bytes: '32-3', value: 1, memo: '清水罐出水PH值BY09711过低报警时间超时', start: 179})
+    arr.push({
+        bytes: '32-4',
+        value: factleach.sysaPreSandBp - factleach.sysaPosSandBp,
+        memo: '砂滤压差BP13011-BP14011高报警时间超时',
+        start: 180
+    })
+    arr.push({
+        bytes: '32-5',
+        value: factleach.sysaHpumpPre - factleach.sysaPosSandBp,
+        memo: '芯滤压差BP14011-BP15011高报警时间超时',
+        start: 181
+    })
+    arr.push({bytes: '32-6', value: factleach.sysaEspBy, memo: '一级运行一级浓缩液PH值BY17021过低报警时间超时', start: 182})
+    arr.push({bytes: '32-7', value: 1, memo: '二级高压泵前压力BP25011低报警', start: 183})
+    arr.push({bytes: '33-0', value: 1, memo: '二级系统运行时MV26921阀全闭报警', start: 184})
+    arr.push({bytes: '33-1', value: 1, memo: '一级浓缩液管道压力BP17011高报警', start: 185})
+    arr.push({bytes: '33-2', value: factleach.sysaPremBp, memo: '一级透过液管道压力BP18011高报警', start: 186})
+    arr.push({bytes: '33-3', value: factleach.syspClnBy, memo: '清水罐出水PH值BY09721过高报警', start: 187})
+    arr.push({bytes: '33-4', value: 1, memo: '距上次砂滤清洗后累计运行时间超过设定值', start: 188})
+    arr.push({bytes: '33-5', value: 1, memo: '一级化洗在线泵出口压力高报警', start: 189})
+    arr.push({bytes: '33-6', value: factleach.sysaHpumpPos, memo: '一级膜柱前压力BP16011高报警', start: 190})
+    arr.push({bytes: '33-7', value: factleach.sysbHpumpPos, memo: '二级膜柱前压力BP26011高报警', start: 191})
+    arr.push({bytes: '34-0', value: 1, memo: '二级透过液管道压力BP28011高报警', start: 192})
+    arr.push({bytes: '34-1', value: factleach.sysbPremBf, memo: '二级透过液流量BF28021高报警', start: 193})
+    arr.push({bytes: '34-2', value: 1, memo: '空压机供气压力SP00811低报警', start: 194})
+    arr.push({bytes: '34-3', value: factleach.sysaPreSandBp, memo: '砂滤前压力BP13011高报警', start: 195})
+    arr.push({bytes: '34-4', value: factleach.sysaHpumpPre, memo: '一级高压泵前压力BP15011低报警', start: 196})
+    arr.push({bytes: '34-5', value: 1, memo: '一级系统运行时MV16921阀全闭报警', start: 197})
+    arr.push({bytes: '34-6', value: 1, memo: '清洗剂C距上次一级化洗累计运行时间超过设定值报警', start: 198})
+    arr.push({bytes: '34-7', value: factleach.sysaOpumpP, memo: '二级化洗在线泵出口压力高报警', start: 199})
+    arr.push({bytes: '35-0', value: 1, memo: '清洗剂C距上次一级化洗累计运行时间超过设定值报警时间超时', start: 200})
+    arr.push({bytes: '35-1', value: 1, memo: '清洗剂A距上次二级化洗累计运行时间超过设定值', start: 201})
+    arr.push({bytes: '35-2', value: 1, memo: '清洗剂C距上次二级化洗累计运行时间超过设定值', start: 202})
+    arr.push({bytes: '35-3', value: factleach.syspSrcBl, memo: '原水罐液位BL02211低报警', start: 203})
+    arr.push({bytes: '35-4', value: 1, memo: '一级化洗清洗罐液位BL11011低报警', start: 204})
+    arr.push({bytes: '35-5', value: 1, memo: '清洗剂A距上次二级化洗累计运行时间超过设定值', start: 205})
+    arr.push({bytes: '35-6', value: factleach.syspSrcBy, memo: '原水罐PH值BP02221过高报警时间超时', start: 206})
+    arr.push({bytes: '35-7', value: factleach.syspClnBy, memo: '清水罐出水PH值BY09721过高报警时间超时', start: 207})
+    arr.push({bytes: '36-0', value: factleach.syspSrcBl, memo: '原水罐液位BL02211过低停机报警', start: 208})
+    arr.push({bytes: '36-1', value: factleach.syspClnBl, memo: '清水罐液位BL09711过低停机报警', start: 209})
+    arr.push({bytes: '36-2', value: 1, memo: '距上次砂滤清洗后累计运行时间超过设定值', start: 210})
+    arr.push({bytes: '36-3', value: 1, memo: '清洗剂A距上次一级化洗累计运行时间超过设定值', start: 211})
+    arr.push({bytes: '36-4', value: factleach.syspSrcBy, memo: '原水罐PH值BY02221过高报警', start: 212})
+    arr.push({bytes: '36-5', value: factleach.sysaEspBy, memo: '一级化洗一级浓缩液PH值BY17021过高报警', start: 213})
+    arr.push({bytes: '36-6', value: factleach.sysaEspBy, memo: '一级运行一级浓缩液PH值BY17021过高报警', start: 214})
+    return arr;
+}

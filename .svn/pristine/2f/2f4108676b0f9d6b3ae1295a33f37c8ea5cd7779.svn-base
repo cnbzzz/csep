@@ -1,0 +1,58 @@
+package com.infore.csep.test.client;
+
+import com.infore.csep.common.CommonUtils;
+import com.infore.csep.pojo.recevier.Pack;
+import io.netty.buffer.ByteBuf;
+import io.netty.channel.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import java.net.InetAddress;
+import java.util.Date;
+import java.util.Random;
+
+/**
+ * This file is part of tsp Project
+ * Created by bzzz (bzzz@space-walker.cn) on 2017/8/31 4:17
+ * Copyright (c) 2017 www.space-walker.cn
+ */
+@Slf4j
+@Data
+@AllArgsConstructor
+public class NettyClientHandler extends SimpleChannelInboundHandler<Pack> {
+
+    private NettyClient nettyClient;
+
+    protected void channelRead0(ChannelHandlerContext ctx, Pack msg) throws Exception {
+        System.out.println("客户端接收的消息: " + msg);
+    }
+
+    public void channelActive(ChannelHandlerContext ctx) throws Exception {
+        Pack pack = new Pack();
+        pack.setStart("ZL");
+        pack.setCommond(192);
+        pack.setFromNum(99987);
+        String clientId = CommonUtils.genRandomCode(8);
+        pack.setClientId(clientId);
+
+        String content = "我在人民广场吃炸鸡";
+        pack.setContent(content.getBytes("UTF-8"));
+
+        ctx.writeAndFlush(pack);
+        super.channelActive(ctx);
+
+        System.err.println(this.getClass().getName() + " " + pack);
+    }
+
+    public void channelInactive(ChannelHandlerContext ctx) throws Exception {
+        nettyClient.doConnect();
+        super.channelInactive(ctx);
+    }
+
+    public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
+        super.exceptionCaught(ctx, cause);
+    }
+}

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.infore.csep.pojo.mapper.GpssewaalarmMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.infore.csep.pojo.entity.Gpssewaalarm">
+        <id column="id" property="id" />
+        <result column="refID" property="refID" />
+        <result column="revTime" property="revTime" />
+        <result column="factNum" property="factNum" />
+        <result column="equmNum" property="equmNum" />
+        <result column="type" property="type" />
+        <result column="bytes" property="bytes" />
+        <result column="value" property="value" />
+        <result column="memo" property="memo" />
+    </resultMap>
+
+</mapper>

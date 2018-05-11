@@ -1,0 +1,88 @@
+package com.infore.csep.receiver.netty;
+
+import com.infore.csep.common.netty.CsepChannelRepository;
+import com.infore.csep.common.netty.CsepDecoder;
+import com.infore.csep.common.netty.CsepEncoder;
+import com.infore.csep.receiver.service.IUpChannelService;
+import io.netty.bootstrap.ServerBootstrap;
+import io.netty.channel.*;
+import io.netty.channel.nio.NioEventLoopGroup;
+import io.netty.channel.socket.SocketChannel;
+import io.netty.channel.socket.nio.NioServerSocketChannel;
+import lombok.Data;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Bean;
+import org.springframework.stereotype.Component;
+
+/**
+ * This file is part of csep Project
+ * Created by cnbzzz (cnbzzz@126.com) on 2018/3/28 15:23
+ * Copyright (c) 2018 github.com/cnbzzz
+ */
+@Component
+@Data
+@Slf4j
+public class NettyServer {
+
+    @Value("${netty.server.port}")
+    private Integer port;
+
+    @Autowired
+    private IUpChannelService upChannelService;
+
+    @Autowired
+    private CsepChannelRepository csepChannelRepository;
+
+    private Integer maxFrameLength = 1024 * 1024 *  2;
+
+    private Integer lengthFieldOffset = 15;
+
+    private Integer lengthFieldLength = 2;
+
+    private Integer lengthAdjustment = 0;
+
+    private Integer initialBytesToStrip = 0;
+
+    private Boolean failFast = false;
+
+    public void start() {
+        ServerBootstrap b = new ServerBootstrap();
+        EventLoopGroup group = new NioEventLoopGroup();
+        try {
+            b.group(group);
+            b.channel(NioServerSocketChannel.class);
+            b.childHandler(new ChannelInitializer<SocketChannel>() {
+                @Override
+                public void initChannel(SocketChannel ch) throws Exception {
+                    ChannelPipeline pipeline = ch.pipeline();
+                    pipeline.addLast(new CsepDecoder(maxFrameLength, lengthFieldOffset, lengthFieldLength,
+                            lengthAdjustment, initialBytesToStrip, failFast));
+                    pipeline.addLast(new CsepEncoder());
+                    pipeline.addLast(new NettyServerHandler(upChannelService, csepChannelRepository));
+                }
+            }); //设置过滤器
+
+            b.option(ChannelOption.SO_BACKLOG, 2048);// serverSocketchannel的设置，链接缓冲池的大小
+            b.option(ChannelOption.SO_RCVBUF, 2048);// 接收缓冲池的大小
+//            b.childOption(ChannelOption.SO_KEEPALIVE, true);// socketchannel的设置,维持链接的活跃，清除死链接
+            b.childOption(ChannelOption.TCP_NODELAY, true);// socketchannel的设置,关闭延迟发送
+            // 服务器绑定端口监听
+            ChannelFuture f = b.bind(port).sync();
+            log.info("Server start listen at {}", port);
+            // 监听服务器关闭监听
+            f.channel().closeFuture().sync();
+        } catch (Exception e) {
+            log.error(e.getMessage(), e);
+        } finally {
+            group.shutdownGracefully();
+        }
+    }
+
+    @Bean(name = "channelRepository")
+    public CsepChannelRepository channelRepository() {
+        return new CsepChannelRepository();
+    }
+}
+

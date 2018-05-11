@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration debug="true" scan="false" scanPeriod="10 seconds">
+    <include resource="org/springframework/boot/logging/logback/base.xml"/>
+    <contextName>logback</contextName>
+    <logger name="org.springframework.web" level="error"/>
+    <logger name="org.springboot.sample" level="error"/>
+    <logger name="com.alibaba.druid" level="error"/>
+    <property name="app.name" value="csep.receiver"/>
+    <property name="log.err.path" value="logs/${app.name}_err.log"/>
+    <property name="log.warn.path" value="logs/${app.name}_warn.log"/>
+    <property name="log.debug.path" value="logs/${app.name}_debug.log"/>
+    <property name="log.info.path" value="logs/${app.name}_info.log"/>
+    <property name="log.max.size" value="2MB"/>
+
+    <appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
+        <!-- encoders are assigned the type
+             ch.qos.logback.classic.encoder.PatternLayoutEncoder by default -->
+        <encoder>
+            <!--<pattern>%d{yyyy/MM/dd-HH:mm:ss} %level [%thread] %caller{1} - %msg%n</pattern>-->
+            <pattern>%d{yyyy-MM-dd HH:mm:ss} %level [%thread] %caller{1} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="file.err"
+              class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${log.err.path}</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_FILE}.%d{yyyy-MM-dd}.%i.gz</fileNamePattern>
+            <maxFileSize>${LOG_FILE_MAX_SIZE:-10MB}</maxFileSize>
+            <maxHistory>${LOG_FILE_MAX_HISTORY:-0}</maxHistory>
+        </rollingPolicy>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <!-- 每天一归档 -->
+            <fileNamePattern>${log.err.path}.%d{yyyy-MM-dd}.%i.zip</fileNamePattern>
+            <maxFileSize>${log.max.size}</maxFileSize>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss} %level [%thread] %caller{0} - %msg%n</pattern>
+        </encoder>
+        <!-- 下面为配置只输出error级别的日志 -->
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>ERROR</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+    </appender>
+
+    <appender name="file.warn"
+              class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${log.warn.path}</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <!-- 每天一归档 -->
+            <fileNamePattern>${log.warn.path}.%d{yyyy-MM-dd}.%i.zip</fileNamePattern>
+            <maxFileSize>${log.max.size}</maxFileSize>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss} %level [%thread] %caller{0} - %msg%n</pattern>
+        </encoder>
+        <!-- 下面为配置只输出error级别的日志 -->
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>WARN</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+    </appender>
+
+    <appender name="file.info"
+              class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${log.info.path}</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <!-- 每天一归档 -->
+            <fileNamePattern>${log.info.path}.%d{yyyy-MM-dd}.%i.zip</fileNamePattern>
+            <maxFileSize>${log.max.size}</maxFileSize>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss} %level [%thread] %caller{0} - %msg%n</pattern>
+        </encoder>
+        <!-- 下面为配置只输出error级别的日志 -->
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>INFO</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+    </appender>
+
+    <appender name="file.debug"
+              class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${log.debug.path}</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <!-- 每天一归档 -->
+            <fileNamePattern>${log.debug.path}.%d{yyyy-MM-dd}.%i.zip</fileNamePattern>
+            <maxFileSize>${log.max.size}</maxFileSize>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss} %level [%thread] %caller{0} - %msg%n</pattern>
+        </encoder>
+        <!-- 下面为配置只输出error级别的日志 -->
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>DEBUG</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+    </appender>
+
+    <!--<springProfile name="dev,test, uat">-->
+        <logger name="com.infore" level="debug" additivity="false">
+            <appender-ref ref="stdout"/>
+            <appender-ref ref="file.err"/>
+            <appender-ref ref="file.warn"/>
+            <appender-ref ref="file.info"/>
+            <appender-ref ref="file.debug"/>
+        </logger>
+    <!--</springProfile>-->
+
+    <root level="info">
+        <appender-ref ref="file.err"/>
+        <appender-ref ref="file.warn"/>
+        <appender-ref ref="file.info"/>
+        <appender-ref ref="file.debug"/>
+    </root>
+</configuration>

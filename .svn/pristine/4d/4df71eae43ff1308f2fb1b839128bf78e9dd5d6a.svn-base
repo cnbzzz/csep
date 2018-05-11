@@ -1,0 +1,39 @@
+package com.infore.csep.common.netty.dto;
+
+import com.infore.csep.common.annotation.Unpack;
+import lombok.Data;
+
+import java.io.Serializable;
+
+/**
+ * This file is part of csep Project
+ * Created by cnbzzz (cnbzzz@126.com) on 2018/3/28 17:33
+ * Copyright (c) 2018 github.com/cnbzzz
+ */
+@Data
+public class CsepPack implements Serializable {
+
+    @Unpack(index = 0, length = 2)
+    private String start; //起始符 2字节
+
+    @Unpack(index = 2, length = 1)
+    private int commond; //命令码 1字节
+
+    @Unpack(index = 3, length = 4)
+    private int fromNum; //流水号 4字节
+
+    @Unpack(index = 7, length = 8)
+    private String clientId; //终端id 8字节 平台下发至终端时，”终端ID号“中存放的是目标PLC的IP地址4个字节，存放位置是后4个字节；终端上传时，”终端ID号“中存放的是终端设备唯一标示。
+
+    @Unpack(index = 15, length = 2)
+    private int contentLength; //数据长度 2字节
+
+    @Unpack(index = 17, lenRef = "contentLength")
+    private byte[] content;//数据内容 16进制格式，1帧数据包不超过500个字节
+
+    @Unpack(idxRef = "content", length = 1)
+    private int checkByte; //1字节，从命令码开始到数据块结束（命令码+流水号+终端ID号+数据长度+数据块）所有字符的异或和；
+
+    @Unpack(idxRef = "checkByte", length = 1)
+    private int end; //1字节，回车（0x0D）
+}

@@ -1,0 +1,107 @@
+package com.infore.csep.pojo.entity;
+
+import java.util.Date;
+import com.baomidou.mybatisplus.activerecord.Model;
+import java.io.Serializable;
+
+import com.baomidou.mybatisplus.annotations.Version;
+
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.experimental.Accessors;
+
+/**
+ * <p>
+ * 
+ * </p>
+ *
+ * @author bzzz
+ * @since 2018-04-17
+ */
+@Data
+@Accessors(chain = true)
+public class Factleachsysaphis extends Model<Factleachsysaphis> {
+
+    private static final long serialVersionUID = 1L;
+
+    private Long id;
+    private Integer command;
+    private Date revTime;
+    private Integer equmSeq;
+    private Long equmID;
+    private Integer equmType;
+    private Integer factNum;
+    private String equmNum;
+    private Integer dataType;
+    private Integer sysaTempl;
+    private Integer sysaTempldelay;
+    private Integer sysaTemph;
+    private Integer sysaTemphdelay;
+    private Integer sysaPressh;
+    private Integer sysaPremBnhdelay;
+    private Integer sysaPremBnh;
+    private Integer sysaPremBfldelay;
+    private Integer sysaPremBfl;
+    private Integer sysaPremBfh;
+    private Integer sysaPremBfhdelay;
+    private Integer sysaSandBnh;
+    private Integer sysaSandBlldelay;
+    private Integer sysaSandPreBph;
+    private Integer sysaSandBphdelay;
+    private Integer sysaSandBph;
+    private Integer sysaHpumpPrebpl;
+    private Integer sysaFiltBph;
+    private Integer sysaFiltBphdelay;
+    private Integer sysaColBphdelay;
+    private Integer sysaColBph;
+    private Integer sysaChemByl;
+    private Integer sysaChemByldelay;
+    private Integer sysaChemByh;
+    private Integer sysaChemByhdelay;
+    private Integer sysaEspByl;
+    private Integer sysaEspByldelay;
+    private Integer sysaEspByh;
+    private Integer sysaEspByhdelay;
+    private Integer sysaChemBll;
+    private Integer sysaChemBlldelay;
+    private Integer sysaChemBlh;
+    private Integer sysaChemBthdelay;
+    private Integer sysaChemBth;
+    private Integer sysaPremBphdelay;
+    private Integer sysaPremBph;
+    private Integer sysaValveClose;
+    private Integer sysaHpumpsdelay;
+    private Integer sysaHpumpedelay;
+    private Integer sysaHpumpsBpl;
+    private Integer sysaChemimmtime;
+    private Integer sysaChemrec;
+    private Integer sysaChemTime;
+    private Integer sysaStaticTime;
+    private Integer sysaAirwTime;
+    private Integer sysaValveSetdelay;
+    private Integer sysaValvedelay;
+    private Integer sysaWashtime;
+    private Integer sysaWashBlh;
+    private Integer sysaWashBll;
+    private Integer sysaPremBf;
+    private Integer sysaHpumpdelay;
+    private Integer sysaChemPTime;
+    private Integer sysaSrcrewTime;
+    private Integer sysaSrcwTime;
+    private Integer sysaSrcwdelay;
+    private Integer sysaChemdelay;
+    private Integer sysaOpumpdelay;
+    private Integer sysaPremBn;
+    private Integer sysaPpumpsdelay;
+    private Integer sysaPpumpedalay;
+    private Integer cout;
+    private String equipmentNo;
+    private Integer plcComm;
+
+
+    @Override
+    protected Serializable pkVal() {
+        return this.id;
+    }
+
+}

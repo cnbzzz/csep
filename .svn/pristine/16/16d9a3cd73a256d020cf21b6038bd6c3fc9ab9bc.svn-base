@@ -1,0 +1,106 @@
+package com.infore.csep.test.client;
+
+import com.infore.csep.common.netty.CsepDecoder;
+import com.infore.csep.common.netty.CsepEncoder;
+import io.netty.bootstrap.Bootstrap;
+import io.netty.channel.*;
+import io.netty.channel.nio.NioEventLoopGroup;
+import io.netty.channel.socket.SocketChannel;
+import io.netty.channel.socket.nio.NioSocketChannel;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
+
+import java.util.concurrent.TimeUnit;
+
+/**
+ * This file is part of csep Project
+ * Created by cnbzzz (cnbzzz@126.com) on 2018/3/27 17:11
+ * Copyright (c) 2018 github.com/cnbzzz
+ */
+
+@Component
+@Slf4j
+public class NettyClient {
+
+    @Value("${netty.client.host}")
+    private String host;
+
+    @Value("${netty.client.port}")
+    private Integer port;
+
+    private NioEventLoopGroup group = new NioEventLoopGroup();
+
+    private Channel channel;
+
+    private Bootstrap b;
+
+    private Integer tryTimes = 0;
+
+    private Integer maxFrameLength = 1024 * 1024 *  2;
+
+    private Integer lengthFieldOffset = 15;
+
+    private Integer lengthFieldLength = 2;
+
+    private Integer lengthAdjustment = 0;
+
+    private Integer initialBytesToStrip = 0;
+
+    private Boolean failFast = false;
+
+    public void start() throws Exception {
+
+        try {
+            b = new Bootstrap();
+            b.group(group);
+            b.channel(NioSocketChannel.class);
+            b.option(ChannelOption.SO_KEEPALIVE, true);
+            b.handler(new ChannelInitializer<SocketChannel>() {
+                @Override
+                public void initChannel(SocketChannel ch) throws Exception {
+                    ChannelPipeline pipeline = ch.pipeline();
+                    pipeline.addLast(new CsepDecoder(maxFrameLength, lengthFieldOffset, lengthFieldLength,
+                            lengthAdjustment, initialBytesToStrip, failFast));
+                    pipeline.addLast(new CsepEncoder());
+                    pipeline.addLast(new NettyClientHandler(NettyClient.this));
+                }
+            });
+            doConnect();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * 重连，连接失败10秒后重试连接
+     */
+    public void doConnect() {
+
+        if (channel != null && channel.isActive()) {
+            return;
+        }
+        tryTimes++;
+        log.info("connect {} times", tryTimes);
+        ChannelFuture future = b.connect(host, port);
+
+        future.addListener(new ChannelFutureListener() {
+            public void operationComplete(ChannelFuture futureListener) throws Exception {
+
+                if (futureListener.isSuccess()) {
+                    channel = futureListener.channel();
+                    log.info("Connect to server successfully!");
+                    channel.closeFuture();
+                } else {
+                    int l = 3;
+                    log.warn("Failed to connect to server, try connect after {}s", l);
+                    futureListener.channel().eventLoop().schedule(() -> {
+                        doConnect();
+                    }, l, TimeUnit.SECONDS);
+                }
+            }
+        });
+    }
+}
+
+

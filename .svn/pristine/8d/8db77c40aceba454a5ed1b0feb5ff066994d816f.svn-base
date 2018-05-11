@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.infore.csep.pojo.mapper.GpssewahishourMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.infore.csep.pojo.entity.Gpssewahishour">
+        <id column="id" property="id"/>
+        <result column="revTime" property="revTime"/>
+        <result column="equmSeq" property="equmSeq"/>
+        <result column="equmID" property="equmID"/>
+        <result column="equmType" property="equmType"/>
+        <result column="gpsNum" property="gpsNum"/>
+        <result column="valRunHour" property="valRunHour"/>
+        <result column="valRunHourMax" property="valRunHourMax"/>
+        <result column="valRunHourMin" property="valRunHourMin"/>
+        <result column="valRunHourAvg" property="valRunHourAvg"/>
+        <result column="valPower" property="valPower"/>
+        <result column="valPowerMax" property="valPowerMax"/>
+        <result column="valPowerMin" property="valPowerMin"/>
+        <result column="valPowerAvg" property="valPowerAvg"/>
+        <result column="valWal" property="valWal"/>
+        <result column="valWalMax" property="valWalMax"/>
+        <result column="valWalMin" property="valWalMin"/>
+        <result column="valWalAvg" property="valWalAvg"/>
+        <result column="allFlag" property="allFlag"/>
+        <result column="valCln" property="valCln"/>
+        <result column="valClnMax" property="valClnMax"/>
+        <result column="valClnMin" property="valClnMin"/>
+        <result column="valClnAvg" property="valClnAvg"/>
+        <result column="valPip" property="valPip"/>
+        <result column="valPipMax" property="valPipMax"/>
+        <result column="valPipMin" property="valPipMin"/>
+        <result column="valPipAvg" property="valPipAvg"/>
+        <result column="valTankL" property="valTankL"/>
+        <result column="valTankLMax" property="valTankLMax"/>
+        <result column="valTankLMin" property="valTankLMin"/>
+        <result column="valTankLAvg" property="valTankLAvg"/>
+        <result column="sewaNo" property="sewaNo"/>
+        <result column="count" property="count"/>
+        <result column="genCycle" property="genCycle"/>
+        <result column="insertTime" property="insertTime"/>
+    </resultMap>
+
+    <select id="findByTime" resultType="com.infore.csep.pojo.entity.Gpssewahishour">
+        SELECT
+            gpsNum,
+            sewaNo,
+            MAX(valRunHour) AS valRunHourMax,
+            MIN(valRunHour) AS valRunHourMin,
+            AVG(valRunHour) AS valRunHourAvg,
+            MAX(valPower) AS valPowerMax,
+            MIN(valPower) AS valPowerMin,
+            AVG(valPower) AS valPowerAvg,
+            MAX(valWal) AS valWalMax,
+            MIN(valWal) AS valWalMin,
+            AVG(valWal) AS valWalAvg,
+            MAX(valCln) AS valClnMax,
+            MIN(valCln) AS valClnMin,
+            AVG(valCln) AS valClnAvg,
+            MAX(valPip) AS valPipMax,
+            MIN(valPip) AS valPipMin,
+            AVG(valPip) AS valPipAvg,
+            MAX(valTankL) AS valTankLMax,
+            MIN(valTankL) AS valTankLMin,
+            AVG(valTankL) AS valTankLAvg
+
+        FROM
+          gpssewahis
+        WHERE
+          revTime &gt;= #{beginTime} AND revTime &lt; #{endTime}
+        GROUP BY gpsNum , sewaNo;
+
+    </select>
+
+</mapper>

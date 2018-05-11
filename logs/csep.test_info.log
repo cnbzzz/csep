@@ -1,0 +1,7 @@
+2018-05-03 16:52:00 INFO [restartedMain]  - Refreshing org.springframework.context.annotation.AnnotationConfigApplicationContext@cc2d94b: startup date [Thu May 03 16:52:00 CST 2018]; root of context hierarchy
+2018-05-03 16:52:04 INFO [restartedMain]  - Registering beans for JMX exposure on startup
+2018-05-03 20:06:01 INFO [restartedMain]  - Refreshing org.springframework.context.annotation.AnnotationConfigApplicationContext@31d4dc45: startup date [Thu May 03 20:06:01 CST 2018]; root of context hierarchy
+2018-05-03 20:06:02 INFO [restartedMain]  - LiveReload server is running on port 35729
+2018-05-03 20:06:02 INFO [restartedMain]  - Registering beans for JMX exposure on startup
+2018-05-03 21:01:47 INFO [restartedMain]  - Refreshing org.springframework.context.annotation.AnnotationConfigApplicationContext@6a4bf8aa: startup date [Thu May 03 21:01:47 CST 2018]; root of context hierarchy
+2018-05-03 21:01:50 INFO [restartedMain]  - Registering beans for JMX exposure on startup

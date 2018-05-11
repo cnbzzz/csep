@@ -1,0 +1,32 @@
+package com.infore.csep.gpsreceiver.service;
+
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
+
+import static org.junit.Assert.*;
+
+@SpringBootTest
+@RunWith(SpringRunner.class)
+public class UpServiceTest {
+
+    @Autowired
+    private UpService upService;
+
+    @Test
+    public void uploadCurrentLocation() throws Exception {
+
+        upService.uploadCurrentLocation("541A916090006");
+
+    }
+
+    @Test
+    public void uploadCurrentConditionData() throws Exception {
+
+//        upService.uploadCurrentConditionData("541A918049801");
+        upService.uploadCurrentConditionData("541A916090006");
+    }
+
+}

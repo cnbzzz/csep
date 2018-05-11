@@ -1,0 +1,73 @@
+package com.infore.csep.common.netty;
+
+import com.google.common.base.Preconditions;
+import com.infore.csep.common.netty.dto.CsepPack;
+import io.netty.channel.Channel;
+import io.netty.channel.ChannelHandlerContext;
+import io.netty.util.Attribute;
+import io.netty.util.AttributeKey;
+
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+
+/**
+ * This file is part of csep Project
+ * Created by cnbzzz (cnbzzz@126.com) on 2018/3/27 15:17
+ * Copyright (c) 2018 github.com/cnbzzz
+ */
+public class CsepChannelRepository {
+
+    private final static Map<String, Channel> channelCache = new ConcurrentHashMap<String, Channel>();
+
+    public final static AttributeKey<String> CLIENT_INFO = AttributeKey.valueOf("clientInfo");
+
+    public void put(String key, Channel value) {
+        channelCache.put(key, value);
+    }
+
+    public void putIfAbsent(String key, Channel value) {
+        channelCache.putIfAbsent(key, value);
+    }
+
+    public Channel get(String key) {
+        return channelCache.get(key);
+    }
+
+    public void remove(String key) {
+        channelCache.remove(key);
+    }
+
+
+    public void remove(ChannelHandlerContext ctx) {
+        Attribute<String> attr = ctx.channel().attr(CLIENT_INFO);
+        if(attr != null){
+            String clientId = attr.get();
+            if(clientId != null){
+                this.remove(clientId);
+            }
+        }
+    }
+
+    public int size() {
+        return channelCache.size();
+    }
+
+    public Map<String, Channel> map() {
+        return channelCache;
+    }
+
+    public Channel findChannelByClientId(String clientId) {
+        return get(clientId);
+    }
+
+    public void writeAndFlush(CsepPack pack) {
+        String clientId = pack.getClientId();
+
+        Channel channel = findChannelByClientId(clientId);
+
+        Preconditions.checkState(channel != null, "clientId [%s] channel not found", clientId);
+        Preconditions.checkState(channel.isActive(), "clientId [%s] channel not active", clientId);
+
+        channel.writeAndFlush(pack);
+    }
+}

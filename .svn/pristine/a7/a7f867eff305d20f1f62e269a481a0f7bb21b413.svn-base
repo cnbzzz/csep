@@ -1,0 +1,27 @@
+package com.infore.csep.etl.scheduled;
+
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.stereotype.Component;
+
+/**
+ * Created by steven ma
+ * 2018/4/17 17:33
+ */
+@Component
+@Slf4j
+public class DemoTask {
+
+
+    @Scheduled(fixedDelayString = "${jobs.fixedDelay}")
+    public void reportFixed(){
+        log.info("reportFixed!");
+    }
+
+    @Scheduled(cron = "${jobs.cron}")
+    public void reportCron() {
+
+        log.info("reportCron!");
+
+    }
+}

@@ -1,0 +1,761 @@
+package com.infore.csep.pojo.entity;
+
+import java.util.Date;
+import com.baomidou.mybatisplus.activerecord.Model;
+import java.io.Serializable;
+
+/**
+ * <p>
+ * 
+ * </p>
+ *
+ * @author bzzz
+ * @since 2018-04-23
+ */
+public class Factleachsysaphis extends Model<Factleachsysaphis> {
+
+    private static final long serialVersionUID = 1L;
+
+    private Long id;
+    private Integer command;
+    private Date revTime;
+    private Integer equmSeq;
+    private Long equmID;
+    private Integer equmType;
+    private Integer factNum;
+    private String equmNum;
+    private Integer dataType;
+    private Integer sysaTempl;
+    private Integer sysaTempldelay;
+    private Integer sysaTemph;
+    private Integer sysaTemphdelay;
+    private Integer sysaPressh;
+    private Integer sysaPremBnhdelay;
+    private Integer sysaPremBnh;
+    private Integer sysaPremBfldelay;
+    private Integer sysaPremBfl;
+    private Integer sysaPremBfh;
+    private Integer sysaPremBfhdelay;
+    private Integer sysaSandBnh;
+    private Integer sysaSandBlldelay;
+    private Integer sysaSandPreBph;
+    private Integer sysaSandBphdelay;
+    private Integer sysaSandBph;
+    private Integer sysaHpumpPrebpl;
+    private Integer sysaFiltBph;
+    private Integer sysaFiltBphdelay;
+    private Integer sysaColBphdelay;
+    private Integer sysaColBph;
+    private Integer sysaChemByl;
+    private Integer sysaChemByldelay;
+    private Integer sysaChemByh;
+    private Integer sysaChemByhdelay;
+    private Integer sysaEspByl;
+    private Integer sysaEspByldelay;
+    private Integer sysaEspByh;
+    private Integer sysaEspByhdelay;
+    private Integer sysaChemBll;
+    private Integer sysaChemBlldelay;
+    private Integer sysaChemBlh;
+    private Integer sysaChemBthdelay;
+    private Integer sysaChemBth;
+    private Integer sysaPremBphdelay;
+    private Integer sysaPremBph;
+    private Integer sysaValveClose;
+    private Integer sysaHpumpsdelay;
+    private Integer sysaHpumpedelay;
+    private Integer sysaHpumpsBpl;
+    private Integer sysaChemimmtime;
+    private Integer sysaChemrec;
+    private Integer sysaChemTime;
+    private Integer sysaStaticTime;
+    private Integer sysaAirwTime;
+    private Integer sysaValveSetdelay;
+    private Integer sysaValvedelay;
+    private Integer sysaWashtime;
+    private Integer sysaWashBlh;
+    private Integer sysaWashBll;
+    private Integer sysaPremBf;
+    private Integer sysaHpumpdelay;
+    private Integer sysaChemPTime;
+    private Integer sysaSrcrewTime;
+    private Integer sysaSrcwTime;
+    private Integer sysaSrcwdelay;
+    private Integer sysaChemdelay;
+    private Integer sysaOpumpdelay;
+    private Integer sysaPremBn;
+    private Integer sysaPpumpsdelay;
+    private Integer sysaPpumpedalay;
+    private Integer cout;
+    private String equipmentNo;
+    private Integer plcComm;
+
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Integer getCommand() {
+        return command;
+    }
+
+    public void setCommand(Integer command) {
+        this.command = command;
+    }
+
+    public Date getRevTime() {
+        return revTime;
+    }
+
+    public void setRevTime(Date revTime) {
+        this.revTime = revTime;
+    }
+
+    public Integer getEqumSeq() {
+        return equmSeq;
+    }
+
+    public void setEqumSeq(Integer equmSeq) {
+        this.equmSeq = equmSeq;
+    }
+
+    public Long getEqumID() {
+        return equmID;
+    }
+
+    public void setEqumID(Long equmID) {
+        this.equmID = equmID;
+    }
+
+    public Integer getEqumType() {
+        return equmType;
+    }
+
+    public void setEqumType(Integer equmType) {
+        this.equmType = equmType;
+    }
+
+    public Integer getFactNum() {
+        return factNum;
+    }
+
+    public void setFactNum(Integer factNum) {
+        this.factNum = factNum;
+    }
+
+    public String getEqumNum() {
+        return equmNum;
+    }
+
+    public void setEqumNum(String equmNum) {
+        this.equmNum = equmNum;
+    }
+
+    public Integer getDataType() {
+        return dataType;
+    }
+
+    public void setDataType(Integer dataType) {
+        this.dataType = dataType;
+    }
+
+    public Integer getSysaTempl() {
+        return sysaTempl;
+    }
+
+    public void setSysaTempl(Integer sysaTempl) {
+        this.sysaTempl = sysaTempl;
+    }
+
+    public Integer getSysaTempldelay() {
+        return sysaTempldelay;
+    }
+
+    public void setSysaTempldelay(Integer sysaTempldelay) {
+        this.sysaTempldelay = sysaTempldelay;
+    }
+
+    public Integer getSysaTemph() {
+        return sysaTemph;
+    }
+
+    public void setSysaTemph(Integer sysaTemph) {
+        this.sysaTemph = sysaTemph;
+    }
+
+    public Integer getSysaTemphdelay() {
+        return sysaTemphdelay;
+    }
+
+    public void setSysaTemphdelay(Integer sysaTemphdelay) {
+        this.sysaTemphdelay = sysaTemphdelay;
+    }
+
+    public Integer getSysaPressh() {
+        return sysaPressh;
+    }
+
+    public void setSysaPressh(Integer sysaPressh) {
+        this.sysaPressh = sysaPressh;
+    }
+
+    public Integer getSysaPremBnhdelay() {
+        return sysaPremBnhdelay;
+    }
+
+    public void setSysaPremBnhdelay(Integer sysaPremBnhdelay) {
+        this.sysaPremBnhdelay = sysaPremBnhdelay;
+    }
+
+    public Integer getSysaPremBnh() {
+        return sysaPremBnh;
+    }
+
+    public void setSysaPremBnh(Integer sysaPremBnh) {
+        this.sysaPremBnh = sysaPremBnh;
+    }
+
+    public Integer getSysaPremBfldelay() {
+        return sysaPremBfldelay;
+    }
+
+    public void setSysaPremBfldelay(Integer sysaPremBfldelay) {
+        this.sysaPremBfldelay = sysaPremBfldelay;
+    }
+
+    public Integer getSysaPremBfl() {
+        return sysaPremBfl;
+    }
+
+    public void setSysaPremBfl(Integer sysaPremBfl) {
+        this.sysaPremBfl = sysaPremBfl;
+    }
+
+    public Integer getSysaPremBfh() {
+        return sysaPremBfh;
+    }
+
+    public void setSysaPremBfh(Integer sysaPremBfh) {
+        this.sysaPremBfh = sysaPremBfh;
+    }
+
+    public Integer getSysaPremBfhdelay() {
+        return sysaPremBfhdelay;
+    }
+
+    public void setSysaPremBfhdelay(Integer sysaPremBfhdelay) {
+        this.sysaPremBfhdelay = sysaPremBfhdelay;
+    }
+
+    public Integer getSysaSandBnh() {
+        return sysaSandBnh;
+    }
+
+    public void setSysaSandBnh(Integer sysaSandBnh) {
+        this.sysaSandBnh = sysaSandBnh;
+    }
+
+    public Integer getSysaSandBlldelay() {
+        return sysaSandBlldelay;
+    }
+
+    public void setSysaSandBlldelay(Integer sysaSandBlldelay) {
+        this.sysaSandBlldelay = sysaSandBlldelay;
+    }
+
+    public Integer getSysaSandPreBph() {
+        return sysaSandPreBph;
+    }
+
+    public void setSysaSandPreBph(Integer sysaSandPreBph) {
+        this.sysaSandPreBph = sysaSandPreBph;
+    }
+
+    public Integer getSysaSandBphdelay() {
+        return sysaSandBphdelay;
+    }
+
+    public void setSysaSandBphdelay(Integer sysaSandBphdelay) {
+        this.sysaSandBphdelay = sysaSandBphdelay;
+    }
+
+    public Integer getSysaSandBph() {
+        return sysaSandBph;
+    }
+
+    public void setSysaSandBph(Integer sysaSandBph) {
+        this.sysaSandBph = sysaSandBph;
+    }
+
+    public Integer getSysaHpumpPrebpl() {
+        return sysaHpumpPrebpl;
+    }
+
+    public void setSysaHpumpPrebpl(Integer sysaHpumpPrebpl) {
+        this.sysaHpumpPrebpl = sysaHpumpPrebpl;
+    }
+
+    public Integer getSysaFiltBph() {
+        return sysaFiltBph;
+    }
+
+    public void setSysaFiltBph(Integer sysaFiltBph) {
+        this.sysaFiltBph = sysaFiltBph;
+    }
+
+    public Integer getSysaFiltBphdelay() {
+        return sysaFiltBphdelay;
+    }
+
+    public void setSysaFiltBphdelay(Integer sysaFiltBphdelay) {
+        this.sysaFiltBphdelay = sysaFiltBphdelay;
+    }
+
+    public Integer getSysaColBphdelay() {
+        return sysaColBphdelay;
+    }
+
+    public void setSysaColBphdelay(Integer sysaColBphdelay) {
+        this.sysaColBphdelay = sysaColBphdelay;
+    }
+
+    public Integer getSysaColBph() {
+        return sysaColBph;
+    }
+
+    public void setSysaColBph(Integer sysaColBph) {
+        this.sysaColBph = sysaColBph;
+    }
+
+    public Integer getSysaChemByl() {
+        return sysaChemByl;
+    }
+
+    public void setSysaChemByl(Integer sysaChemByl) {
+        this.sysaChemByl = sysaChemByl;
+    }
+
+    public Integer getSysaChemByldelay() {
+        return sysaChemByldelay;
+    }
+
+    public void setSysaChemByldelay(Integer sysaChemByldelay) {
+        this.sysaChemByldelay = sysaChemByldelay;
+    }
+
+    public Integer getSysaChemByh() {
+        return sysaChemByh;
+    }
+
+    public void setSysaChemByh(Integer sysaChemByh) {
+        this.sysaChemByh = sysaChemByh;
+    }
+
+    public Integer getSysaChemByhdelay() {
+        return sysaChemByhdelay;
+    }
+
+    public void setSysaChemByhdelay(Integer sysaChemByhdelay) {
+        this.sysaChemByhdelay = sysaChemByhdelay;
+    }
+
+    public Integer getSysaEspByl() {
+        return sysaEspByl;
+    }
+
+    public void setSysaEspByl(Integer sysaEspByl) {
+        this.sysaEspByl = sysaEspByl;
+    }
+
+    public Integer getSysaEspByldelay() {
+        return sysaEspByldelay;
+    }
+
+    public void setSysaEspByldelay(Integer sysaEspByldelay) {
+        this.sysaEspByldelay = sysaEspByldelay;
+    }
+
+    public Integer getSysaEspByh() {
+        return sysaEspByh;
+    }
+
+    public void setSysaEspByh(Integer sysaEspByh) {
+        this.sysaEspByh = sysaEspByh;
+    }
+
+    public Integer getSysaEspByhdelay() {
+        return sysaEspByhdelay;
+    }
+
+    public void setSysaEspByhdelay(Integer sysaEspByhdelay) {
+        this.sysaEspByhdelay = sysaEspByhdelay;
+    }
+
+    public Integer getSysaChemBll() {
+        return sysaChemBll;
+    }
+
+    public void setSysaChemBll(Integer sysaChemBll) {
+        this.sysaChemBll = sysaChemBll;
+    }
+
+    public Integer getSysaChemBlldelay() {
+        return sysaChemBlldelay;
+    }
+
+    public void setSysaChemBlldelay(Integer sysaChemBlldelay) {
+        this.sysaChemBlldelay = sysaChemBlldelay;
+    }
+
+    public Integer getSysaChemBlh() {
+        return sysaChemBlh;
+    }
+
+    public void setSysaChemBlh(Integer sysaChemBlh) {
+        this.sysaChemBlh = sysaChemBlh;
+    }
+
+    public Integer getSysaChemBthdelay() {
+        return sysaChemBthdelay;
+    }
+
+    public void setSysaChemBthdelay(Integer sysaChemBthdelay) {
+        this.sysaChemBthdelay = sysaChemBthdelay;
+    }
+
+    public Integer getSysaChemBth() {
+        return sysaChemBth;
+    }
+
+    public void setSysaChemBth(Integer sysaChemBth) {
+        this.sysaChemBth = sysaChemBth;
+    }
+
+    public Integer getSysaPremBphdelay() {
+        return sysaPremBphdelay;
+    }
+
+    public void setSysaPremBphdelay(Integer sysaPremBphdelay) {
+        this.sysaPremBphdelay = sysaPremBphdelay;
+    }
+
+    public Integer getSysaPremBph() {
+        return sysaPremBph;
+    }
+
+    public void setSysaPremBph(Integer sysaPremBph) {
+        this.sysaPremBph = sysaPremBph;
+    }
+
+    public Integer getSysaValveClose() {
+        return sysaValveClose;
+    }
+
+    public void setSysaValveClose(Integer sysaValveClose) {
+        this.sysaValveClose = sysaValveClose;
+    }
+
+    public Integer getSysaHpumpsdelay() {
+        return sysaHpumpsdelay;
+    }
+
+    public void setSysaHpumpsdelay(Integer sysaHpumpsdelay) {
+        this.sysaHpumpsdelay = sysaHpumpsdelay;
+    }
+
+    public Integer getSysaHpumpedelay() {
+        return sysaHpumpedelay;
+    }
+
+    public void setSysaHpumpedelay(Integer sysaHpumpedelay) {
+        this.sysaHpumpedelay = sysaHpumpedelay;
+    }
+
+    public Integer getSysaHpumpsBpl() {
+        return sysaHpumpsBpl;
+    }
+
+    public void setSysaHpumpsBpl(Integer sysaHpumpsBpl) {
+        this.sysaHpumpsBpl = sysaHpumpsBpl;
+    }
+
+    public Integer getSysaChemimmtime() {
+        return sysaChemimmtime;
+    }
+
+    public void setSysaChemimmtime(Integer sysaChemimmtime) {
+        this.sysaChemimmtime = sysaChemimmtime;
+    }
+
+    public Integer getSysaChemrec() {
+        return sysaChemrec;
+    }
+
+    public void setSysaChemrec(Integer sysaChemrec) {
+        this.sysaChemrec = sysaChemrec;
+    }
+
+    public Integer getSysaChemTime() {
+        return sysaChemTime;
+    }
+
+    public void setSysaChemTime(Integer sysaChemTime) {
+        this.sysaChemTime = sysaChemTime;
+    }
+
+    public Integer getSysaStaticTime() {
+        return sysaStaticTime;
+    }
+
+    public void setSysaStaticTime(Integer sysaStaticTime) {
+        this.sysaStaticTime = sysaStaticTime;
+    }
+
+    public Integer getSysaAirwTime() {
+        return sysaAirwTime;
+    }
+
+    public void setSysaAirwTime(Integer sysaAirwTime) {
+        this.sysaAirwTime = sysaAirwTime;
+    }
+
+    public Integer getSysaValveSetdelay() {
+        return sysaValveSetdelay;
+    }
+
+    public void setSysaValveSetdelay(Integer sysaValveSetdelay) {
+        this.sysaValveSetdelay = sysaValveSetdelay;
+    }
+
+    public Integer getSysaValvedelay() {
+        return sysaValvedelay;
+    }
+
+    public void setSysaValvedelay(Integer sysaValvedelay) {
+        this.sysaValvedelay = sysaValvedelay;
+    }
+
+    public Integer getSysaWashtime() {
+        return sysaWashtime;
+    }
+
+    public void setSysaWashtime(Integer sysaWashtime) {
+        this.sysaWashtime = sysaWashtime;
+    }
+
+    public Integer getSysaWashBlh() {
+        return sysaWashBlh;
+    }
+
+    public void setSysaWashBlh(Integer sysaWashBlh) {
+        this.sysaWashBlh = sysaWashBlh;
+    }
+
+    public Integer getSysaWashBll() {
+        return sysaWashBll;
+    }
+
+    public void setSysaWashBll(Integer sysaWashBll) {
+        this.sysaWashBll = sysaWashBll;
+    }
+
+    public Integer getSysaPremBf() {
+        return sysaPremBf;
+    }
+
+    public void setSysaPremBf(Integer sysaPremBf) {
+        this.sysaPremBf = sysaPremBf;
+    }
+
+    public Integer getSysaHpumpdelay() {
+        return sysaHpumpdelay;
+    }
+
+    public void setSysaHpumpdelay(Integer sysaHpumpdelay) {
+        this.sysaHpumpdelay = sysaHpumpdelay;
+    }
+
+    public Integer getSysaChemPTime() {
+        return sysaChemPTime;
+    }
+
+    public void setSysaChemPTime(Integer sysaChemPTime) {
+        this.sysaChemPTime = sysaChemPTime;
+    }
+
+    public Integer getSysaSrcrewTime() {
+        return sysaSrcrewTime;
+    }
+
+    public void setSysaSrcrewTime(Integer sysaSrcrewTime) {
+        this.sysaSrcrewTime = sysaSrcrewTime;
+    }
+
+    public Integer getSysaSrcwTime() {
+        return sysaSrcwTime;
+    }
+
+    public void setSysaSrcwTime(Integer sysaSrcwTime) {
+        this.sysaSrcwTime = sysaSrcwTime;
+    }
+
+    public Integer getSysaSrcwdelay() {
+        return sysaSrcwdelay;
+    }
+
+    public void setSysaSrcwdelay(Integer sysaSrcwdelay) {
+        this.sysaSrcwdelay = sysaSrcwdelay;
+    }
+
+    public Integer getSysaChemdelay() {
+        return sysaChemdelay;
+    }
+
+    public void setSysaChemdelay(Integer sysaChemdelay) {
+        this.sysaChemdelay = sysaChemdelay;
+    }
+
+    public Integer getSysaOpumpdelay() {
+        return sysaOpumpdelay;
+    }
+
+    public void setSysaOpumpdelay(Integer sysaOpumpdelay) {
+        this.sysaOpumpdelay = sysaOpumpdelay;
+    }
+
+    public Integer getSysaPremBn() {
+        return sysaPremBn;
+    }
+
+    public void setSysaPremBn(Integer sysaPremBn) {
+        this.sysaPremBn = sysaPremBn;
+    }
+
+    public Integer getSysaPpumpsdelay() {
+        return sysaPpumpsdelay;
+    }
+
+    public void setSysaPpumpsdelay(Integer sysaPpumpsdelay) {
+        this.sysaPpumpsdelay = sysaPpumpsdelay;
+    }
+
+    public Integer getSysaPpumpedalay() {
+        return sysaPpumpedalay;
+    }
+
+    public void setSysaPpumpedalay(Integer sysaPpumpedalay) {
+        this.sysaPpumpedalay = sysaPpumpedalay;
+    }
+
+    public Integer getCout() {
+        return cout;
+    }
+
+    public void setCout(Integer cout) {
+        this.cout = cout;
+    }
+
+    public String getEquipmentNo() {
+        return equipmentNo;
+    }
+
+    public void setEquipmentNo(String equipmentNo) {
+        this.equipmentNo = equipmentNo;
+    }
+
+    public Integer getPlcComm() {
+        return plcComm;
+    }
+
+    public void setPlcComm(Integer plcComm) {
+        this.plcComm = plcComm;
+    }
+
+    @Override
+    protected Serializable pkVal() {
+        return this.id;
+    }
+
+    @Override
+    public String toString() {
+        return "Factleachsysaphis{" +
+        "id=" + id +
+        ", command=" + command +
+        ", revTime=" + revTime +
+        ", equmSeq=" + equmSeq +
+        ", equmID=" + equmID +
+        ", equmType=" + equmType +
+        ", factNum=" + factNum +
+        ", equmNum=" + equmNum +
+        ", dataType=" + dataType +
+        ", sysaTempl=" + sysaTempl +
+        ", sysaTempldelay=" + sysaTempldelay +
+        ", sysaTemph=" + sysaTemph +
+        ", sysaTemphdelay=" + sysaTemphdelay +
+        ", sysaPressh=" + sysaPressh +
+        ", sysaPremBnhdelay=" + sysaPremBnhdelay +
+        ", sysaPremBnh=" + sysaPremBnh +
+        ", sysaPremBfldelay=" + sysaPremBfldelay +
+        ", sysaPremBfl=" + sysaPremBfl +
+        ", sysaPremBfh=" + sysaPremBfh +
+        ", sysaPremBfhdelay=" + sysaPremBfhdelay +
+        ", sysaSandBnh=" + sysaSandBnh +
+        ", sysaSandBlldelay=" + sysaSandBlldelay +
+        ", sysaSandPreBph=" + sysaSandPreBph +
+        ", sysaSandBphdelay=" + sysaSandBphdelay +
+        ", sysaSandBph=" + sysaSandBph +
+        ", sysaHpumpPrebpl=" + sysaHpumpPrebpl +
+        ", sysaFiltBph=" + sysaFiltBph +
+        ", sysaFiltBphdelay=" + sysaFiltBphdelay +
+        ", sysaColBphdelay=" + sysaColBphdelay +
+        ", sysaColBph=" + sysaColBph +
+        ", sysaChemByl=" + sysaChemByl +
+        ", sysaChemByldelay=" + sysaChemByldelay +
+        ", sysaChemByh=" + sysaChemByh +
+        ", sysaChemByhdelay=" + sysaChemByhdelay +
+        ", sysaEspByl=" + sysaEspByl +
+        ", sysaEspByldelay=" + sysaEspByldelay +
+        ", sysaEspByh=" + sysaEspByh +
+        ", sysaEspByhdelay=" + sysaEspByhdelay +
+        ", sysaChemBll=" + sysaChemBll +
+        ", sysaChemBlldelay=" + sysaChemBlldelay +
+        ", sysaChemBlh=" + sysaChemBlh +
+        ", sysaChemBthdelay=" + sysaChemBthdelay +
+        ", sysaChemBth=" + sysaChemBth +
+        ", sysaPremBphdelay=" + sysaPremBphdelay +
+        ", sysaPremBph=" + sysaPremBph +
+        ", sysaValveClose=" + sysaValveClose +
+        ", sysaHpumpsdelay=" + sysaHpumpsdelay +
+        ", sysaHpumpedelay=" + sysaHpumpedelay +
+        ", sysaHpumpsBpl=" + sysaHpumpsBpl +
+        ", sysaChemimmtime=" + sysaChemimmtime +
+        ", sysaChemrec=" + sysaChemrec +
+        ", sysaChemTime=" + sysaChemTime +
+        ", sysaStaticTime=" + sysaStaticTime +
+        ", sysaAirwTime=" + sysaAirwTime +
+        ", sysaValveSetdelay=" + sysaValveSetdelay +
+        ", sysaValvedelay=" + sysaValvedelay +
+        ", sysaWashtime=" + sysaWashtime +
+        ", sysaWashBlh=" + sysaWashBlh +
+        ", sysaWashBll=" + sysaWashBll +
+        ", sysaPremBf=" + sysaPremBf +
+        ", sysaHpumpdelay=" + sysaHpumpdelay +
+        ", sysaChemPTime=" + sysaChemPTime +
+        ", sysaSrcrewTime=" + sysaSrcrewTime +
+        ", sysaSrcwTime=" + sysaSrcwTime +
+        ", sysaSrcwdelay=" + sysaSrcwdelay +
+        ", sysaChemdelay=" + sysaChemdelay +
+        ", sysaOpumpdelay=" + sysaOpumpdelay +
+        ", sysaPremBn=" + sysaPremBn +
+        ", sysaPpumpsdelay=" + sysaPpumpsdelay +
+        ", sysaPpumpedalay=" + sysaPpumpedalay +
+        ", cout=" + cout +
+        ", equipmentNo=" + equipmentNo +
+        ", plcComm=" + plcComm +
+        "}";
+    }
+}

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="csep.common" />
+        <module name="csep.etl" />
+        <module name="csep.gendatatest" />
+        <module name="csep.gpsreceiver" />
+        <module name="csep.handler" />
+        <module name="csep.pojo" />
+        <module name="csep.receiver" />
+        <module name="csep.restful" />
+        <module name="csep.test" />
+        <module name="spring-boot-starter-rocketmq" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel target="1.7">
+      <module name="csep" target="1.8" />
+      <module name="csep.common" target="1.8" />
+      <module name="csep.etl" target="1.8" />
+      <module name="csep.gendatatest" target="1.8" />
+      <module name="csep.gpsreceiver" target="1.8" />
+      <module name="csep.handler" target="1.8" />
+      <module name="csep.pojo" target="1.8" />
+      <module name="csep.receiver" target="1.8" />
+      <module name="csep.restful" target="1.8" />
+      <module name="csep.test" target="1.8" />
+      <module name="spring-boot-starter-rocketmq" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

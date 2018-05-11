@@ -1,0 +1,176 @@
+package com.infore.csep.common.service.impl;
+
+import com.baomidou.mybatisplus.mapper.EntityWrapper;
+import com.baomidou.mybatisplus.mapper.Wrapper;
+import com.baomidou.mybatisplus.service.impl.ServiceImpl;
+import com.infore.csep.common.MyDateUtils;
+import com.infore.csep.common.service.IFactleachhisdayService;
+import com.infore.csep.pojo.entity.FactLeachHisHour;
+import com.infore.csep.pojo.entity.Factleachhis;
+import com.infore.csep.pojo.entity.Factleachhisday;
+import com.infore.csep.pojo.mapper.FactLeachHisHourMapper;
+import com.infore.csep.pojo.mapper.FactleachhisdayMapper;
+
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.Date;
+import java.util.List;
+
+/**
+ * <p>
+ *  服务实现类
+ * </p>
+ *
+ * @author bzzz
+ * @since 2018-04-21
+ */
+@Slf4j
+@Service
+public class FactleachhisdayServiceImpl extends ServiceImpl<FactleachhisdayMapper, Factleachhisday> implements IFactleachhisdayService {
+
+    //数据来源表
+    @Autowired
+    private FactLeachHisHourMapper factLeachHisHourMapper;
+
+    //目标表
+    @Autowired
+    private FactleachhisdayMapper factleachhisdayMapper;
+
+
+    @Override
+    public FactLeachHisHour findOneByFactNumAndEqumNum(Integer factNum, String equmNum, Date beginTime, Date endTime){
+        Wrapper<FactLeachHisHour> wrapper = new EntityWrapper<FactLeachHisHour>()
+                .eq("factNum", factNum).eq("equmNum", equmNum)
+                .ge("revTime", beginTime).lt("revTime", endTime)
+                .orderBy("revTime", false)
+                .last("limit 1");
+
+        List<FactLeachHisHour> factLeachHisHours = factLeachHisHourMapper.selectList(wrapper);
+
+
+        if (factLeachHisHours.size() == 0) {
+            return null;
+        } else {
+            return factLeachHisHours.get(0);
+        }
+    }
+
+
+    private String[] getIgnoreProperties() {
+
+        String [] ignoreProperties = {
+                "syspInByMax","syspInByMin","syspInByAvg",
+                "syspSrcByMax","syspSrcByMin","syspSrcByAvg",
+                "syspClnByMax","syspClnByMin","syspClnByAvg",
+                "sysaEspByMax","sysaEspByMin","sysaEspByAvg",
+                "sysaPreSandBpMax","sysaPreSandBpMin","sysaPreSandBpAvg",
+                "sysaPosSandBpMax","sysaPosSandBpMin","sysaPosSandBpAvg",
+                "sysaHpumpPreMax","sysaHpumpPreMin","sysaHpumpPreAvg",
+                "sysaHpumpPosMax","sysaHpumpPosMin","sysaHpumpPosAvg",
+                "sysaOpumpPMax","sysaOpumpPMin","sysaOpumpPAvg",
+                "sysaPremBpMax","sysaPremBpMin","sysaPremBpAvg",
+                "sysbHpumpPosMax","sysbHpumpPosMin","sysbHpumpPosAvg",
+                "syspSrcBlMax","syspSrcBlMin","syspSrcBlAvg",
+                "syspBufBlMax","syspBufBlMin","syspBufBlAvg",
+                "syspClnBlMax","syspClnBlMin","syspClnBlAvg",
+                "syspSrcBnMax","syspSrcBnMin","syspSrcBnAvg",
+                "sysaPreSandBnMax","sysaPreSandBnMin","sysaPreSandBnAvg",
+                "sysaPremBnMax","sysaPremBnMin","sysaPremBnAvg",
+                "sysaEspBnMax","sysaEspBnMin","sysaEspBnAvg",
+                "sysbPremBnMax","sysbPremBnMin","sysbPremBnAvg",
+                "sysbEspBnMax","sysbEspBnMin","sysbEspBnAvg",
+                "sysaPremBfMax","sysaPremBfMin","sysaPremBfAvg",
+                "sysbPremBfMax","sysbPremBfMin","sysbPremBfAvg",
+                "sysaTempMax","sysaTempMin","sysaTempAvg",
+                "sysbTempMax","sysbTempMin","sysbTempAvg",
+                "sysaHpumpHzMax","sysaHpumpHzMin","sysaHpumpHzAvg",
+                "sysbHpumpHzMax","sysbHpumpHzMin","sysbHpumpHzAvg",
+                "syspAcpumpHzMax","syspAcpumpHzMin","syspAcpumpHzAvg",
+                "syspAlpumpHzMax","syspAlpumpHzMin","syspAlpumpHzAvg",
+                "reservV1Max","reservV1Min","reservV1Avg",
+                "reservV2Max","reservV2Min","reservV2Avg",
+                "reservV3Max","reservV3Min","reservV3Avg",
+                "factRunHourMax","factRunHourMin","factRunHourAvg",
+                "factOutMax","factOutMin","factOutAvg",
+                "factPowerMax","factPowerMin","factPowerAvg",
+                "factInMax","factInMin","factInAvg",
+                "factSrcMax","factSrcMin","factSrcAvg",
+                "factEspMax","factEspMin","factEspAvg",
+                "factClnMax","factClnMin","factClnAvg",
+                "factCodMax","factCodMin","factCodAvg",
+                "factNitrMax","factNitrMin","factNitrAvg",
+                "reservV4Max","reservV4Min","reservV4Avg",
+                "reservV5Max","reservV5Min","reservV5Avg",
+                "reservV6Max","reservV6Min","reservV6Avg",
+
+        };
+
+        return ignoreProperties;
+    }
+
+
+    @Override
+    @Transactional
+    public void genData(Date beginTime, Date endTime) {
+
+        //1.获取历史表在“时间范围内”各项指示的最大值，最小值，平均值
+        List<Factleachhisday> factleachhisdays = factleachhisdayMapper.findByTime(beginTime, endTime);
+
+        for (Factleachhisday item : factleachhisdays) {
+
+            //2.根据厂站编码和设备编码，在时间范围内查询最新的一条记录
+            FactLeachHisHour factleachhis = findOneByFactNumAndEqumNum(item.getFactNum(),
+                    item.getEqumNum(), beginTime, endTime);
+
+            if(factleachhis != null) {
+                //3.根据1,2的结果生成小时表纪录
+                //复制属性(列表的字段不复制)
+                BeanUtils.copyProperties(factleachhis, item, getIgnoreProperties());
+            }else {
+                log.warn("findOneByFactNumAndEqumNum is null:{}|{}", item.getFactNum(),
+                        item.getEqumNum());
+            }
+
+            //重新设置一些属性
+            item.setId(null); //id重新生成
+            //设置时间为结束时间（考虑重跑的情况，不然可以设置为当前时间)
+            item.setRevTime(endTime);
+            item.setGenCycle(MyDateUtils.Date2yyyyMMddHH(endTime)/100);
+
+            //设置插入时间为当前时间
+            item.setInsertTime(new Date());
+        }
+
+        for (Factleachhisday factDay : factleachhisdays) {
+            log.info("facthour: {}", factDay);
+        }
+
+        //4.插入小时表(批量提交)
+        if(!factleachhisdays.isEmpty()) {
+            insertBatch(factleachhisdays);
+        }
+    }
+
+    @Override
+    public List<Factleachhisday> findByFactNumAndEqumNum(Integer factNum, String equmNum, Date beginTime, Date endTime) {
+
+        Wrapper<Factleachhisday> wrapper = new EntityWrapper<Factleachhisday>()
+                .eq("factNum", factNum)
+                .ge("revTime", beginTime).lt("revTime", endTime)
+                .orderBy("revTime", true);
+
+        if(!equmNum.isEmpty()) {
+            wrapper.eq("equmNum", equmNum);
+        }
+
+
+        return  selectList(wrapper);
+
+    }
+
+
+}

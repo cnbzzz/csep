@@ -1,0 +1,15 @@
+package com.infore.csep.pojo.recevier;
+
+import java.io.Serializable;
+
+/**
+ * This file is part of csep Project
+ * Created by cnbzzz (cnbzzz@126.com) on 2018/3/28 17:58
+ * Copyright (c) 2018 github.com/cnbzzz
+ */
+public class WorkingData implements Serializable {
+
+    private Byte start = 0x02;
+
+    private Byte[] stationCode = new Byte[5];
+}

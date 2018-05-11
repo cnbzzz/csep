@@ -1,0 +1,208 @@
+package com.infore.csep.common.service.impl;
+
+import com.baomidou.mybatisplus.mapper.EntityWrapper;
+import com.baomidou.mybatisplus.mapper.Wrapper;
+import com.baomidou.mybatisplus.service.IService;
+import com.baomidou.mybatisplus.service.impl.ServiceImpl;
+import com.google.common.base.Joiner;
+import com.infore.csep.common.ByteUtils;
+import com.infore.csep.common.CommonUtils;
+import com.infore.csep.common.netty.dto.FactleachPack;
+import com.infore.csep.common.service.*;
+import com.infore.csep.pojo.entity.*;
+import com.infore.csep.pojo.mapper.FactleachMapper;
+import lombok.NonNull;
+import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.beanutils.BeanUtils;
+import org.apache.commons.beanutils.ConvertUtils;
+import org.apache.commons.beanutils.converters.LongConverter;
+import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.text.SimpleDateFormat;
+import java.util.Arrays;
+import java.util.Date;
+import java.util.List;
+import java.util.Locale;
+
+/**
+ * <p>
+ * 服务实现类
+ * </p>
+ *
+ * @author bzzz
+ * @since 2018-04-17
+ */
+@Service
+@Slf4j
+public class FactleachServiceImpl extends ServiceImpl<FactleachMapper, Factleach> implements IFactleachService {
+
+    @Autowired
+    private IFactleachhisService factleachhisService;
+
+    @Autowired
+    private IFactleachtimeService factleachtimeService;
+
+    @Autowired
+    private IFactleachrunhisService factleachrunhisService;
+
+    @Autowired
+    private IFactleachalarmService factleachalarmService;
+
+    @Transactional(rollbackFor = {Exception.class})
+    public boolean handle(@NonNull FactleachPack pack) {
+        boolean result = true;
+        try {
+            Factleach factleach = handleFactleach(pack);
+
+            handleFactleachhis(pack, factleach);
+
+            handleRuntime(factleach, factleachtimeService, Factleachtime.class, PROP_NAME_LIST, factleachrunhisService, Factleachrunhis.class);
+
+            handleFactleachAlarm(factleach);
+        } catch (Exception e) {
+            log.error(e.getMessage(), e);
+            throw new RuntimeException(e.getMessage(), e);
+        }
+        return result;
+    }
+
+    private void handleFactleachAlarm(Factleach factleach) {
+        IJsWorker jsWorker = JsWorker.getJsWorker();
+        List<Factleachalarm> factleachalarms = jsWorker.gainFactleachalarmArray(factleach);
+
+        factleachalarmService.insertBatch(factleachalarms);
+    }
+
+    private Factleach handleFactleach(@NonNull FactleachPack pack) throws Exception {
+        Factleach factleach = new Factleach();
+        BeanUtils.copyProperties(factleach, pack);
+
+        StringBuilder sb = new StringBuilder();
+        byte[] bytes = pack.getFlagAll();
+        for (int i = 0; i < bytes.length; i++) {
+            sb.append(ByteUtils.byteToBit(bytes[i]));
+        }
+        String flagAll = sb.toString();
+        factleach.setFlagAll(flagAll);
+
+        Integer factNum = factleach.getFactNum();
+        String equmNum = factleach.getEqumNum();
+        Wrapper<Factleach> condition = new EntityWrapper<Factleach>().eq("factNum", factNum).eq("equmNum", equmNum);
+        Factleach one = selectOne(condition);
+
+        if (one == null) {
+            insert(factleach);
+        } else {
+            factleach.setId(one.getId());
+            updateById(factleach);
+        }
+        return factleach;
+    }
+
+    private Factleachhis handleFactleachhis(@NonNull FactleachPack pack, @NonNull Factleach factleach) throws Exception {
+        Factleachhis factleachhis = new Factleachhis();
+        BeanUtils.copyProperties(factleachhis, factleach);
+        factleachhis.setId(null);
+        factleachhis.setCommand(pack.getCommand());
+        factleachhis.setDataType(pack.getDataType());
+        factleachhis.setEqumSeq(pack.getEqumSeq());
+        factleachhisService.insert(factleachhis);
+        return factleachhis;
+    }
+
+    public <T, H> void handleRuntime(Object runtimeBean, IService runTimeService, Class<T> runTimeClazz, List<String> runTimePropList, IService runTimeHisService, Class<H> runTimeHisClazz) throws Exception {
+        final String FACTNUM = "factNum";
+        final String EQUMNUM = "equmNum";
+        String factNum = BeanUtils.getProperty(runtimeBean, FACTNUM); //厂站编号
+        String equmNum = BeanUtils.getProperty(runtimeBean, EQUMNUM); //设备出厂编号
+
+        T t = (T) runTimeService.selectOne(new EntityWrapper<T>().eq(FACTNUM, factNum).eq(EQUMNUM, equmNum));
+        if (t == null) {
+            t = runTimeClazz.newInstance();
+            BeanUtils.setProperty(t, FACTNUM, factNum);
+            BeanUtils.setProperty(t, EQUMNUM, equmNum);
+        }
+
+        String flagAll = BeanUtils.getProperty(runtimeBean, "flagAll");
+        if(StringUtils.isBlank(flagAll)){
+            flagAll = BeanUtils.getProperty(runtimeBean, "allFlag");
+        }
+        for (int i = 0; i < runTimePropList.size(); i++) {
+            String propName = runTimePropList.get(i);
+            if (StringUtils.isBlank(propName)) {
+                continue;
+            }
+            String newVal = flagAll.substring(i, i + 1);
+            handleRunhis(t, propName, Integer.parseInt(newVal), runTimeHisService, runTimeHisClazz);
+        }
+        if(BeanUtils.getProperty(t, "id") == null) {
+            runTimeService.insert(t);
+        } else {
+            runTimeService.updateById(t);
+        }
+    }
+
+    private <T> void handleRunhis(Object bean, String propName, Integer newVal, IService service, Class<T> clazz) throws
+            Exception {
+        if (newVal == null) {
+            return;
+        }
+        String oldVal = BeanUtils.getProperty(bean, propName);
+        if (!(newVal.toString().equals(oldVal))) {
+            BeanUtils.setProperty(bean, propName, newVal);
+            Date now = new Date();
+            String sTimePropName = propName + "s";
+            String eTimePropName = propName + "e";
+            if (oldVal == null) {
+                BeanUtils.setProperty(bean,
+                        sTimePropName, now);
+                BeanUtils.setProperty(bean,
+                        eTimePropName, now);
+            }
+            if ("0".equals(oldVal) && newVal == 1) { //从0变成1
+                BeanUtils.setProperty(bean,
+                        sTimePropName, now);
+
+            }
+            if ("1".equals(oldVal) && newVal == 0) { //从1变成0
+                BeanUtils.setProperty(bean,
+                        eTimePropName, now);
+
+                T t = clazz.newInstance();
+                ConvertUtils.register(new LongConverter(null), Long.class);
+                BeanUtils.copyProperties(t, bean);
+                BeanUtils.setProperty(t, "id", null);
+                BeanUtils.setProperty(t, "setBitname", propName);
+                String sTimeStr = BeanUtils.getProperty(bean, sTimePropName);
+                BeanUtils.setProperty(t, "sTime", propToDate(sTimeStr));
+                BeanUtils.setProperty(t, "eTime", now);
+                service.insert(t);
+            }
+        }
+    }
+
+    private static Date propToDate(String str) throws Exception {
+        return new SimpleDateFormat("E MMM dd hh:mm:ss z yyyy", Locale.US).parse(str);
+    }
+
+    private List<String> PROP_NAME_LIST = Arrays.asList("factMan", "factAuto", "factOnestep", "syspBoot", "sysaBoot", "sysbBoot", "sysaWash", "sysaSand", "sysaChem", "sysbChem", "factTermn", "factRest", "factOnefin", "syspTermn", "sysaTermn", "sysbTermn", "sysaChemtermn", "sysbChemtermn", "syspStfin", "sysaStfin", "sysbStfin", "sysbTermnfin", "sysaTermnfin", "syspTermnfin", "sysaWashfin", "sysaSandfin", "sysaSandSrcfin", "sysaSandWfin", "sysaChemTfin", "sysbChemTfin", "resvF1", "factLock", "syspSpumpS", "syspSrcpumpS", "syspClnpumpS", "syspHeat", "sysaPpumpS", "sysaSandAS", "sysaOpumpS", "sysaOutAS", "syspApresS", "sysaHpumpS", "sysbHpumpS", "syspScapumpS", "syspAcpumpS", "syspSrcpumpaS", "syspCpumpaS", "syspCpumpcS", "", "syspSpumpr", "", "syspSrcpumpr", "", "syspClnpumpr", "", "sysaPpumpr", "", "sysaSandAr", "", "sysaOpumpr", "", "sysaOutAr", "", "syspApresr", "", "syspCpumpar", "", "syspCpumpcr", "", "sysaHpumpr", "", "sysbHpumpr", "syspApresT", "sysaEspT", "sysbHpumpreT", "sysbPremT", "syspAlT", "syspScaT", "syspSrcT", "syspSrcreT", "syspClnT", "sysaPpumpT", "syspClnTQS", "sysbHpumpTQS", "sysaSandAQS", "sysaEspTQS", "QV17031S", "QV19411S", "sysaPpumpTQS", "QV13111S", "QV13151S", "QV13121S", "QV13081S", "QV13161S", "QV17011S", "sysaPremTQS", "sysaPremTaQS", "QV27011S", "QV21011S", "sysbPremTQS", "sysbPremTaQS", "sysbValveTQS", "sysaValveTQOS", "sysaValveTQCS", "sysaValveTaQOS", "sysaValveTaQCS", "sysbValveTaQOS", "sysbValveTaQCS", "syspClnTQr", "sysbHpumpTQr", "sysaSandAQr", "sysaEspTQr", "QV17031r", "QV19411r", "sysaPpumpTQr", "QV13111r", "QV13151r", "QV13121r", "QV13081r", "QV13161r", "QV17011r", "sysaPremTQr", "sysaPremTaQr", "QV27011r", "QV21011r", "sysbPremTQr", "sysbPremTaQr", "sysbValveTQr", "sysaValveTQOr", "sysaValveTQCr", "sysaValveTaQOr", "sysaValveTaQCr", "sysbValveTaQOr", "sysbValveTaQCr");
+
+    public static void main(String[] args) throws Exception {
+        List<Integer> ignoreIndexList = Arrays.asList(48, 50, 52, 54, 56, 58, 60, 62, 64, 66, 68, 70);
+        List<String> fieldList = CommonUtils.getFillFieldList(Factleachtime.class, ignoreIndexList);
+
+
+        System.err.println(fieldList.size());
+        System.err.println(Joiner.on(", ").join(fieldList));
+
+        Factleachtime aa = new Factleachtime();
+        aa.setFactLocke(new Date());
+
+        String factLocke = BeanUtils.getProperty(aa, "factLocke");
+        BeanUtils.setProperty(aa, "factLocke", factLocke);
+        System.err.println(aa.getFactLocke());
+    }
+}

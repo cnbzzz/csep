@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.infore.csep.pojo.mapper.FactleachsyspphisMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.infore.csep.pojo.entity.Factleachsyspphis">
+        <id column="id" property="id" />
+        <result column="command" property="command" />
+        <result column="revTime" property="revTime" />
+        <result column="equmSeq" property="equmSeq" />
+        <result column="equmID" property="equmID" />
+        <result column="equmType" property="equmType" />
+        <result column="factNum" property="factNum" />
+        <result column="equmNum" property="equmNum" />
+        <result column="dataType" property="dataType" />
+        <result column="syspSrcBy" property="syspSrcBy" />
+        <result column="syspClnBy" property="syspClnBy" />
+        <result column="syspSpumpBls" property="syspSpumpBls" />
+        <result column="syspSpumpBle" property="syspSpumpBle" />
+        <result column="syspSrcpumpBls" property="syspSrcpumpBls" />
+        <result column="syspSrcpumpBle" property="syspSrcpumpBle" />
+        <result column="syspAcpumpBls" property="syspAcpumpBls" />
+        <result column="syspClnpumpBls" property="syspClnpumpBls" />
+        <result column="syspClnpumpBle" property="syspClnpumpBle" />
+        <result column="syspClnoutBlo" property="syspClnoutBlo" />
+        <result column="syspClnoutBlc" property="syspClnoutBlc" />
+        <result column="syspSrcByl" property="syspSrcByl" />
+        <result column="syspSrcByldelay" property="syspSrcByldelay" />
+        <result column="syspSrcByh" property="syspSrcByh" />
+        <result column="syspSrcByhdelay" property="syspSrcByhdelay" />
+        <result column="syspClnByl" property="syspClnByl" />
+        <result column="syspClnByldelay" property="syspClnByldelay" />
+        <result column="syspClnByh" property="syspClnByh" />
+        <result column="syspClnByhdelay" property="syspClnByhdelay" />
+        <result column="syspSrcBll" property="syspSrcBll" />
+        <result column="syspSrcBlh" property="syspSrcBlh" />
+        <result column="syspClnBll" property="syspClnBll" />
+        <result column="syspClnBlh" property="syspClnBlh" />
+        <result column="syspAirpresldelay" property="syspAirpresldelay" />
+        <result column="cout" property="cout" />
+        <result column="equipmentNo" property="equipmentNo" />
+        <result column="plcComm" property="plcComm" />
+    </resultMap>
+
+</mapper>

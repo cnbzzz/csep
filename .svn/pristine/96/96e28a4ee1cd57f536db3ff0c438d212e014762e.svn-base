@@ -1,0 +1,156 @@
+package com.infore.csep.pojo.entity;
+
+import java.util.Date;
+import com.baomidou.mybatisplus.activerecord.Model;
+import java.io.Serializable;
+
+import com.baomidou.mybatisplus.annotations.Version;
+
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.experimental.Accessors;
+
+/**
+ * <p>
+ * 
+ * </p>
+ *
+ * @author bzzz
+ * @since 2018-04-17
+ */
+@Data
+@Accessors(chain = true)
+public class Factsewa extends Model<Factsewa> {
+
+    private static final long serialVersionUID = 1L;
+
+    private Long id;
+    private Date revTime;
+    private Integer equmType;
+    private Integer factNum;
+    private String equmNum;
+    private Integer dataType;
+    private Integer valCod;
+    private Integer valNitr;
+    private Integer valNih;
+    private Integer valPho;
+    private Integer valOutss;
+    private Integer valOutBy;
+    private Integer valOutTemp;
+    private Integer valRuntime;
+    private Integer valSrc;
+    private Integer valPowpt;
+    private Integer valPower;
+    private Integer valMBR1;
+    private Integer valMBR2;
+    private Integer valMBR3;
+    private Integer valMBR4;
+    private Integer valMBR5;
+    private Integer valMBR6;
+    private Integer valMBR7;
+    private Integer valMBR8;
+    private Integer valMBR9;
+    private Integer valMBR10;
+    private Integer valMBRsum1;
+    private Integer valMBRsum2;
+    private Integer valMBRsum3;
+    private Integer valMBRsum4;
+    private Integer valMBRsum5;
+    private Integer valMBRsum6;
+    private Integer valMBRsum7;
+    private Integer valMBRsum8;
+    private Integer valMBRsum9;
+    private Integer valMBRsum10;
+    private String allFlag;
+    private Integer valInBL;
+    private Integer valPoolBL;
+    private Integer valSandBL;
+    private Integer valSdgBL;
+    private Integer setSubPumpHZ1;
+    private Integer setSubPumpHZ2;
+    private Integer setSubPumpHZ3;
+    private Integer setAcHZ;
+    private Integer setAlHZ;
+    private Integer setReclnSdelay1;
+    private Integer setReclnEdelay1;
+    private Integer setReclnR1;
+    private Integer setReclnSdelay2;
+    private Integer setReclnEdelay2;
+    private Integer setReclnR2;
+    private Integer setPiPumpSdelay1;
+    private Integer setPiPumpEdelay1;
+    private Integer setPiPumpR1;
+    private Integer setPiPumpSdelay2;
+    private Integer setPiPumpEdelay2;
+    private Integer setPiPumpR2;
+    private Integer setConvSdelay;
+    private Integer setConvEdelay;
+    private Integer setConvR;
+    private Integer setSplSdelay;
+    private Integer setSplEdelay;
+    private Integer setSplR;
+    private Integer setAgitSdelay;
+    private Integer setAgitEdelay;
+    private Integer setAgitR;
+    private Integer setSdgPumpSdelay;
+    private Integer setSdgPumpEdelay;
+    private Integer setSdgPumpR;
+    private Integer setSubPumpSdelay1;
+    private Integer setSubPumpEdelay1;
+    private Integer setSubPumpR1;
+    private Integer setSubPumpSdelay2;
+    private Integer setSubPumpEdelay2;
+    private Integer setSubPumpR2;
+    private Integer setSubPumpSdelay3;
+    private Integer setSubPumpEdelay3;
+    private Integer setSubPumpR;
+    private Integer setFltSdelay;
+    private Integer setFltEdelay;
+    private Integer setFltR;
+    private Integer setRwPumpSdelay;
+    private Integer setRwPumpEdelay;
+    private Integer setRwPumpR;
+    private Integer setAcPumpSdelay;
+    private Integer setAcPumpEdelay;
+    private Integer setAcpumpR;
+    private Integer setAlPumpSdelay;
+    private Integer setAlPumpEdelay;
+    private Integer setAlPumpR;
+    private Integer setPACagSdelay;
+    private Integer setPACagEdelay;
+    private Integer setPACagR;
+    private Integer setPACpSdelay;
+    private Integer setPACpEdelay;
+    private Integer setPACpR;
+    private Integer setRwQSdelay1;
+    private Integer setRwQEdelay1;
+    private Integer setRwQR1;
+    private Integer setRwQSdelay2;
+    private Integer setRwQEdelay2;
+    private Integer setRwQR2;
+    private Integer setRwQSdelay3;
+    private Integer setRwQEdelay3;
+    private Integer setRwQR3;
+    private Integer setRwInQSdelay;
+    private Integer setRwInQEdelay;
+    private Integer setRwInR;
+    private Integer setPACInQSdelay;
+    private Integer setPACInQEdelay;
+    private Integer setPACInQR;
+    private Integer setInBLH;
+    private Integer setINBLL;
+    private Integer setPoolBLH;
+    private Integer setPoolBLL;
+    private Integer setSandBLH;
+    private Integer SetSandBLL;
+    private Integer setSdgBLH;
+    private Integer setSdgBLL;
+    private Integer count;
+
+
+    @Override
+    protected Serializable pkVal() {
+        return this.id;
+    }
+
+}

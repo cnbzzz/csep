@@ -1,0 +1,75 @@
+package com.infore.csep.gpsreceiver.param;
+
+import com.infore.csep.gpsreceiver.conf.GpsServerConf;
+import com.infore.csep.gpsreceiver.utils.Md5Util;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+import java.io.UnsupportedEncodingException;
+import java.util.LinkedHashMap;
+import java.util.Map;
+
+/**
+ * Created by steven ma
+ * 2018/4/26 20:14
+ */
+
+@Slf4j
+@Component
+public class BaseReqParam {
+
+    @Autowired
+    private GpsServerConf conf;
+
+
+    public String genTokenBase(String apiuser, String snid, String methodName,
+                               String cmdid, String terminalid, String apiusermd5) throws Exception {
+        String str = apiuser + snid + methodName + cmdid + terminalid + apiusermd5;
+
+        //log.info("str: {}", str);
+
+        return Md5Util.md5Encode(str);
+
+    }
+
+    public String genToken(String snid, String methodName,
+                           String cmdid, String terminalid) throws Exception {
+
+        return genTokenBase(conf.getApiuser(), snid, methodName,
+                cmdid, terminalid, conf.getApiusermd5());
+
+    }
+
+    public String genBaseReqParam(String snid, String methodName,
+                                  String cmdid, String terminalid) throws Exception {
+
+        String token = genToken(snid, methodName, cmdid, terminalid);
+
+        Map<String, String> parameters = new LinkedHashMap<String, String>();
+
+        parameters.put("apiuser", conf.getApiuser());
+        parameters.put("snid", snid);
+        //parameters.put("methodName", methodName);
+        parameters.put("cmdid", cmdid);
+        parameters.put("terminalid", terminalid);
+        parameters.put("token", token);
+
+        return genParamByMap(parameters);
+    }
+
+    public String genParamByMap(Map<String, String> params) throws UnsupportedEncodingException {
+        StringBuilder url = new StringBuilder();
+
+        for (String key : params.keySet()) {
+            String value = params.get(key);
+            value = java.net.URLEncoder.encode(value, "utf-8");
+            url.append(key).append("=").append(value).append("&");
+        }
+        url.deleteCharAt(url.length() - 1);
+
+        return url.toString();
+    }
+
+
+}

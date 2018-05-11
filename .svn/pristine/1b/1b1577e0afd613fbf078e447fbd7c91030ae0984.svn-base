@@ -1,0 +1,26 @@
+package com.infore.csep.common;
+
+import io.netty.channel.ChannelHandler;
+import io.netty.channel.ChannelInitializer;
+import io.netty.channel.ChannelPipeline;
+import io.netty.channel.socket.SocketChannel;
+
+import java.util.Random;
+
+/**
+ * This file is part of csep Project
+ * Created by cnbzzz (cnbzzz@126.com) on 2018/3/28 15:26
+ * Copyright (c) 2018 github.com/cnbzzz
+ */
+public class CommonUtils {
+
+
+    public static String genRandomCode(int len) {
+        int seed = (10 * len) - 1;
+        Random random = new Random();
+        int i = random.nextInt(seed);
+        return String.format("%0" + len + "d", i);
+    }
+
+
+}

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.infore.csep.pojo.mapper.FactleachhisMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.infore.csep.pojo.entity.Factleachhis">
+        <id column="id" property="id" />
+        <result column="command" property="command" />
+        <result column="revTime" property="revTime" />
+        <result column="equmSeq" property="equmSeq" />
+        <result column="equmID" property="equmID" />
+        <result column="equmType" property="equmType" />
+        <result column="factNum" property="factNum" />
+        <result column="equmNum" property="equmNum" />
+        <result column="dataType" property="dataType" />
+        <result column="flagAll" property="flagAll" />
+        <result column="syspInBy" property="syspInBy" />
+        <result column="syspSrcBy" property="syspSrcBy" />
+        <result column="syspClnBy" property="syspClnBy" />
+        <result column="sysaEspBy" property="sysaEspBy" />
+        <result column="sysaPreSandBp" property="sysaPreSandBp" />
+        <result column="sysaPosSandBp" property="sysaPosSandBp" />
+        <result column="sysaHpumpPre" property="sysaHpumpPre" />
+        <result column="sysaHpumpPos" property="sysaHpumpPos" />
+        <result column="sysaOpumpP" property="sysaOpumpP" />
+        <result column="sysaPremBp" property="sysaPremBp" />
+        <result column="sysbHpumpPos" property="sysbHpumpPos" />
+        <result column="syspSrcBl" property="syspSrcBl" />
+        <result column="syspBufBl" property="syspBufBl" />
+        <result column="syspClnBl" property="syspClnBl" />
+        <result column="syspSrcBn" property="syspSrcBn" />
+        <result column="sysaPreSandBn" property="sysaPreSandBn" />
+        <result column="sysaPremBn" property="sysaPremBn" />
+        <result column="sysaEspBn" property="sysaEspBn" />
+        <result column="sysbPremBn" property="sysbPremBn" />
+        <result column="sysbEspBn" property="sysbEspBn" />
+        <result column="sysaPremBf" property="sysaPremBf" />
+        <result column="sysbPremBf" property="sysbPremBf" />
+        <result column="sysaTemp" property="sysaTemp" />
+        <result column="sysbTemp" property="sysbTemp" />
+        <result column="sysaHpumpHz" property="sysaHpumpHz" />
+        <result column="sysbHpumpHz" property="sysbHpumpHz" />
+        <result column="syspAcpumpHz" property="syspAcpumpHz" />
+        <result column="syspAlpumpHz" property="syspAlpumpHz" />
+        <result column="reservV1" property="reservV1" />
+        <result column="reservV2" property="reservV2" />
+        <result column="reservV3" property="reservV3" />
+        <result column="factRunHour" property="factRunHour" />
+        <result column="factOut" property="factOut" />
+        <result column="factPower" property="factPower" />
+        <result column="factIn" property="factIn" />
+        <result column="factSrc" property="factSrc" />
+        <result column="factEsp" property="factEsp" />
+        <result column="factCln" property="factCln" />
+        <result column="factCod" property="factCod" />
+        <result column="factNitr" property="factNitr" />
+        <result column="reservV4" property="reservV4" />
+        <result column="reservV5" property="reservV5" />
+        <result column="reservV6" property="reservV6" />
+        <result column="cout" property="cout" />
+        <result column="equipmentNo" property="equipmentNo" />
+        <result column="plcComm" property="plcComm" />
+    </resultMap>
+
+    <select id="findFactleachByHour" resultType="com.infore.csep.pojo.entity.FactLeachHisHour">
+         SELECT
+            MAX(syspInby) AS syspInbyMax,
+            MIN(syspInby) AS syspInbyMin,
+            AVG(syspInby) AS syspInByAvg
+         FROM
+            factLeachHis
+         WHERE
+            revTime &gt;= #{beginDate} AND revTime &lt; #{endDate}
+
+    </select>
+
+</mapper>

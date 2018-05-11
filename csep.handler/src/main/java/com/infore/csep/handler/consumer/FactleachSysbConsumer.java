@@ -1,0 +1,31 @@
+package com.infore.csep.handler.consumer;
+
+import com.github.cnbzzz.spring.boot.starter.rocketmq.annotation.RocketMQMessageListener;
+import com.github.cnbzzz.spring.boot.starter.rocketmq.core.RocketMQListener;
+import com.google.common.base.Preconditions;
+import com.infore.csep.common.netty.dto.FactleachSysbPPack;
+import com.infore.csep.common.service.IFactleachsysbphisService;
+import com.infore.csep.pojo.rocketmq.TopicName;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+/**
+ * This file is part of csep Project
+ * Created by cnbzzz (cnbzzz@126.com) on 2018/4/24 18:26
+ * Copyright (c) 2018 github.com/cnbzzz
+ */
+@Slf4j
+@Service
+@RocketMQMessageListener(topic = TopicName.PLC_24, consumerGroup = TopicName.PLC_24)
+public class FactleachSysbConsumer implements RocketMQListener<FactleachSysbPPack> {
+
+    @Autowired
+    private IFactleachsysbphisService service;
+
+    @Override
+    public void onMessage(FactleachSysbPPack pack) throws Exception {
+        boolean b = service.hander(pack);
+        Preconditions.checkState(b);
+    }
+}

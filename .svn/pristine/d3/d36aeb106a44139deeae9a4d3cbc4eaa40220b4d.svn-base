@@ -1,0 +1,47 @@
+package com.infore.csep.pojo.service.impl;
+
+import com.baomidou.mybatisplus.mapper.EntityWrapper;
+import com.baomidou.mybatisplus.mapper.Wrapper;
+import com.infore.csep.pojo.entity.FactLeachHisHour;
+import com.infore.csep.pojo.entity.Factleachhis;
+import com.infore.csep.pojo.mapper.FactLeachHisHourMapper;
+import com.infore.csep.pojo.mapper.FactleachhisMapper;
+import com.infore.csep.pojo.service.IFactLeachHisHourService;
+import com.baomidou.mybatisplus.service.impl.ServiceImpl;
+import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.time.DateFormatUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+
+import java.util.Date;
+import java.util.List;
+
+/**
+ * <p>
+ *  服务实现类
+ * </p>
+ *
+ * @author bzzz
+ * @since 2018-04-17
+ */
+@Service
+@Slf4j
+public class FactLeachHisHourServiceImpl extends ServiceImpl<FactLeachHisHourMapper, FactLeachHisHour> implements IFactLeachHisHourService {
+
+    @Autowired
+    private FactleachhisMapper factleachhisMapper;
+
+    @Override
+    public List<Factleachhis> findFactleachhisByDate(Date beginDate, Date endDate) {
+
+        log.info("findFactleachhisByDate:{}|{}",
+                DateFormatUtils.format(beginDate,"yyyy-MM-dd HH:mm:ss"),
+                DateFormatUtils.format(endDate,"yyyy-MM-dd HH:mm:ss"));
+
+        Wrapper<Factleachhis> wrapper = new EntityWrapper<Factleachhis>().ge("revTime", beginDate).lt("revTime", endDate);
+
+        return factleachhisMapper.selectList(wrapper);
+
+    }
+}

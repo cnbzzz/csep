@@ -1,0 +1,77 @@
+package com.infore.csep.gpsreceiver.service;
+
+import com.infore.csep.gpsreceiver.param.BaseReqParam;
+import com.infore.csep.gpsreceiver.protocol.UpRsp;
+import com.infore.csep.gpsreceiver.utils.JsonUtil;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Service;
+
+/**
+ * Created by steven ma
+ * 2018/5/7 16:41
+ */
+
+/**
+ * 处理上传数据业务
+ */
+@Slf4j
+@Service
+public class UpService extends BaseReqParam {
+
+    /**
+     * 公共发送函数，返回上传结果结构体
+     * @return
+     * @throws Exception
+     */
+    private UpRsp Send() throws Exception {
+
+        //发送报文
+        String response = SendReq();
+
+        //返回文本转为对象
+        UpRsp upRsp = JsonUtil.toObject(response, UpRsp.class);
+        log.info("obj: {}", upRsp);
+
+        //获取对象数据
+        log.info("Datacontent: {}", upRsp.getDatas().getDirectiveUpload().getDatacontent());
+
+        return upRsp;
+    }
+
+    /**
+     * 上传--实时位置数据
+     * @param terminalid
+     * @throws Exception
+     */
+    public void uploadCurrentLocation(String terminalid) throws Exception {
+
+        //组装报文
+        this.setMethodName("uploadCurrentLocation");
+        this.setCmdid("18");
+        this.setTerminalid(terminalid);
+
+        UpRsp upRsp = Send();
+
+        //TODO: 位置信息业务逻辑
+
+    }
+
+    /**
+     *  上传-实时设备工况数据
+     * @param terminalid
+     * @throws Exception
+     */
+    public void uploadCurrentConditionData(String terminalid) throws Exception {
+
+        //组装报文
+        this.setMethodName("uploadCurrentLocation");
+        this.setCmdid("15"); //暂时用15，文档为(0xCA、0xCB、0xCC)
+        this.setTerminalid(terminalid);
+
+        UpRsp upRsp = Send();
+
+        //TODO: 工况业务逻辑
+
+    }
+
+}

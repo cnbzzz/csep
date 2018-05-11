@@ -1,0 +1,236 @@
+package com.infore.csep.gpsreceiver.param;
+
+import com.infore.csep.gpsreceiver.conf.GpsServerConf;
+import com.infore.csep.gpsreceiver.encrypt.DESWapper;
+import com.infore.csep.gpsreceiver.protocol.ResultRsp;
+import com.infore.csep.gpsreceiver.utils.HttpClientUtil;
+import com.infore.csep.gpsreceiver.utils.JsonUtil;
+import com.infore.csep.gpsreceiver.utils.Md5Util;
+import lombok.Data;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+import javax.swing.*;
+import java.io.UnsupportedEncodingException;
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
+import java.util.LinkedHashMap;
+import java.util.Map;
+
+/**
+ * Created by steven ma
+ * 2018/4/26 20:14
+ */
+
+@Slf4j
+@Component
+@Data
+public class BaseReqParam {
+
+    @Autowired
+    private GpsServerConf conf;
+
+    @Autowired
+    private DESWapper desWapper;
+
+    //private String snid;
+    private String methodName;
+    private String cmdid;
+    private String terminalid;
+
+    /**
+     * 根据所有字段生成token
+     * @param apiuser
+     * @param snid
+     * @param methodName
+     * @param cmdid
+     * @param terminalid
+     * @param apiusermd5
+     * @return
+     * @throws Exception
+     */
+    private String genTokenBase(String apiuser, String snid, String methodName,
+                               String cmdid, String terminalid, String apiusermd5) throws Exception {
+        String str = apiuser + snid + methodName + cmdid + terminalid + apiusermd5;
+
+        //log.info("str: {}", str);
+
+        return Md5Util.md5Encode(str);
+
+    }
+
+    /**
+     * 从配置文件获取全局的参数再生成
+     * @param snid
+     * @param methodName
+     * @param cmdid
+     * @param terminalid
+     * @return
+     * @throws Exception
+     */
+    private String genToken(String snid, String methodName,
+                           String cmdid, String terminalid) throws Exception {
+
+        return genTokenBase(conf.getApiuser(), snid, methodName,
+                cmdid, terminalid, conf.getApiusermd5());
+
+    }
+
+    /**
+     * 根据输入的参数及子类的属性，生成请求参数
+     * @param snid
+     * @param methodName
+     * @param cmdid
+     * @param terminalid
+     * @return
+     * @throws Exception
+     */
+    public String genBaseReqParam(String snid, String methodName,
+                                  String cmdid, String terminalid) throws Exception {
+
+        String token = genToken(snid, methodName, cmdid, terminalid);
+
+        Map<String, String> parameters = new LinkedHashMap<String, String>();
+
+        parameters.put("apiuser", conf.getApiuser());
+        parameters.put("snid", snid);
+        //parameters.put("methodName", methodName);
+        parameters.put("cmdid", cmdid);
+        parameters.put("terminalid", terminalid);
+        parameters.put("token", token);
+
+        addChildField(parameters);
+
+        return genParamByMap(parameters);
+    }
+
+    private String genParamByMap(Map<String, String> params) throws UnsupportedEncodingException {
+        StringBuilder url = new StringBuilder();
+
+        for (String key : params.keySet()) {
+            String value = params.get(key);
+            if(value == null) {
+                value = "";
+            }
+
+            value = java.net.URLEncoder.encode(value, "utf-8");
+            url.append(key).append("=").append(value).append("&");
+        }
+        url.deleteCharAt(url.length() - 1);
+
+        return url.toString();
+    }
+
+
+    // 把一个字符串的第一个字母大写、效率是最高的、
+    private static String getMethodName(String fildeName) throws Exception{
+        byte[] items = fildeName.getBytes();
+        items[0] = (byte) ((char) items[0] - 'a' + 'A');
+        return new String(items);
+    }
+
+    /**
+     * 利用反射机制获取子类的属性进行填充
+     * @param params
+     * @throws Exception
+     */
+    protected   void addChildField(Map<String, String> params) throws Exception{
+        Field[] fields = this.getClass().getDeclaredFields();
+
+        for(int i = 0; i < fields.length; i++) {
+            String name = fields[i].getName();
+            //只有字符串类型的才添加 TODO:可能存在不添加的属性
+            if (fields[i].getGenericType().toString().equals("class java.lang.String")) {
+
+                Method m = this.getClass().getMethod("get" + getMethodName(name));
+                String value = (String) m.invoke(this);
+
+                if(value != null) {
+                    log.info("{} => {}", name, value);
+                }else {
+                    value = "";
+                    log.error("Value is null: {}", name);
+                }
+
+                params.put(name, value);
+
+            }
+
+        }
+    }
+
+    /**
+     * 生成访问流水，目前只简单取系统毫秒
+     * @return
+     */
+    private String genSnid() {
+
+        long time =  System.currentTimeMillis();
+        String snid = String.format("%d", time);
+
+        log.info("unix time: {}", snid);
+
+        return snid;
+    }
+
+    public String SendReq() throws Exception {
+
+        //组装参数
+        String url = conf.getServerurl() + "/" ;
+
+        String perfix = methodName + "?";
+        String params = genBaseReqParam(genSnid(), methodName, cmdid, terminalid);
+
+        log.info("url: {}{}", url, perfix+params);
+
+        //参数加密后生成请求链接
+        url += desWapper.encode(perfix + params);
+        log.info("Url: {}", url);
+
+        //发起请求，并返回结果
+        String result = HttpClientUtil.get(url);
+        log.info("Result: {}", result);
+
+        //结果映射
+        ResultRsp reqRet = JsonUtil.toObject(result, ResultRsp.class);
+
+        //TODO: 可能需要对code的情况做一些判断
+        log.info("Result code: {}", reqRet.getCode());
+
+
+        //结果解密
+        String decodeRet = desWapper.decode(reqRet.getEncrypt());
+        log.info("Decode: {}",decodeRet);
+
+
+        //将解密后的结果返回
+        return jsonString(decodeRet);
+    }
+
+
+
+    /**
+     * 暂时解决返回的json带有双引号的情况
+     * @param s
+     * @return
+     */
+    private static String jsonString(String s) {
+        char[] temp = s.toCharArray();
+        int n = temp.length;
+        for (int i = 0; i < n; i++) {
+            if (temp[i] == ':' && temp[i + 1] == '"') {
+                for (int j = i + 2; j < n; j++) {
+                    if (temp[j] == '"') {
+                        if (temp[j + 1] != ',' && temp[j + 1] != '}') {
+                            temp[j] = '”';
+                        } else if (temp[j + 1] == ',' || temp[j + 1] == '}') {
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+        return new String(temp);
+    }
+}

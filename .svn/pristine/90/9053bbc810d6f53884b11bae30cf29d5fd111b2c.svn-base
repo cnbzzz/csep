@@ -1,0 +1,21 @@
+package com.infore.csep.handler.consumer;
+
+import com.github.cnbzzz.spring.boot.starter.rocketmq.annotation.RocketMQMessageListener;
+import com.github.cnbzzz.spring.boot.starter.rocketmq.core.RocketMQListener;
+import com.infore.csep.pojo.demo.OrderPaidEvent;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Service;
+
+/**
+ * This file is part of csep Project
+ * Created by cnbzzz (cnbzzz@126.com) on 2018/3/23 20:56
+ * Copyright (c) 2018 github.com/cnbzzz
+ */
+@Slf4j
+@Service
+@RocketMQMessageListener(topic = "topic2", consumerGroup = "topic2")
+public class OrderPaidEventConsumer implements RocketMQListener<OrderPaidEvent> {
+    public void onMessage(OrderPaidEvent orderPaidEvent) {
+        log.info("OrderPaidEventConsumer received orderPaidEvent: {}", orderPaidEvent);
+    }
+}

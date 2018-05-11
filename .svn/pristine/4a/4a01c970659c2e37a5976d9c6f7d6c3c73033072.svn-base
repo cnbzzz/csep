@@ -1,0 +1,109 @@
+package com.infore.csep.etl.TaskService;
+
+import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.time.DateFormatUtils;
+
+import java.util.Calendar;
+import java.util.Date;
+
+/**
+ * Created by steven ma
+ * 2018/4/19 14:15
+ */
+
+/**
+ * 定时任务基础类
+ */
+@Slf4j
+public class BaseTaskService {
+    private int intervalHour = 2; //间隔时间（小时）
+
+    /**
+     * 根据开始时间和间隔时间，计算结束时间
+     * @param beginTime
+     * @return
+     */
+    private Date calcEndTime(Date beginTime) {
+
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(beginTime);
+        cal.add(Calendar.HOUR, intervalHour);// 24小时制
+        Date edate = cal.getTime();
+
+        return edate;
+    }
+
+    /**
+     * 根据结束时间和当前时间决定是否可以开始任务
+     * @param endTime
+     * @return
+     */
+    private boolean isTimeToRun(Date endTime, Date taskStopTime)  {
+        // Date now = new Date();
+
+        //结束时间在当前时间之前，证明数据已经准备完成
+        if(endTime.before(taskStopTime)) {
+            return true;
+        }else {
+            return false;
+        }
+    }
+
+    /**
+     * 在指定的时间段在跑任务
+     * @param taskBeginTime 任务开始时间
+     * @param taskStopTime  任务结束时间
+     */
+    public void runTask(Date taskBeginTime, Date taskStopTime) {
+
+        Date nextBeginDate = taskBeginTime;
+        while (nextBeginDate != null) {
+            nextBeginDate = genDateByBeginTime(nextBeginDate, taskStopTime);
+        }
+
+    }
+
+    /**
+     * 从指定时间到当前执行任务
+     * @param taskBeginTime
+     */
+    public void runTask(Date taskBeginTime) {
+        runTask(taskBeginTime, new Date());
+    }
+
+    /**
+     * 根据开始时间计算结束时间，并决定是否开启任务
+     * @param beginTime
+     */
+    public Date genDateByBeginTime(Date beginTime, Date taskStopTime) {
+
+        log.info("beginTime:{}", DateFormatUtils.format(beginTime,"yyyy-MM-dd HH:mm:ss"));
+
+        Date endTime = calcEndTime(beginTime);
+        log.info("endTime:{}", DateFormatUtils.format(endTime,"yyyy-MM-dd HH:mm:ss"));
+
+
+        if(isTimeToRun(endTime, taskStopTime)) {
+            //可以开跑
+            //TODO: do sth...
+            doJob(beginTime, endTime);
+            //TODO: 更新结束时间为下次启动时间(数据库)
+            return endTime;
+
+        }else {
+            //还没到时间
+            log.info("It's not time to run");
+            return null;
+        }
+
+    }
+
+    /**
+     * 根据开始时间结束时间执行具体的任何，具体继承的类实现相应的逻辑
+     * @param beginTime
+     * @param endTime
+     */
+    public void doJob(Date beginTime , Date endTime) {
+        log.info("BaseTaskService");
+    }
+}

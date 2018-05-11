@@ -1,0 +1,70 @@
+package com.infore.csep.pojo.entity;
+
+import java.util.Date;
+import com.baomidou.mybatisplus.activerecord.Model;
+import java.io.Serializable;
+
+import com.baomidou.mybatisplus.annotations.Version;
+
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.experimental.Accessors;
+
+/**
+ * <p>
+ * 
+ * </p>
+ *
+ * @author bzzz
+ * @since 2018-04-17
+ */
+@Data
+@Accessors(chain = true)
+public class Factleachsyspphis extends Model<Factleachsyspphis> {
+
+    private static final long serialVersionUID = 1L;
+
+    private Long id;
+    private Integer command;
+    private Date revTime;
+    private Integer equmSeq;
+    private Long equmID;
+    private Integer equmType;
+    private Integer factNum;
+    private String equmNum;
+    private Integer dataType;
+    private Integer syspSrcBy;
+    private Integer syspClnBy;
+    private Integer syspSpumpBls;
+    private Integer syspSpumpBle;
+    private Integer syspSrcpumpBls;
+    private Integer syspSrcpumpBle;
+    private Integer syspAcpumpBls;
+    private Integer syspClnpumpBls;
+    private Integer syspClnpumpBle;
+    private Integer syspClnoutBlo;
+    private Integer syspClnoutBlc;
+    private Integer syspSrcByl;
+    private Integer syspSrcByldelay;
+    private Integer syspSrcByh;
+    private Integer syspSrcByhdelay;
+    private Integer syspClnByl;
+    private Integer syspClnByldelay;
+    private Integer syspClnByh;
+    private Integer syspClnByhdelay;
+    private Integer syspSrcBll;
+    private Integer syspSrcBlh;
+    private Integer syspClnBll;
+    private Integer syspClnBlh;
+    private Integer syspAirpresldelay;
+    private Integer cout;
+    private String equipmentNo;
+    private Integer plcComm;
+
+
+    @Override
+    protected Serializable pkVal() {
+        return this.id;
+    }
+
+}

@@ -1,0 +1,20 @@
+package com.infore.csep.pojo.service.impl;
+
+import com.infore.csep.pojo.entity.Factsewatime;
+import com.infore.csep.pojo.mapper.FactsewatimeMapper;
+import com.infore.csep.pojo.service.IFactsewatimeService;
+import com.baomidou.mybatisplus.service.impl.ServiceImpl;
+import org.springframework.stereotype.Service;
+
+/**
+ * <p>
+ *  服务实现类
+ * </p>
+ *
+ * @author bzzz
+ * @since 2018-04-17
+ */
+@Service
+public class FactsewatimeServiceImpl extends ServiceImpl<FactsewatimeMapper, Factsewatime> implements IFactsewatimeService {
+
+}

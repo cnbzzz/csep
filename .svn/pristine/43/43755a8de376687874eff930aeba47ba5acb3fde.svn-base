@@ -1,0 +1,49 @@
+package com.infore.csep.handler.consumer;
+
+import com.github.cnbzzz.spring.boot.starter.rocketmq.annotation.RocketMQMessageListener;
+import com.github.cnbzzz.spring.boot.starter.rocketmq.core.RocketMQListener;
+import com.infore.csep.common.ByteUtils;
+import com.infore.csep.common.netty.dto.FactLeachPack;
+import com.infore.csep.pojo.entity.Factleach;
+import com.infore.csep.pojo.rocketmq.TopicName;
+import com.infore.csep.pojo.service.IFactleachService;
+import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.beanutils.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.lang.reflect.InvocationTargetException;
+
+/**
+ * This file is part of csep Project
+ * Created by cnbzzz (cnbzzz@126.com) on 2018/4/17 16:36
+ * Copyright (c) 2018 github.com/cnbzzz
+ */
+
+@Slf4j
+@Service
+@RocketMQMessageListener(topic = TopicName.PLC_00, consumerGroup = TopicName.PLC_00)
+public class FactLeachConsumer implements RocketMQListener<FactLeachPack> {
+
+    @Autowired
+    private IFactleachService factLeachService;
+
+    @Override
+    public void onMessage(FactLeachPack pack) {
+        Factleach t = new Factleach();
+
+        try {
+            BeanUtils.copyProperties(t, pack);
+            StringBuilder sb = new StringBuilder();
+            byte[] bytes = pack.getFlagAll();
+            for (int i = 0; i < bytes.length; i++) {
+                sb.append(ByteUtils.byteToBit(bytes[i]));
+            }
+            t.setFlagAll(sb.toString());
+        } catch (Exception e) {
+            log.error(e.getMessage(), e);
+            throw new RuntimeException(e);
+        }
+        factLeachService.insert(t);
+    }
+}

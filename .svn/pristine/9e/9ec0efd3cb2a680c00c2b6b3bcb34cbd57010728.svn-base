@@ -1,0 +1,77 @@
+package com.infore.csep.pojo.entity;
+
+import java.util.Date;
+import com.baomidou.mybatisplus.activerecord.Model;
+import java.io.Serializable;
+
+import com.baomidou.mybatisplus.annotations.Version;
+
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.experimental.Accessors;
+
+/**
+ * <p>
+ * 
+ * </p>
+ *
+ * @author bzzz
+ * @since 2018-04-17
+ */
+@Data
+@Accessors(chain = true)
+public class Factleachsysbphis extends Model<Factleachsysbphis> {
+
+    private static final long serialVersionUID = 1L;
+
+    private Long id;
+    private Integer command;
+    private Date revTime;
+    private Integer equmSeq;
+    private Long equmID;
+    private Integer equmType;
+    private Integer factNum;
+    private String equmNum;
+    private Integer dataType;
+    private Integer sysbRec;
+    private Integer sysbIncomedelay;
+    private Integer sysbHpumpadelay;
+    private Integer sysbValvedelay;
+    private Integer sysbValvesetdelay;
+    private Integer sysbSrcwTime;
+    private Integer sysbAutodelay;
+    private Integer sysbChemPTime;
+    private Integer sysbWashBl;
+    private Integer sysbHpumpdelay;
+    private Integer sysbChemrec;
+    private Integer sysbChemimmtime;
+    private Integer sysbChemTime;
+    private Integer sysbSrcByh;
+    private Integer sysbPremBn;
+    private Integer sysbChemTempdelay;
+    private Integer sysbChemTemp;
+    private Integer sysbRunTempl;
+    private Integer sysbRunTempldelay;
+    private Integer sysbRunTemph;
+    private Integer sysbRunTemphdelay;
+    private Integer sysbOutBnh;
+    private Integer sysbOutBnhdelay;
+    private Integer sysbPremBlldelay;
+    private Integer sysbPremBll;
+    private Integer sysbPremBlhdelay;
+    private Integer sysbPremBlh;
+    private Integer sysbInclosedelay;
+    private Integer sysbPressH;
+    private Integer sysbPremBpdelay;
+    private Integer sysbValveClose;
+    private Integer cout;
+    private String equipmentNo;
+    private Integer plcComm;
+
+
+    @Override
+    protected Serializable pkVal() {
+        return this.id;
+    }
+
+}

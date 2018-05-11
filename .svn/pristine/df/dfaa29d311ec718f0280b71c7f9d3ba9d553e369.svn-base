@@ -1,0 +1,168 @@
+package com.infore.csep.pojo.entity;
+
+import java.util.Date;
+import com.baomidou.mybatisplus.activerecord.Model;
+import java.io.Serializable;
+
+import com.baomidou.mybatisplus.annotations.Version;
+
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.experimental.Accessors;
+
+/**
+ * <p>
+ * 
+ * </p>
+ *
+ * @author bzzz
+ * @since 2018-04-17
+ */
+@Data
+@Accessors(chain = true)
+public class Gpssewatime extends Model<Gpssewatime> {
+
+    private static final long serialVersionUID = 1L;
+
+    private Long id;
+    private String gpsNum;
+    private Integer valMan;
+    private Date valMans;
+    private Date valMane;
+    private Integer valAuto;
+    private Date valAutos;
+    private Date valAutoe;
+    private Integer setMan;
+    private Date setMans;
+    private Date setMane;
+    private Integer setAuto;
+    private Date setAutos;
+    private Date setAutoe;
+    private Integer setStart;
+    private Date setStarts;
+    private Date setStarte;
+    private Integer setStop;
+    private Date setStops;
+    private Date setStope;
+    private Integer setTerm;
+    private Date setTerms;
+    private Date setTerme;
+    private Integer setRest;
+    private Date setRests;
+    private Date setReste;
+    private Integer setSubBlowMan;
+    private Date setSubBlowMans;
+    private Date setSubBlowMane;
+    private Integer setAgit1man;
+    private Date setAgit1mans;
+    private Date setAgit1mane;
+    private Integer setAgit2Man;
+    private Date setAgit2Mans;
+    private Date setAgit2Mane;
+    private Integer setPiPumpMan;
+    private Date setPiPumpMans;
+    private Date setPiPumpMane;
+    private Integer setLiPumpMan;
+    private Date setLiPumpMans;
+    private Date setLiPumpMane;
+    private Integer setUvMan;
+    private Date setUvMans;
+    private Date setUvMane;
+    private Integer setMudValve;
+    private Date setMudValves;
+    private Date setMudValvee;
+    private Integer runSubBlow;
+    private Date runSubBlows;
+    private Date runSubBlowe;
+    private Integer runSubBlowOL;
+    private Date runSubBlowOLs;
+    private Date runSubBlowOLe;
+    private Integer runAgit1;
+    private Date runAgit1s;
+    private Date runAgit1e;
+    private Integer runAgit1OL;
+    private Date runAgit1OLs;
+    private Date runAgit1OLe;
+    private Integer runAgit2;
+    private Date runAgit2s;
+    private Date runAgit2e;
+    private Integer runAgit2OL;
+    private Date runAgit2OLs;
+    private Date runAgit2OLe;
+    private Integer runPiPump;
+    private Date runPiPumps;
+    private Date runPiPumpe;
+    private Integer runPipumpOL;
+    private Date runPipumpOLs;
+    private Date runPipumpOLe;
+    private Integer runLipump;
+    private Date runLipumps;
+    private Date runLipumpe;
+    private Integer runLipumpOL;
+    private Date runLipumpOLs;
+    private Date runLipumpOLe;
+    private Integer runUv;
+    private Date runUvs;
+    private Date runUve;
+    private Integer runUvOL;
+    private Date runUvOLs;
+    private Date runUvOLe;
+    private Integer runTankLl;
+    private Date runTankLls;
+    private Date runTankLle;
+    private Integer runTankL;
+    private Date runTankLs;
+    private Date runTankLe;
+    private Integer runTankH;
+    private Date runTankHs;
+    private Date runTankHe;
+    private Integer runMvC;
+    private Date runMvCs;
+    private Date runMvCe;
+    private Integer runMvO;
+    private Date runMvOs;
+    private Date runMvOe;
+    private Integer runLiL;
+    private Date runLiLs;
+    private Date runLiLe;
+    private Integer runTerm;
+    private Date runTerms;
+    private Date runTerme;
+    private Integer setSubBlow;
+    private Date setSubBlows;
+    private Date setSubBlowe;
+    private Integer setAgit1;
+    private Date setAgit1s;
+    private Date setAgit1e;
+    private Integer setAgit2;
+    private Date setAgit2s;
+    private Date setAgit2e;
+    private Integer setPiPump;
+    private Date setPiPumps;
+    private Date setPiPumpe;
+    private Integer setLiPump;
+    private Date setLiPumps;
+    private Date setLiPumpe;
+    private Integer setUv;
+    private Date setUvs;
+    private Date setUve;
+    private Integer setMvO;
+    private Date setMvOs;
+    private Date setMvOe;
+    private Integer setMvC;
+    private Date setMvCs;
+    private Date setMvCe;
+    private Integer setTScrn;
+    private Date setTScrns;
+    private Date setTScrne;
+    private Integer setLock;
+    private Date setLocks;
+    private Date setLocke;
+
+
+    @Override
+    protected Serializable pkVal() {
+        return this.id;
+    }
+
+}

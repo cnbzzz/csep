@@ -1,0 +1,72 @@
+package com.infore.csep.common.service.impl;
+
+import com.baomidou.mybatisplus.mapper.EntityWrapper;
+import com.baomidou.mybatisplus.mapper.Wrapper;
+import com.infore.csep.common.ByteUtils;
+import com.infore.csep.common.netty.dto.FactLeachPack;
+import com.infore.csep.common.service.IFactleachhisService;
+import com.infore.csep.pojo.entity.Factleach;
+import com.infore.csep.pojo.entity.Factleachhis;
+import com.infore.csep.pojo.mapper.FactleachMapper;
+import com.infore.csep.common.service.IFactleachService;
+import com.baomidou.mybatisplus.service.impl.ServiceImpl;
+import lombok.NonNull;
+import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.beanutils.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+/**
+ * <p>
+ *  服务实现类
+ * </p>
+ *
+ * @author bzzz
+ * @since 2018-04-17
+ */
+@Service
+@Slf4j
+public class FactleachServiceImpl extends ServiceImpl<FactleachMapper, Factleach> implements IFactleachService {
+
+    @Autowired
+    private IFactleachhisService factleachhisService;
+
+    public boolean saveFactleach(@NonNull FactLeachPack pack) {
+        boolean step1 = false;
+        boolean step2 = false;
+
+        try {
+            Factleach factleach = new Factleach();
+            BeanUtils.copyProperties(factleach, pack);
+
+            StringBuilder sb = new StringBuilder();
+            byte[] bytes = pack.getFlagAll();
+            for (int i = 0; i < bytes.length; i++) {
+                sb.append(ByteUtils.byteToBit(bytes[i]));
+            }
+            String flagAll = sb.toString();
+            factleach.setFlagAll(flagAll);
+
+            Long equmID = factleach.getEqumID(); // 客户端id
+            Wrapper<Factleach> condition = new EntityWrapper<Factleach>().eq("equmID", equmID);
+            Factleach one = selectOne(condition);
+
+            if (one == null) {
+                step1 = insert(factleach);
+            } else {
+                step1 = update(factleach, condition);
+            }
+
+            Factleachhis factleachhis = new Factleachhis();
+            BeanUtils.copyProperties(factleachhis, factleach);
+            factleachhis.setCommand(pack.getCommand());
+            factleachhis.setDataType(pack.getDataType());
+            factleachhis.setEqumSeq(pack.getEqumSeq());
+            step2 = factleachhisService.insert(factleachhis);
+        } catch (Exception e) {
+            log.error(e.getMessage(), e);
+        }
+        return step1 && step2;
+    }
+
+}

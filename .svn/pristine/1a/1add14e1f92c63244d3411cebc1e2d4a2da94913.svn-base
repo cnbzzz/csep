@@ -1,0 +1,3732 @@
+package com.infore.csep.pojo.entity;
+
+import java.util.Date;
+import com.baomidou.mybatisplus.annotations.TableField;
+import com.baomidou.mybatisplus.activerecord.Model;
+import java.io.Serializable;
+
+/**
+ * <p>
+ * 
+ * </p>
+ *
+ * @author bzzz
+ * @since 2018-04-17
+ */
+public class Factleachtime extends Model<Factleachtime> {
+
+    private static final long serialVersionUID = 1L;
+
+    private Long id;
+    private Integer factNum;
+    private String equmNum;
+    private Integer factMan;
+    private Date factMans;
+    private Date factMane;
+    private Integer factAuto;
+    private Date factAutos;
+    private Date factAutoe;
+    private Integer factOnestep;
+    private Date factOnesteps;
+    private Date factOnestepe;
+    private Integer syspBoot;
+    private Date syspBoots;
+    private Date syspBoote;
+    private Integer sysaBoot;
+    private Date sysaBoots;
+    private Date sysaBoote;
+    private Integer sysbBoot;
+    private Date sysbBoots;
+    private Date sysbBoote;
+    private Integer sysaWash;
+    private Date sysaWashs;
+    private Date sysaWashe;
+    private Integer sysaSand;
+    private Date sysaSands;
+    private Date sysaSande;
+    private Integer sysaChem;
+    private Date sysaChems;
+    private Date sysaCheme;
+    private Integer sysbChem;
+    private Date sysbChems;
+    private Date sysbCheme;
+    private Integer factTermn;
+    private Date factTermns;
+    private Date factTermne;
+    private Integer factRest;
+    private Date factRests;
+    private Date factReste;
+    private Integer factOnefin;
+    private Date factOnefins;
+    private Date factOnefine;
+    private Integer syspTermn;
+    private Date syspTermns;
+    private Date syspTermne;
+    private Integer sysaTermn;
+    private Date sysaTermns;
+    private Date sysaTermne;
+    private Integer sysbTermn;
+    private Date sysbTermns;
+    private Date sysbTermne;
+    private Integer sysaChemtermn;
+    private Date sysaChemtermns;
+    private Date sysaChemtermne;
+    private Integer sysbChemtermn;
+    private Date sysbChemtermns;
+    private Date sysbChemtermne;
+    private Integer syspStfin;
+    private Date syspStfins;
+    private Date syspStfine;
+    private Integer sysaStfin;
+    private Date sysaStfins;
+    private Date sysaStfine;
+    private Integer sysbStfin;
+    private Date sysbStfins;
+    private Date sysbStfine;
+    private Integer sysbTermnfin;
+    private Date sysbTermnfins;
+    private Date sysbTermnfine;
+    private Integer sysaTermnfin;
+    private Date sysaTermnfins;
+    private Date sysaTermnfine;
+    private Integer syspTermnfin;
+    private Date syspTermnfins;
+    private Date syspTermnfine;
+    private Integer sysaWashfin;
+    private Date sysaWashfins;
+    private Date sysaWashfine;
+    private Integer sysaSandfin;
+    private Date sysaSandfins;
+    private Date sysaSandfine;
+    private Integer sysaSandSrcfin;
+    private Date sysaSandSrcfins;
+    private Date sysaSandSrcfine;
+    private Integer sysaSandWfin;
+    private Date sysaSandWfins;
+    private Date sysaSandWfine;
+    private Integer sysaChemTfin;
+    private Date sysaChemTfins;
+    private Date sysaChemTfine;
+    private Integer sysbChemTfin;
+    private Date sysbChemTfins;
+    private Date sysbChemTfine;
+    private Integer resvF1;
+    private Date resvF1s;
+    private Date resvF1e;
+    private Integer factLock;
+    private Date factLocks;
+    private Date factLocke;
+    private Integer syspSpumpS;
+    private Date syspSpumpSs;
+    private Date syspSpumpSe;
+    private Integer syspSrcpumpS;
+    private Date syspSrcpumpSs;
+    private Date syspSrcpumpSe;
+    private Integer syspClnpumpS;
+    private Date syspClnpumpSs;
+    private Date syspClnpumpSe;
+    private Integer syspHeat;
+    private Date syspHeats;
+    private Date syspHeate;
+    private Integer sysaPpumpS;
+    private Date sysaPpumpSs;
+    private Date sysaPpumpSe;
+    private Integer sysaSandAS;
+    private Date sysaSandASs;
+    private Date sysaSandASe;
+    private Integer sysaOpumpS;
+    private Date sysaOpumpSs;
+    private Date sysaOpumpSe;
+    private Integer sysaOutAS;
+    private Date sysaOutASs;
+    private Date sysaOutASe;
+    private Integer syspApresS;
+    private Date syspApresSs;
+    private Date syspApresSe;
+    private Integer sysaHpumpS;
+    private Date sysaHpumpSs;
+    private Date sysaHpumpSe;
+    private Integer sysbHpumpS;
+    private Date sysbHpumpSs;
+    private Date sysbHpumpSe;
+    private Integer syspScapumpS;
+    private Date syspScapumpSs;
+    private Date syspScapumpSe;
+    private Integer syspAcpumpS;
+    private Date syspAcpumpSs;
+    private Date syspAcpumpSe;
+    private Integer syspSrcpumpaS;
+    private Date syspSrcpumpaSs;
+    private Date syspSrcpumpaSe;
+    private Integer syspCpumpaS;
+    private Date syspCpumpaSs;
+    private Date syspCpumpaSe;
+    private Integer syspCpumpcS;
+    private Date syspCpumpcSs;
+    private Date syspCpumpcSe;
+    private Integer syspSpumpr;
+    private Date syspSpumprs;
+    private Date syspSpumpre;
+    private Integer syspSrcpumpr;
+    private Date syspSrcpumprs;
+    private Date syspSrcpumpre;
+    private Integer syspClnpumpr;
+    private Date syspClnpumprs;
+    private Date syspClnpumpre;
+    private Integer sysaPpumpr;
+    private Date sysaPpumprs;
+    private Date sysaPpumpre;
+    private Integer sysaSandAr;
+    private Date sysaSandArs;
+    private Date sysaSandAre;
+    private Integer sysaOpumpr;
+    private Date sysaOpumprs;
+    private Date sysaOpumpre;
+    private Integer sysaOutAr;
+    private Date sysaOutArs;
+    private Date sysaOutAre;
+    private Integer syspApresr;
+    private Date syspApresrs;
+    private Date syspApresre;
+    private Integer syspCpumpar;
+    private Date syspCpumpars;
+    private Date syspCpumpare;
+    private Integer syspCpumpcr;
+    private Date syspCpumpcrs;
+    private Date syspCpumpcre;
+    private Integer sysaHpumpr;
+    private Date sysaHpumprs;
+    private Date sysaHpumpre;
+    private Integer sysbHpumpr;
+    private Date sysbHpumprs;
+    private Date sysbHpumpre;
+    private Integer syspApresT;
+    private Date syspApresTs;
+    private Date syspApresTe;
+    private Integer sysaEspT;
+    private Date sysaEspTs;
+    private Date sysaEspTe;
+    private Integer sysbHpumpreT;
+    private Date sysbHpumpreTs;
+    private Date sysbHpumpreTe;
+    private Integer sysbPremT;
+    private Date sysbPremTs;
+    private Date sysbPremTe;
+    private Integer syspAlT;
+    private Date syspAlTs;
+    private Date syspAlTe;
+    private Integer syspScaT;
+    private Date syspScaTs;
+    private Date syspScaTe;
+    private Integer syspSrcT;
+    private Date syspSrcTs;
+    private Date syspSrcTe;
+    private Integer syspSrcreT;
+    private Date syspSrcreTs;
+    private Date syspSrcreTe;
+    private Integer syspClnT;
+    private Date syspClnTs;
+    private Date syspClnTe;
+    private Integer sysaPpumpT;
+    private Date sysaPpumpTs;
+    private Date sysaPpumpTe;
+    private Integer syspClnTQS;
+    private Date syspClnTQSs;
+    private Date syspClnTQSe;
+    private Integer sysbHpumpTQS;
+    private Date sysbHpumpTQSs;
+    private Date sysbHpumpTQSe;
+    private Integer sysaSandAQS;
+    private Date sysaSandAQSs;
+    private Date sysaSandAQSe;
+    private Integer sysaEspTQS;
+    private Date sysaEspTQSs;
+    private Date sysaEspTQSe;
+    @TableField("QV17031S")
+    private Integer qv17031s;
+    private Date QV17031Ss;
+    private Date QV17031Se;
+    @TableField("QV19411S")
+    private Integer qv19411s;
+    private Date QV19411Ss;
+    private Date QV19411Se;
+    private Integer sysaPpumpTQS;
+    private Date sysaPpumpTQSs;
+    private Date sysaPpumpTQSe;
+    @TableField("QV13111S")
+    private Integer qv13111s;
+    private Date QV13111Ss;
+    private Date QV13111Se;
+    @TableField("QV13151S")
+    private Integer qv13151s;
+    private Date QV13151Ss;
+    private Date QV13151Se;
+    @TableField("QV13121S")
+    private Integer qv13121s;
+    private Date QV13121Ss;
+    private Date QV13121Se;
+    @TableField("QV13081S")
+    private Integer qv13081s;
+    private Date QV13081Ss;
+    private Date QV13081Se;
+    @TableField("QV13161S")
+    private Integer qv13161s;
+    private Date QV13161Ss;
+    private Date QV13161Se;
+    @TableField("QV17011S")
+    private Integer qv17011s;
+    private Date QV17011Ss;
+    private Date QV17011Se;
+    private Integer sysaPremTQS;
+    private Date sysaPremTQSs;
+    private Date sysaPremTQSe;
+    private Integer sysaPremTaQS;
+    private Date sysaPremTaQSs;
+    private Date sysaPremTaQSe;
+    @TableField("QV27011S")
+    private Integer qv27011s;
+    private Date QV27011Ss;
+    private Date QV27011Se;
+    @TableField("QV21011S")
+    private Integer qv21011s;
+    private Date QV21011Ss;
+    private Date QV21011Se;
+    private Integer sysbPremTQS;
+    private Date sysbPremTQSs;
+    private Date sysbPremTQSe;
+    private Integer sysbPremTaQS;
+    private Date sysbPremTaQSs;
+    private Date sysbPremTaQSe;
+    private Integer sysbValveTQS;
+    private Date sysbValveTQSs;
+    private Date sysbValveTQSe;
+    private Integer sysaValveTQOS;
+    private Date sysaValveTQOSs;
+    private Date sysaValveTQOSe;
+    private Integer sysaValveTQCS;
+    private Date sysaValveTQCSs;
+    private Date sysaValveTQCSe;
+    private Integer sysaValveTaQOS;
+    private Date sysaValveTaQOSs;
+    private Date sysaValveTaQOSe;
+    private Integer sysaValveTaQCS;
+    private Date sysaValveTaQCSs;
+    private Date sysaValveTaQCSe;
+    private Integer sysbValveTaQOS;
+    private Date sysbValveTaQOSs;
+    private Date sysbValveTaQOSe;
+    private Integer sysbValveTaQCS;
+    private Date sysbValveTaQCSs;
+    private Date sysbValveTaQCSe;
+    private Integer syspClnTQr;
+    private Date syspClnTQrs;
+    private Date syspClnTQre;
+    private Integer sysbHpumpTQr;
+    private Date sysbHpumpTQrs;
+    private Date sysbHpumpTQre;
+    private Integer sysaSandAQr;
+    private Date sysaSandAQrs;
+    private Date sysaSandAQre;
+    private Integer sysaEspTQr;
+    private Date sysaEspTQrs;
+    private Date sysaEspTQre;
+    private Integer QV17031r;
+    private Date QV17031rs;
+    private Date QV17031re;
+    private Integer QV19411r;
+    private Date QV19411rs;
+    private Date QV19411re;
+    private Integer sysaPpumpTQr;
+    private Date sysaPpumpTQrs;
+    private Date sysaPpumpTQre;
+    private Integer QV13111r;
+    private Date QV13111rs;
+    private Date QV13111re;
+    private Integer QV13151r;
+    private Date QV13151rs;
+    private Date QV13151re;
+    private Integer QV13121r;
+    private Date QV13121rs;
+    private Date QV13121re;
+    private Integer QV13081r;
+    private Date QV13081rs;
+    private Date QV13081re;
+    private Integer QV13161r;
+    private Date QV13161rs;
+    private Date QV13161re;
+    private Integer QV17011r;
+    private Date QV17011rs;
+    private Date QV17011re;
+    private Integer sysaPremTQr;
+    private Date sysaPremTQrs;
+    private Date sysaPremTQre;
+    private Integer sysaPremTaQr;
+    private Date sysaPremTaQrs;
+    private Date sysaPremTaQre;
+    private Integer QV27011r;
+    private Date QV27011rs;
+    private Date QV27011re;
+    private Integer QV21011r;
+    private Date QV21011rs;
+    private Date QV21011re;
+    private Integer sysbPremTQr;
+    private Date sysbPremTQrs;
+    private Date sysbPremTQre;
+    private Integer sysbPremTaQr;
+    private Date sysbPremTaQrs;
+    private Date sysbPremTaQre;
+    private Integer sysbValveTQr;
+    private Date sysbValveTQrs;
+    private Date sysbValveTQre;
+    private Integer sysaValveTQOr;
+    private Date sysaValveTQOrs;
+    private Date sysaValveTQOre;
+    private Integer sysaValveTQCr;
+    private Date sysaValveTQCrs;
+    private Date sysaValveTQCre;
+    private Integer sysaValveTaQOr;
+    private Date sysaValveTaQOrs;
+    private Date sysaValveTaQOre;
+    private Integer sysaValveTaQCr;
+    private Date sysaValveTaQCrs;
+    private Date sysaValveTaQCre;
+    private Integer sysbValveTaQOr;
+    private Date sysbValveTaQOrs;
+    private Date sysbValveTaQOre;
+    private Integer sysbValveTaQCr;
+    private Date sysbValveTaQCrs;
+    private Date sysbValveTaQCre;
+
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Integer getFactNum() {
+        return factNum;
+    }
+
+    public void setFactNum(Integer factNum) {
+        this.factNum = factNum;
+    }
+
+    public String getEqumNum() {
+        return equmNum;
+    }
+
+    public void setEqumNum(String equmNum) {
+        this.equmNum = equmNum;
+    }
+
+    public Integer getFactMan() {
+        return factMan;
+    }
+
+    public void setFactMan(Integer factMan) {
+        this.factMan = factMan;
+    }
+
+    public Date getFactMans() {
+        return factMans;
+    }
+
+    public void setFactMans(Date factMans) {
+        this.factMans = factMans;
+    }
+
+    public Date getFactMane() {
+        return factMane;
+    }
+
+    public void setFactMane(Date factMane) {
+        this.factMane = factMane;
+    }
+
+    public Integer getFactAuto() {
+        return factAuto;
+    }
+
+    public void setFactAuto(Integer factAuto) {
+        this.factAuto = factAuto;
+    }
+
+    public Date getFactAutos() {
+        return factAutos;
+    }
+
+    public void setFactAutos(Date factAutos) {
+        this.factAutos = factAutos;
+    }
+
+    public Date getFactAutoe() {
+        return factAutoe;
+    }
+
+    public void setFactAutoe(Date factAutoe) {
+        this.factAutoe = factAutoe;
+    }
+
+    public Integer getFactOnestep() {
+        return factOnestep;
+    }
+
+    public void setFactOnestep(Integer factOnestep) {
+        this.factOnestep = factOnestep;
+    }
+
+    public Date getFactOnesteps() {
+        return factOnesteps;
+    }
+
+    public void setFactOnesteps(Date factOnesteps) {
+        this.factOnesteps = factOnesteps;
+    }
+
+    public Date getFactOnestepe() {
+        return factOnestepe;
+    }
+
+    public void setFactOnestepe(Date factOnestepe) {
+        this.factOnestepe = factOnestepe;
+    }
+
+    public Integer getSyspBoot() {
+        return syspBoot;
+    }
+
+    public void setSyspBoot(Integer syspBoot) {
+        this.syspBoot = syspBoot;
+    }
+
+    public Date getSyspBoots() {
+        return syspBoots;
+    }
+
+    public void setSyspBoots(Date syspBoots) {
+        this.syspBoots = syspBoots;
+    }
+
+    public Date getSyspBoote() {
+        return syspBoote;
+    }
+
+    public void setSyspBoote(Date syspBoote) {
+        this.syspBoote = syspBoote;
+    }
+
+    public Integer getSysaBoot() {
+        return sysaBoot;
+    }
+
+    public void setSysaBoot(Integer sysaBoot) {
+        this.sysaBoot = sysaBoot;
+    }
+
+    public Date getSysaBoots() {
+        return sysaBoots;
+    }
+
+    public void setSysaBoots(Date sysaBoots) {
+        this.sysaBoots = sysaBoots;
+    }
+
+    public Date getSysaBoote() {
+        return sysaBoote;
+    }
+
+    public void setSysaBoote(Date sysaBoote) {
+        this.sysaBoote = sysaBoote;
+    }
+
+    public Integer getSysbBoot() {
+        return sysbBoot;
+    }
+
+    public void setSysbBoot(Integer sysbBoot) {
+        this.sysbBoot = sysbBoot;
+    }
+
+    public Date getSysbBoots() {
+        return sysbBoots;
+    }
+
+    public void setSysbBoots(Date sysbBoots) {
+        this.sysbBoots = sysbBoots;
+    }
+
+    public Date getSysbBoote() {
+        return sysbBoote;
+    }
+
+    public void setSysbBoote(Date sysbBoote) {
+        this.sysbBoote = sysbBoote;
+    }
+
+    public Integer getSysaWash() {
+        return sysaWash;
+    }
+
+    public void setSysaWash(Integer sysaWash) {
+        this.sysaWash = sysaWash;
+    }
+
+    public Date getSysaWashs() {
+        return sysaWashs;
+    }
+
+    public void setSysaWashs(Date sysaWashs) {
+        this.sysaWashs = sysaWashs;
+    }
+
+    public Date getSysaWashe() {
+        return sysaWashe;
+    }
+
+    public void setSysaWashe(Date sysaWashe) {
+        this.sysaWashe = sysaWashe;
+    }
+
+    public Integer getSysaSand() {
+        return sysaSand;
+    }
+
+    public void setSysaSand(Integer sysaSand) {
+        this.sysaSand = sysaSand;
+    }
+
+    public Date getSysaSands() {
+        return sysaSands;
+    }
+
+    public void setSysaSands(Date sysaSands) {
+        this.sysaSands = sysaSands;
+    }
+
+    public Date getSysaSande() {
+        return sysaSande;
+    }
+
+    public void setSysaSande(Date sysaSande) {
+        this.sysaSande = sysaSande;
+    }
+
+    public Integer getSysaChem() {
+        return sysaChem;
+    }
+
+    public void setSysaChem(Integer sysaChem) {
+        this.sysaChem = sysaChem;
+    }
+
+    public Date getSysaChems() {
+        return sysaChems;
+    }
+
+    public void setSysaChems(Date sysaChems) {
+        this.sysaChems = sysaChems;
+    }
+
+    public Date getSysaCheme() {
+        return sysaCheme;
+    }
+
+    public void setSysaCheme(Date sysaCheme) {
+        this.sysaCheme = sysaCheme;
+    }
+
+    public Integer getSysbChem() {
+        return sysbChem;
+    }
+
+    public void setSysbChem(Integer sysbChem) {
+        this.sysbChem = sysbChem;
+    }
+
+    public Date getSysbChems() {
+        return sysbChems;
+    }
+
+    public void setSysbChems(Date sysbChems) {
+        this.sysbChems = sysbChems;
+    }
+
+    public Date getSysbCheme() {
+        return sysbCheme;
+    }
+
+    public void setSysbCheme(Date sysbCheme) {
+        this.sysbCheme = sysbCheme;
+    }
+
+    public Integer getFactTermn() {
+        return factTermn;
+    }
+
+    public void setFactTermn(Integer factTermn) {
+        this.factTermn = factTermn;
+    }
+
+    public Date getFactTermns() {
+        return factTermns;
+    }
+
+    public void setFactTermns(Date factTermns) {
+        this.factTermns = factTermns;
+    }
+
+    public Date getFactTermne() {
+        return factTermne;
+    }
+
+    public void setFactTermne(Date factTermne) {
+        this.factTermne = factTermne;
+    }
+
+    public Integer getFactRest() {
+        return factRest;
+    }
+
+    public void setFactRest(Integer factRest) {
+        this.factRest = factRest;
+    }
+
+    public Date getFactRests() {
+        return factRests;
+    }
+
+    public void setFactRests(Date factRests) {
+        this.factRests = factRests;
+    }
+
+    public Date getFactReste() {
+        return factReste;
+    }
+
+    public void setFactReste(Date factReste) {
+        this.factReste = factReste;
+    }
+
+    public Integer getFactOnefin() {
+        return factOnefin;
+    }
+
+    public void setFactOnefin(Integer factOnefin) {
+        this.factOnefin = factOnefin;
+    }
+
+    public Date getFactOnefins() {
+        return factOnefins;
+    }
+
+    public void setFactOnefins(Date factOnefins) {
+        this.factOnefins = factOnefins;
+    }
+
+    public Date getFactOnefine() {
+        return factOnefine;
+    }
+
+    public void setFactOnefine(Date factOnefine) {
+        this.factOnefine = factOnefine;
+    }
+
+    public Integer getSyspTermn() {
+        return syspTermn;
+    }
+
+    public void setSyspTermn(Integer syspTermn) {
+        this.syspTermn = syspTermn;
+    }
+
+    public Date getSyspTermns() {
+        return syspTermns;
+    }
+
+    public void setSyspTermns(Date syspTermns) {
+        this.syspTermns = syspTermns;
+    }
+
+    public Date getSyspTermne() {
+        return syspTermne;
+    }
+
+    public void setSyspTermne(Date syspTermne) {
+        this.syspTermne = syspTermne;
+    }
+
+    public Integer getSysaTermn() {
+        return sysaTermn;
+    }
+
+    public void setSysaTermn(Integer sysaTermn) {
+        this.sysaTermn = sysaTermn;
+    }
+
+    public Date getSysaTermns() {
+        return sysaTermns;
+    }
+
+    public void setSysaTermns(Date sysaTermns) {
+        this.sysaTermns = sysaTermns;
+    }
+
+    public Date getSysaTermne() {
+        return sysaTermne;
+    }
+
+    public void setSysaTermne(Date sysaTermne) {
+        this.sysaTermne = sysaTermne;
+    }
+
+    public Integer getSysbTermn() {
+        return sysbTermn;
+    }
+
+    public void setSysbTermn(Integer sysbTermn) {
+        this.sysbTermn = sysbTermn;
+    }
+
+    public Date getSysbTermns() {
+        return sysbTermns;
+    }
+
+    public void setSysbTermns(Date sysbTermns) {
+        this.sysbTermns = sysbTermns;
+    }
+
+    public Date getSysbTermne() {
+        return sysbTermne;
+    }
+
+    public void setSysbTermne(Date sysbTermne) {
+        this.sysbTermne = sysbTermne;
+    }
+
+    public Integer getSysaChemtermn() {
+        return sysaChemtermn;
+    }
+
+    public void setSysaChemtermn(Integer sysaChemtermn) {
+        this.sysaChemtermn = sysaChemtermn;
+    }
+
+    public Date getSysaChemtermns() {
+        return sysaChemtermns;
+    }
+
+    public void setSysaChemtermns(Date sysaChemtermns) {
+        this.sysaChemtermns = sysaChemtermns;
+    }
+
+    public Date getSysaChemtermne() {
+        return sysaChemtermne;
+    }
+
+    public void setSysaChemtermne(Date sysaChemtermne) {
+        this.sysaChemtermne = sysaChemtermne;
+    }
+
+    public Integer getSysbChemtermn() {
+        return sysbChemtermn;
+    }
+
+    public void setSysbChemtermn(Integer sysbChemtermn) {
+        this.sysbChemtermn = sysbChemtermn;
+    }
+
+    public Date getSysbChemtermns() {
+        return sysbChemtermns;
+    }
+
+    public void setSysbChemtermns(Date sysbChemtermns) {
+        this.sysbChemtermns = sysbChemtermns;
+    }
+
+    public Date getSysbChemtermne() {
+        return sysbChemtermne;
+    }
+
+    public void setSysbChemtermne(Date sysbChemtermne) {
+        this.sysbChemtermne = sysbChemtermne;
+    }
+
+    public Integer getSyspStfin() {
+        return syspStfin;
+    }
+
+    public void setSyspStfin(Integer syspStfin) {
+        this.syspStfin = syspStfin;
+    }
+
+    public Date getSyspStfins() {
+        return syspStfins;
+    }
+
+    public void setSyspStfins(Date syspStfins) {
+        this.syspStfins = syspStfins;
+    }
+
+    public Date getSyspStfine() {
+        return syspStfine;
+    }
+
+    public void setSyspStfine(Date syspStfine) {
+        this.syspStfine = syspStfine;
+    }
+
+    public Integer getSysaStfin() {
+        return sysaStfin;
+    }
+
+    public void setSysaStfin(Integer sysaStfin) {
+        this.sysaStfin = sysaStfin;
+    }
+
+    public Date getSysaStfins() {
+        return sysaStfins;
+    }
+
+    public void setSysaStfins(Date sysaStfins) {
+        this.sysaStfins = sysaStfins;
+    }
+
+    public Date getSysaStfine() {
+        return sysaStfine;
+    }
+
+    public void setSysaStfine(Date sysaStfine) {
+        this.sysaStfine = sysaStfine;
+    }
+
+    public Integer getSysbStfin() {
+        return sysbStfin;
+    }
+
+    public void setSysbStfin(Integer sysbStfin) {
+        this.sysbStfin = sysbStfin;
+    }
+
+    public Date getSysbStfins() {
+        return sysbStfins;
+    }
+
+    public void setSysbStfins(Date sysbStfins) {
+        this.sysbStfins = sysbStfins;
+    }
+
+    public Date getSysbStfine() {
+        return sysbStfine;
+    }
+
+    public void setSysbStfine(Date sysbStfine) {
+        this.sysbStfine = sysbStfine;
+    }
+
+    public Integer getSysbTermnfin() {
+        return sysbTermnfin;
+    }
+
+    public void setSysbTermnfin(Integer sysbTermnfin) {
+        this.sysbTermnfin = sysbTermnfin;
+    }
+
+    public Date getSysbTermnfins() {
+        return sysbTermnfins;
+    }
+
+    public void setSysbTermnfins(Date sysbTermnfins) {
+        this.sysbTermnfins = sysbTermnfins;
+    }
+
+    public Date getSysbTermnfine() {
+        return sysbTermnfine;
+    }
+
+    public void setSysbTermnfine(Date sysbTermnfine) {
+        this.sysbTermnfine = sysbTermnfine;
+    }
+
+    public Integer getSysaTermnfin() {
+        return sysaTermnfin;
+    }
+
+    public void setSysaTermnfin(Integer sysaTermnfin) {
+        this.sysaTermnfin = sysaTermnfin;
+    }
+
+    public Date getSysaTermnfins() {
+        return sysaTermnfins;
+    }
+
+    public void setSysaTermnfins(Date sysaTermnfins) {
+        this.sysaTermnfins = sysaTermnfins;
+    }
+
+    public Date getSysaTermnfine() {
+        return sysaTermnfine;
+    }
+
+    public void setSysaTermnfine(Date sysaTermnfine) {
+        this.sysaTermnfine = sysaTermnfine;
+    }
+
+    public Integer getSyspTermnfin() {
+        return syspTermnfin;
+    }
+
+    public void setSyspTermnfin(Integer syspTermnfin) {
+        this.syspTermnfin = syspTermnfin;
+    }
+
+    public Date getSyspTermnfins() {
+        return syspTermnfins;
+    }
+
+    public void setSyspTermnfins(Date syspTermnfins) {
+        this.syspTermnfins = syspTermnfins;
+    }
+
+    public Date getSyspTermnfine() {
+        return syspTermnfine;
+    }
+
+    public void setSyspTermnfine(Date syspTermnfine) {
+        this.syspTermnfine = syspTermnfine;
+    }
+
+    public Integer getSysaWashfin() {
+        return sysaWashfin;
+    }
+
+    public void setSysaWashfin(Integer sysaWashfin) {
+        this.sysaWashfin = sysaWashfin;
+    }
+
+    public Date getSysaWashfins() {
+        return sysaWashfins;
+    }
+
+    public void setSysaWashfins(Date sysaWashfins) {
+        this.sysaWashfins = sysaWashfins;
+    }
+
+    public Date getSysaWashfine() {
+        return sysaWashfine;
+    }
+
+    public void setSysaWashfine(Date sysaWashfine) {
+        this.sysaWashfine = sysaWashfine;
+    }
+
+    public Integer getSysaSandfin() {
+        return sysaSandfin;
+    }
+
+    public void setSysaSandfin(Integer sysaSandfin) {
+        this.sysaSandfin = sysaSandfin;
+    }
+
+    public Date getSysaSandfins() {
+        return sysaSandfins;
+    }
+
+    public void setSysaSandfins(Date sysaSandfins) {
+        this.sysaSandfins = sysaSandfins;
+    }
+
+    public Date getSysaSandfine() {
+        return sysaSandfine;
+    }
+
+    public void setSysaSandfine(Date sysaSandfine) {
+        this.sysaSandfine = sysaSandfine;
+    }
+
+    public Integer getSysaSandSrcfin() {
+        return sysaSandSrcfin;
+    }
+
+    public void setSysaSandSrcfin(Integer sysaSandSrcfin) {
+        this.sysaSandSrcfin = sysaSandSrcfin;
+    }
+
+    public Date getSysaSandSrcfins() {
+        return sysaSandSrcfins;
+    }
+
+    public void setSysaSandSrcfins(Date sysaSandSrcfins) {
+        this.sysaSandSrcfins = sysaSandSrcfins;
+    }
+
+    public Date getSysaSandSrcfine() {
+        return sysaSandSrcfine;
+    }
+
+    public void setSysaSandSrcfine(Date sysaSandSrcfine) {
+        this.sysaSandSrcfine = sysaSandSrcfine;
+    }
+
+    public Integer getSysaSandWfin() {
+        return sysaSandWfin;
+    }
+
+    public void setSysaSandWfin(Integer sysaSandWfin) {
+        this.sysaSandWfin = sysaSandWfin;
+    }
+
+    public Date getSysaSandWfins() {
+        return sysaSandWfins;
+    }
+
+    public void setSysaSandWfins(Date sysaSandWfins) {
+        this.sysaSandWfins = sysaSandWfins;
+    }
+
+    public Date getSysaSandWfine() {
+        return sysaSandWfine;
+    }
+
+    public void setSysaSandWfine(Date sysaSandWfine) {
+        this.sysaSandWfine = sysaSandWfine;
+    }
+
+    public Integer getSysaChemTfin() {
+        return sysaChemTfin;
+    }
+
+    public void setSysaChemTfin(Integer sysaChemTfin) {
+        this.sysaChemTfin = sysaChemTfin;
+    }
+
+    public Date getSysaChemTfins() {
+        return sysaChemTfins;
+    }
+
+    public void setSysaChemTfins(Date sysaChemTfins) {
+        this.sysaChemTfins = sysaChemTfins;
+    }
+
+    public Date getSysaChemTfine() {
+        return sysaChemTfine;
+    }
+
+    public void setSysaChemTfine(Date sysaChemTfine) {
+        this.sysaChemTfine = sysaChemTfine;
+    }
+
+    public Integer getSysbChemTfin() {
+        return sysbChemTfin;
+    }
+
+    public void setSysbChemTfin(Integer sysbChemTfin) {
+        this.sysbChemTfin = sysbChemTfin;
+    }
+
+    public Date getSysbChemTfins() {
+        return sysbChemTfins;
+    }
+
+    public void setSysbChemTfins(Date sysbChemTfins) {
+        this.sysbChemTfins = sysbChemTfins;
+    }
+
+    public Date getSysbChemTfine() {
+        return sysbChemTfine;
+    }
+
+    public void setSysbChemTfine(Date sysbChemTfine) {
+        this.sysbChemTfine = sysbChemTfine;
+    }
+
+    public Integer getResvF1() {
+        return resvF1;
+    }
+
+    public void setResvF1(Integer resvF1) {
+        this.resvF1 = resvF1;
+    }
+
+    public Date getResvF1s() {
+        return resvF1s;
+    }
+
+    public void setResvF1s(Date resvF1s) {
+        this.resvF1s = resvF1s;
+    }
+
+    public Date getResvF1e() {
+        return resvF1e;
+    }
+
+    public void setResvF1e(Date resvF1e) {
+        this.resvF1e = resvF1e;
+    }
+
+    public Integer getFactLock() {
+        return factLock;
+    }
+
+    public void setFactLock(Integer factLock) {
+        this.factLock = factLock;
+    }
+
+    public Date getFactLocks() {
+        return factLocks;
+    }
+
+    public void setFactLocks(Date factLocks) {
+        this.factLocks = factLocks;
+    }
+
+    public Date getFactLocke() {
+        return factLocke;
+    }
+
+    public void setFactLocke(Date factLocke) {
+        this.factLocke = factLocke;
+    }
+
+    public Integer getSyspSpumpS() {
+        return syspSpumpS;
+    }
+
+    public void setSyspSpumpS(Integer syspSpumpS) {
+        this.syspSpumpS = syspSpumpS;
+    }
+
+    public Date getSyspSpumpSs() {
+        return syspSpumpSs;
+    }
+
+    public void setSyspSpumpSs(Date syspSpumpSs) {
+        this.syspSpumpSs = syspSpumpSs;
+    }
+
+    public Date getSyspSpumpSe() {
+        return syspSpumpSe;
+    }
+
+    public void setSyspSpumpSe(Date syspSpumpSe) {
+        this.syspSpumpSe = syspSpumpSe;
+    }
+
+    public Integer getSyspSrcpumpS() {
+        return syspSrcpumpS;
+    }
+
+    public void setSyspSrcpumpS(Integer syspSrcpumpS) {
+        this.syspSrcpumpS = syspSrcpumpS;
+    }
+
+    public Date getSyspSrcpumpSs() {
+        return syspSrcpumpSs;
+    }
+
+    public void setSyspSrcpumpSs(Date syspSrcpumpSs) {
+        this.syspSrcpumpSs = syspSrcpumpSs;
+    }
+
+    public Date getSyspSrcpumpSe() {
+        return syspSrcpumpSe;
+    }
+
+    public void setSyspSrcpumpSe(Date syspSrcpumpSe) {
+        this.syspSrcpumpSe = syspSrcpumpSe;
+    }
+
+    public Integer getSyspClnpumpS() {
+        return syspClnpumpS;
+    }
+
+    public void setSyspClnpumpS(Integer syspClnpumpS) {
+        this.syspClnpumpS = syspClnpumpS;
+    }
+
+    public Date getSyspClnpumpSs() {
+        return syspClnpumpSs;
+    }
+
+    public void setSyspClnpumpSs(Date syspClnpumpSs) {
+        this.syspClnpumpSs = syspClnpumpSs;
+    }
+
+    public Date getSyspClnpumpSe() {
+        return syspClnpumpSe;
+    }
+
+    public void setSyspClnpumpSe(Date syspClnpumpSe) {
+        this.syspClnpumpSe = syspClnpumpSe;
+    }
+
+    public Integer getSyspHeat() {
+        return syspHeat;
+    }
+
+    public void setSyspHeat(Integer syspHeat) {
+        this.syspHeat = syspHeat;
+    }
+
+    public Date getSyspHeats() {
+        return syspHeats;
+    }
+
+    public void setSyspHeats(Date syspHeats) {
+        this.syspHeats = syspHeats;
+    }
+
+    public Date getSyspHeate() {
+        return syspHeate;
+    }
+
+    public void setSyspHeate(Date syspHeate) {
+        this.syspHeate = syspHeate;
+    }
+
+    public Integer getSysaPpumpS() {
+        return sysaPpumpS;
+    }
+
+    public void setSysaPpumpS(Integer sysaPpumpS) {
+        this.sysaPpumpS = sysaPpumpS;
+    }
+
+    public Date getSysaPpumpSs() {
+        return sysaPpumpSs;
+    }
+
+    public void setSysaPpumpSs(Date sysaPpumpSs) {
+        this.sysaPpumpSs = sysaPpumpSs;
+    }
+
+    public Date getSysaPpumpSe() {
+        return sysaPpumpSe;
+    }
+
+    public void setSysaPpumpSe(Date sysaPpumpSe) {
+        this.sysaPpumpSe = sysaPpumpSe;
+    }
+
+    public Integer getSysaSandAS() {
+        return sysaSandAS;
+    }
+
+    public void setSysaSandAS(Integer sysaSandAS) {
+        this.sysaSandAS = sysaSandAS;
+    }
+
+    public Date getSysaSandASs() {
+        return sysaSandASs;
+    }
+
+    public void setSysaSandASs(Date sysaSandASs) {
+        this.sysaSandASs = sysaSandASs;
+    }
+
+    public Date getSysaSandASe() {
+        return sysaSandASe;
+    }
+
+    public void setSysaSandASe(Date sysaSandASe) {
+        this.sysaSandASe = sysaSandASe;
+    }
+
+    public Integer getSysaOpumpS() {
+        return sysaOpumpS;
+    }
+
+    public void setSysaOpumpS(Integer sysaOpumpS) {
+        this.sysaOpumpS = sysaOpumpS;
+    }
+
+    public Date getSysaOpumpSs() {
+        return sysaOpumpSs;
+    }
+
+    public void setSysaOpumpSs(Date sysaOpumpSs) {
+        this.sysaOpumpSs = sysaOpumpSs;
+    }
+
+    public Date getSysaOpumpSe() {
+        return sysaOpumpSe;
+    }
+
+    public void setSysaOpumpSe(Date sysaOpumpSe) {
+        this.sysaOpumpSe = sysaOpumpSe;
+    }
+
+    public Integer getSysaOutAS() {
+        return sysaOutAS;
+    }
+
+    public void setSysaOutAS(Integer sysaOutAS) {
+        this.sysaOutAS = sysaOutAS;
+    }
+
+    public Date getSysaOutASs() {
+        return sysaOutASs;
+    }
+
+    public void setSysaOutASs(Date sysaOutASs) {
+        this.sysaOutASs = sysaOutASs;
+    }
+
+    public Date getSysaOutASe() {
+        return sysaOutASe;
+    }
+
+    public void setSysaOutASe(Date sysaOutASe) {
+        this.sysaOutASe = sysaOutASe;
+    }
+
+    public Integer getSyspApresS() {
+        return syspApresS;
+    }
+
+    public void setSyspApresS(Integer syspApresS) {
+        this.syspApresS = syspApresS;
+    }
+
+    public Date getSyspApresSs() {
+        return syspApresSs;
+    }
+
+    public void setSyspApresSs(Date syspApresSs) {
+        this.syspApresSs = syspApresSs;
+    }
+
+    public Date getSyspApresSe() {
+        return syspApresSe;
+    }
+
+    public void setSyspApresSe(Date syspApresSe) {
+        this.syspApresSe = syspApresSe;
+    }
+
+    public Integer getSysaHpumpS() {
+        return sysaHpumpS;
+    }
+
+    public void setSysaHpumpS(Integer sysaHpumpS) {
+        this.sysaHpumpS = sysaHpumpS;
+    }
+
+    public Date getSysaHpumpSs() {
+        return sysaHpumpSs;
+    }
+
+    public void setSysaHpumpSs(Date sysaHpumpSs) {
+        this.sysaHpumpSs = sysaHpumpSs;
+    }
+
+    public Date getSysaHpumpSe() {
+        return sysaHpumpSe;
+    }
+
+    public void setSysaHpumpSe(Date sysaHpumpSe) {
+        this.sysaHpumpSe = sysaHpumpSe;
+    }
+
+    public Integer getSysbHpumpS() {
+        return sysbHpumpS;
+    }
+
+    public void setSysbHpumpS(Integer sysbHpumpS) {
+        this.sysbHpumpS = sysbHpumpS;
+    }
+
+    public Date getSysbHpumpSs() {
+        return sysbHpumpSs;
+    }
+
+    public void setSysbHpumpSs(Date sysbHpumpSs) {
+        this.sysbHpumpSs = sysbHpumpSs;
+    }
+
+    public Date getSysbHpumpSe() {
+        return sysbHpumpSe;
+    }
+
+    public void setSysbHpumpSe(Date sysbHpumpSe) {
+        this.sysbHpumpSe = sysbHpumpSe;
+    }
+
+    public Integer getSyspScapumpS() {
+        return syspScapumpS;
+    }
+
+    public void setSyspScapumpS(Integer syspScapumpS) {
+        this.syspScapumpS = syspScapumpS;
+    }
+
+    public Date getSyspScapumpSs() {
+        return syspScapumpSs;
+    }
+
+    public void setSyspScapumpSs(Date syspScapumpSs) {
+        this.syspScapumpSs = syspScapumpSs;
+    }
+
+    public Date getSyspScapumpSe() {
+        return syspScapumpSe;
+    }
+
+    public void setSyspScapumpSe(Date syspScapumpSe) {
+        this.syspScapumpSe = syspScapumpSe;
+    }
+
+    public Integer getSyspAcpumpS() {
+        return syspAcpumpS;
+    }
+
+    public void setSyspAcpumpS(Integer syspAcpumpS) {
+        this.syspAcpumpS = syspAcpumpS;
+    }
+
+    public Date getSyspAcpumpSs() {
+        return syspAcpumpSs;
+    }
+
+    public void setSyspAcpumpSs(Date syspAcpumpSs) {
+        this.syspAcpumpSs = syspAcpumpSs;
+    }
+
+    public Date getSyspAcpumpSe() {
+        return syspAcpumpSe;
+    }
+
+    public void setSyspAcpumpSe(Date syspAcpumpSe) {
+        this.syspAcpumpSe = syspAcpumpSe;
+    }
+
+    public Integer getSyspSrcpumpaS() {
+        return syspSrcpumpaS;
+    }
+
+    public void setSyspSrcpumpaS(Integer syspSrcpumpaS) {
+        this.syspSrcpumpaS = syspSrcpumpaS;
+    }
+
+    public Date getSyspSrcpumpaSs() {
+        return syspSrcpumpaSs;
+    }
+
+    public void setSyspSrcpumpaSs(Date syspSrcpumpaSs) {
+        this.syspSrcpumpaSs = syspSrcpumpaSs;
+    }
+
+    public Date getSyspSrcpumpaSe() {
+        return syspSrcpumpaSe;
+    }
+
+    public void setSyspSrcpumpaSe(Date syspSrcpumpaSe) {
+        this.syspSrcpumpaSe = syspSrcpumpaSe;
+    }
+
+    public Integer getSyspCpumpaS() {
+        return syspCpumpaS;
+    }
+
+    public void setSyspCpumpaS(Integer syspCpumpaS) {
+        this.syspCpumpaS = syspCpumpaS;
+    }
+
+    public Date getSyspCpumpaSs() {
+        return syspCpumpaSs;
+    }
+
+    public void setSyspCpumpaSs(Date syspCpumpaSs) {
+        this.syspCpumpaSs = syspCpumpaSs;
+    }
+
+    public Date getSyspCpumpaSe() {
+        return syspCpumpaSe;
+    }
+
+    public void setSyspCpumpaSe(Date syspCpumpaSe) {
+        this.syspCpumpaSe = syspCpumpaSe;
+    }
+
+    public Integer getSyspCpumpcS() {
+        return syspCpumpcS;
+    }
+
+    public void setSyspCpumpcS(Integer syspCpumpcS) {
+        this.syspCpumpcS = syspCpumpcS;
+    }
+
+    public Date getSyspCpumpcSs() {
+        return syspCpumpcSs;
+    }
+
+    public void setSyspCpumpcSs(Date syspCpumpcSs) {
+        this.syspCpumpcSs = syspCpumpcSs;
+    }
+
+    public Date getSyspCpumpcSe() {
+        return syspCpumpcSe;
+    }
+
+    public void setSyspCpumpcSe(Date syspCpumpcSe) {
+        this.syspCpumpcSe = syspCpumpcSe;
+    }
+
+    public Integer getSyspSpumpr() {
+        return syspSpumpr;
+    }
+
+    public void setSyspSpumpr(Integer syspSpumpr) {
+        this.syspSpumpr = syspSpumpr;
+    }
+
+    public Date getSyspSpumprs() {
+        return syspSpumprs;
+    }
+
+    public void setSyspSpumprs(Date syspSpumprs) {
+        this.syspSpumprs = syspSpumprs;
+    }
+
+    public Date getSyspSpumpre() {
+        return syspSpumpre;
+    }
+
+    public void setSyspSpumpre(Date syspSpumpre) {
+        this.syspSpumpre = syspSpumpre;
+    }
+
+    public Integer getSyspSrcpumpr() {
+        return syspSrcpumpr;
+    }
+
+    public void setSyspSrcpumpr(Integer syspSrcpumpr) {
+        this.syspSrcpumpr = syspSrcpumpr;
+    }
+
+    public Date getSyspSrcpumprs() {
+        return syspSrcpumprs;
+    }
+
+    public void setSyspSrcpumprs(Date syspSrcpumprs) {
+        this.syspSrcpumprs = syspSrcpumprs;
+    }
+
+    public Date getSyspSrcpumpre() {
+        return syspSrcpumpre;
+    }
+
+    public void setSyspSrcpumpre(Date syspSrcpumpre) {
+        this.syspSrcpumpre = syspSrcpumpre;
+    }
+
+    public Integer getSyspClnpumpr() {
+        return syspClnpumpr;
+    }
+
+    public void setSyspClnpumpr(Integer syspClnpumpr) {
+        this.syspClnpumpr = syspClnpumpr;
+    }
+
+    public Date getSyspClnpumprs() {
+        return syspClnpumprs;
+    }
+
+    public void setSyspClnpumprs(Date syspClnpumprs) {
+        this.syspClnpumprs = syspClnpumprs;
+    }
+
+    public Date getSyspClnpumpre() {
+        return syspClnpumpre;
+    }
+
+    public void setSyspClnpumpre(Date syspClnpumpre) {
+        this.syspClnpumpre = syspClnpumpre;
+    }
+
+    public Integer getSysaPpumpr() {
+        return sysaPpumpr;
+    }
+
+    public void setSysaPpumpr(Integer sysaPpumpr) {
+        this.sysaPpumpr = sysaPpumpr;
+    }
+
+    public Date getSysaPpumprs() {
+        return sysaPpumprs;
+    }
+
+    public void setSysaPpumprs(Date sysaPpumprs) {
+        this.sysaPpumprs = sysaPpumprs;
+    }
+
+    public Date getSysaPpumpre() {
+        return sysaPpumpre;
+    }
+
+    public void setSysaPpumpre(Date sysaPpumpre) {
+        this.sysaPpumpre = sysaPpumpre;
+    }
+
+    public Integer getSysaSandAr() {
+        return sysaSandAr;
+    }
+
+    public void setSysaSandAr(Integer sysaSandAr) {
+        this.sysaSandAr = sysaSandAr;
+    }
+
+    public Date getSysaSandArs() {
+        return sysaSandArs;
+    }
+
+    public void setSysaSandArs(Date sysaSandArs) {
+        this.sysaSandArs = sysaSandArs;
+    }
+
+    public Date getSysaSandAre() {
+        return sysaSandAre;
+    }
+
+    public void setSysaSandAre(Date sysaSandAre) {
+        this.sysaSandAre = sysaSandAre;
+    }
+
+    public Integer getSysaOpumpr() {
+        return sysaOpumpr;
+    }
+
+    public void setSysaOpumpr(Integer sysaOpumpr) {
+        this.sysaOpumpr = sysaOpumpr;
+    }
+
+    public Date getSysaOpumprs() {
+        return sysaOpumprs;
+    }
+
+    public void setSysaOpumprs(Date sysaOpumprs) {
+        this.sysaOpumprs = sysaOpumprs;
+    }
+
+    public Date getSysaOpumpre() {
+        return sysaOpumpre;
+    }
+
+    public void setSysaOpumpre(Date sysaOpumpre) {
+        this.sysaOpumpre = sysaOpumpre;
+    }
+
+    public Integer getSysaOutAr() {
+        return sysaOutAr;
+    }
+
+    public void setSysaOutAr(Integer sysaOutAr) {
+        this.sysaOutAr = sysaOutAr;
+    }
+
+    public Date getSysaOutArs() {
+        return sysaOutArs;
+    }
+
+    public void setSysaOutArs(Date sysaOutArs) {
+        this.sysaOutArs = sysaOutArs;
+    }
+
+    public Date getSysaOutAre() {
+        return sysaOutAre;
+    }
+
+    public void setSysaOutAre(Date sysaOutAre) {
+        this.sysaOutAre = sysaOutAre;
+    }
+
+    public Integer getSyspApresr() {
+        return syspApresr;
+    }
+
+    public void setSyspApresr(Integer syspApresr) {
+        this.syspApresr = syspApresr;
+    }
+
+    public Date getSyspApresrs() {
+        return syspApresrs;
+    }
+
+    public void setSyspApresrs(Date syspApresrs) {
+        this.syspApresrs = syspApresrs;
+    }
+
+    public Date getSyspApresre() {
+        return syspApresre;
+    }
+
+    public void setSyspApresre(Date syspApresre) {
+        this.syspApresre = syspApresre;
+    }
+
+    public Integer getSyspCpumpar() {
+        return syspCpumpar;
+    }
+
+    public void setSyspCpumpar(Integer syspCpumpar) {
+        this.syspCpumpar = syspCpumpar;
+    }
+
+    public Date getSyspCpumpars() {
+        return syspCpumpars;
+    }
+
+    public void setSyspCpumpars(Date syspCpumpars) {
+        this.syspCpumpars = syspCpumpars;
+    }
+
+    public Date getSyspCpumpare() {
+        return syspCpumpare;
+    }
+
+    public void setSyspCpumpare(Date syspCpumpare) {
+        this.syspCpumpare = syspCpumpare;
+    }
+
+    public Integer getSyspCpumpcr() {
+        return syspCpumpcr;
+    }
+
+    public void setSyspCpumpcr(Integer syspCpumpcr) {
+        this.syspCpumpcr = syspCpumpcr;
+    }
+
+    public Date getSyspCpumpcrs() {
+        return syspCpumpcrs;
+    }
+
+    public void setSyspCpumpcrs(Date syspCpumpcrs) {
+        this.syspCpumpcrs = syspCpumpcrs;
+    }
+
+    public Date getSyspCpumpcre() {
+        return syspCpumpcre;
+    }
+
+    public void setSyspCpumpcre(Date syspCpumpcre) {
+        this.syspCpumpcre = syspCpumpcre;
+    }
+
+    public Integer getSysaHpumpr() {
+        return sysaHpumpr;
+    }
+
+    public void setSysaHpumpr(Integer sysaHpumpr) {
+        this.sysaHpumpr = sysaHpumpr;
+    }
+
+    public Date getSysaHpumprs() {
+        return sysaHpumprs;
+    }
+
+    public void setSysaHpumprs(Date sysaHpumprs) {
+        this.sysaHpumprs = sysaHpumprs;
+    }
+
+    public Date getSysaHpumpre() {
+        return sysaHpumpre;
+    }
+
+    public void setSysaHpumpre(Date sysaHpumpre) {
+        this.sysaHpumpre = sysaHpumpre;
+    }
+
+    public Integer getSysbHpumpr() {
+        return sysbHpumpr;
+    }
+
+    public void setSysbHpumpr(Integer sysbHpumpr) {
+        this.sysbHpumpr = sysbHpumpr;
+    }
+
+    public Date getSysbHpumprs() {
+        return sysbHpumprs;
+    }
+
+    public void setSysbHpumprs(Date sysbHpumprs) {
+        this.sysbHpumprs = sysbHpumprs;
+    }
+
+    public Date getSysbHpumpre() {
+        return sysbHpumpre;
+    }
+
+    public void setSysbHpumpre(Date sysbHpumpre) {
+        this.sysbHpumpre = sysbHpumpre;
+    }
+
+    public Integer getSyspApresT() {
+        return syspApresT;
+    }
+
+    public void setSyspApresT(Integer syspApresT) {
+        this.syspApresT = syspApresT;
+    }
+
+    public Date getSyspApresTs() {
+        return syspApresTs;
+    }
+
+    public void setSyspApresTs(Date syspApresTs) {
+        this.syspApresTs = syspApresTs;
+    }
+
+    public Date getSyspApresTe() {
+        return syspApresTe;
+    }
+
+    public void setSyspApresTe(Date syspApresTe) {
+        this.syspApresTe = syspApresTe;
+    }
+
+    public Integer getSysaEspT() {
+        return sysaEspT;
+    }
+
+    public void setSysaEspT(Integer sysaEspT) {
+        this.sysaEspT = sysaEspT;
+    }
+
+    public Date getSysaEspTs() {
+        return sysaEspTs;
+    }
+
+    public void setSysaEspTs(Date sysaEspTs) {
+        this.sysaEspTs = sysaEspTs;
+    }
+
+    public Date getSysaEspTe() {
+        return sysaEspTe;
+    }
+
+    public void setSysaEspTe(Date sysaEspTe) {
+        this.sysaEspTe = sysaEspTe;
+    }
+
+    public Integer getSysbHpumpreT() {
+        return sysbHpumpreT;
+    }
+
+    public void setSysbHpumpreT(Integer sysbHpumpreT) {
+        this.sysbHpumpreT = sysbHpumpreT;
+    }
+
+    public Date getSysbHpumpreTs() {
+        return sysbHpumpreTs;
+    }
+
+    public void setSysbHpumpreTs(Date sysbHpumpreTs) {
+        this.sysbHpumpreTs = sysbHpumpreTs;
+    }
+
+    public Date getSysbHpumpreTe() {
+        return sysbHpumpreTe;
+    }
+
+    public void setSysbHpumpreTe(Date sysbHpumpreTe) {
+        this.sysbHpumpreTe = sysbHpumpreTe;
+    }
+
+    public Integer getSysbPremT() {
+        return sysbPremT;
+    }
+
+    public void setSysbPremT(Integer sysbPremT) {
+        this.sysbPremT = sysbPremT;
+    }
+
+    public Date getSysbPremTs() {
+        return sysbPremTs;
+    }
+
+    public void setSysbPremTs(Date sysbPremTs) {
+        this.sysbPremTs = sysbPremTs;
+    }
+
+    public Date getSysbPremTe() {
+        return sysbPremTe;
+    }
+
+    public void setSysbPremTe(Date sysbPremTe) {
+        this.sysbPremTe = sysbPremTe;
+    }
+
+    public Integer getSyspAlT() {
+        return syspAlT;
+    }
+
+    public void setSyspAlT(Integer syspAlT) {
+        this.syspAlT = syspAlT;
+    }
+
+    public Date getSyspAlTs() {
+        return syspAlTs;
+    }
+
+    public void setSyspAlTs(Date syspAlTs) {
+        this.syspAlTs = syspAlTs;
+    }
+
+    public Date getSyspAlTe() {
+        return syspAlTe;
+    }
+
+    public void setSyspAlTe(Date syspAlTe) {
+        this.syspAlTe = syspAlTe;
+    }
+
+    public Integer getSyspScaT() {
+        return syspScaT;
+    }
+
+    public void setSyspScaT(Integer syspScaT) {
+        this.syspScaT = syspScaT;
+    }
+
+    public Date getSyspScaTs() {
+        return syspScaTs;
+    }
+
+    public void setSyspScaTs(Date syspScaTs) {
+        this.syspScaTs = syspScaTs;
+    }
+
+    public Date getSyspScaTe() {
+        return syspScaTe;
+    }
+
+    public void setSyspScaTe(Date syspScaTe) {
+        this.syspScaTe = syspScaTe;
+    }
+
+    public Integer getSyspSrcT() {
+        return syspSrcT;
+    }
+
+    public void setSyspSrcT(Integer syspSrcT) {
+        this.syspSrcT = syspSrcT;
+    }
+
+    public Date getSyspSrcTs() {
+        return syspSrcTs;
+    }
+
+    public void setSyspSrcTs(Date syspSrcTs) {
+        this.syspSrcTs = syspSrcTs;
+    }
+
+    public Date getSyspSrcTe() {
+        return syspSrcTe;
+    }
+
+    public void setSyspSrcTe(Date syspSrcTe) {
+        this.syspSrcTe = syspSrcTe;
+    }
+
+    public Integer getSyspSrcreT() {
+        return syspSrcreT;
+    }
+
+    public void setSyspSrcreT(Integer syspSrcreT) {
+        this.syspSrcreT = syspSrcreT;
+    }
+
+    public Date getSyspSrcreTs() {
+        return syspSrcreTs;
+    }
+
+    public void setSyspSrcreTs(Date syspSrcreTs) {
+        this.syspSrcreTs = syspSrcreTs;
+    }
+
+    public Date getSyspSrcreTe() {
+        return syspSrcreTe;
+    }
+
+    public void setSyspSrcreTe(Date syspSrcreTe) {
+        this.syspSrcreTe = syspSrcreTe;
+    }
+
+    public Integer getSyspClnT() {
+        return syspClnT;
+    }
+
+    public void setSyspClnT(Integer syspClnT) {
+        this.syspClnT = syspClnT;
+    }
+
+    public Date getSyspClnTs() {
+        return syspClnTs;
+    }
+
+    public void setSyspClnTs(Date syspClnTs) {
+        this.syspClnTs = syspClnTs;
+    }
+
+    public Date getSyspClnTe() {
+        return syspClnTe;
+    }
+
+    public void setSyspClnTe(Date syspClnTe) {
+        this.syspClnTe = syspClnTe;
+    }
+
+    public Integer getSysaPpumpT() {
+        return sysaPpumpT;
+    }
+
+    public void setSysaPpumpT(Integer sysaPpumpT) {
+        this.sysaPpumpT = sysaPpumpT;
+    }
+
+    public Date getSysaPpumpTs() {
+        return sysaPpumpTs;
+    }
+
+    public void setSysaPpumpTs(Date sysaPpumpTs) {
+        this.sysaPpumpTs = sysaPpumpTs;
+    }
+
+    public Date getSysaPpumpTe() {
+        return sysaPpumpTe;
+    }
+
+    public void setSysaPpumpTe(Date sysaPpumpTe) {
+        this.sysaPpumpTe = sysaPpumpTe;
+    }
+
+    public Integer getSyspClnTQS() {
+        return syspClnTQS;
+    }
+
+    public void setSyspClnTQS(Integer syspClnTQS) {
+        this.syspClnTQS = syspClnTQS;
+    }
+
+    public Date getSyspClnTQSs() {
+        return syspClnTQSs;
+    }
+
+    public void setSyspClnTQSs(Date syspClnTQSs) {
+        this.syspClnTQSs = syspClnTQSs;
+    }
+
+    public Date getSyspClnTQSe() {
+        return syspClnTQSe;
+    }
+
+    public void setSyspClnTQSe(Date syspClnTQSe) {
+        this.syspClnTQSe = syspClnTQSe;
+    }
+
+    public Integer getSysbHpumpTQS() {
+        return sysbHpumpTQS;
+    }
+
+    public void setSysbHpumpTQS(Integer sysbHpumpTQS) {
+        this.sysbHpumpTQS = sysbHpumpTQS;
+    }
+
+    public Date getSysbHpumpTQSs() {
+        return sysbHpumpTQSs;
+    }
+
+    public void setSysbHpumpTQSs(Date sysbHpumpTQSs) {
+        this.sysbHpumpTQSs = sysbHpumpTQSs;
+    }
+
+    public Date getSysbHpumpTQSe() {
+        return sysbHpumpTQSe;
+    }
+
+    public void setSysbHpumpTQSe(Date sysbHpumpTQSe) {
+        this.sysbHpumpTQSe = sysbHpumpTQSe;
+    }
+
+    public Integer getSysaSandAQS() {
+        return sysaSandAQS;
+    }
+
+    public void setSysaSandAQS(Integer sysaSandAQS) {
+        this.sysaSandAQS = sysaSandAQS;
+    }
+
+    public Date getSysaSandAQSs() {
+        return sysaSandAQSs;
+    }
+
+    public void setSysaSandAQSs(Date sysaSandAQSs) {
+        this.sysaSandAQSs = sysaSandAQSs;
+    }
+
+    public Date getSysaSandAQSe() {
+        return sysaSandAQSe;
+    }
+
+    public void setSysaSandAQSe(Date sysaSandAQSe) {
+        this.sysaSandAQSe = sysaSandAQSe;
+    }
+
+    public Integer getSysaEspTQS() {
+        return sysaEspTQS;
+    }
+
+    public void setSysaEspTQS(Integer sysaEspTQS) {
+        this.sysaEspTQS = sysaEspTQS;
+    }
+
+    public Date getSysaEspTQSs() {
+        return sysaEspTQSs;
+    }
+
+    public void setSysaEspTQSs(Date sysaEspTQSs) {
+        this.sysaEspTQSs = sysaEspTQSs;
+    }
+
+    public Date getSysaEspTQSe() {
+        return sysaEspTQSe;
+    }
+
+    public void setSysaEspTQSe(Date sysaEspTQSe) {
+        this.sysaEspTQSe = sysaEspTQSe;
+    }
+
+    public Integer getQv17031s() {
+        return qv17031s;
+    }
+
+    public void setQv17031s(Integer qv17031s) {
+        this.qv17031s = qv17031s;
+    }
+
+    public Date getQV17031Ss() {
+        return QV17031Ss;
+    }
+
+    public void setQV17031Ss(Date QV17031Ss) {
+        this.QV17031Ss = QV17031Ss;
+    }
+
+    public Date getQV17031Se() {
+        return QV17031Se;
+    }
+
+    public void setQV17031Se(Date QV17031Se) {
+        this.QV17031Se = QV17031Se;
+    }
+
+    public Integer getQv19411s() {
+        return qv19411s;
+    }
+
+    public void setQv19411s(Integer qv19411s) {
+        this.qv19411s = qv19411s;
+    }
+
+    public Date getQV19411Ss() {
+        return QV19411Ss;
+    }
+
+    public void setQV19411Ss(Date QV19411Ss) {
+        this.QV19411Ss = QV19411Ss;
+    }
+
+    public Date getQV19411Se() {
+        return QV19411Se;
+    }
+
+    public void setQV19411Se(Date QV19411Se) {
+        this.QV19411Se = QV19411Se;
+    }
+
+    public Integer getSysaPpumpTQS() {
+        return sysaPpumpTQS;
+    }
+
+    public void setSysaPpumpTQS(Integer sysaPpumpTQS) {
+        this.sysaPpumpTQS = sysaPpumpTQS;
+    }
+
+    public Date getSysaPpumpTQSs() {
+        return sysaPpumpTQSs;
+    }
+
+    public void setSysaPpumpTQSs(Date sysaPpumpTQSs) {
+        this.sysaPpumpTQSs = sysaPpumpTQSs;
+    }
+
+    public Date getSysaPpumpTQSe() {
+        return sysaPpumpTQSe;
+    }
+
+    public void setSysaPpumpTQSe(Date sysaPpumpTQSe) {
+        this.sysaPpumpTQSe = sysaPpumpTQSe;
+    }
+
+    public Integer getQv13111s() {
+        return qv13111s;
+    }
+
+    public void setQv13111s(Integer qv13111s) {
+        this.qv13111s = qv13111s;
+    }
+
+    public Date getQV13111Ss() {
+        return QV13111Ss;
+    }
+
+    public void setQV13111Ss(Date QV13111Ss) {
+        this.QV13111Ss = QV13111Ss;
+    }
+
+    public Date getQV13111Se() {
+        return QV13111Se;
+    }
+
+    public void setQV13111Se(Date QV13111Se) {
+        this.QV13111Se = QV13111Se;
+    }
+
+    public Integer getQv13151s() {
+        return qv13151s;
+    }
+
+    public void setQv13151s(Integer qv13151s) {
+        this.qv13151s = qv13151s;
+    }
+
+    public Date getQV13151Ss() {
+        return QV13151Ss;
+    }
+
+    public void setQV13151Ss(Date QV13151Ss) {
+        this.QV13151Ss = QV13151Ss;
+    }
+
+    public Date getQV13151Se() {
+        return QV13151Se;
+    }
+
+    public void setQV13151Se(Date QV13151Se) {
+        this.QV13151Se = QV13151Se;
+    }
+
+    public Integer getQv13121s() {
+        return qv13121s;
+    }
+
+    public void setQv13121s(Integer qv13121s) {
+        this.qv13121s = qv13121s;
+    }
+
+    public Date getQV13121Ss() {
+        return QV13121Ss;
+    }
+
+    public void setQV13121Ss(Date QV13121Ss) {
+        this.QV13121Ss = QV13121Ss;
+    }
+
+    public Date getQV13121Se() {
+        return QV13121Se;
+    }
+
+    public void setQV13121Se(Date QV13121Se) {
+        this.QV13121Se = QV13121Se;
+    }
+
+    public Integer getQv13081s() {
+        return qv13081s;
+    }
+
+    public void setQv13081s(Integer qv13081s) {
+        this.qv13081s = qv13081s;
+    }
+
+    public Date getQV13081Ss() {
+        return QV13081Ss;
+    }
+
+    public void setQV13081Ss(Date QV13081Ss) {
+        this.QV13081Ss = QV13081Ss;
+    }
+
+    public Date getQV13081Se() {
+        return QV13081Se;
+    }
+
+    public void setQV13081Se(Date QV13081Se) {
+        this.QV13081Se = QV13081Se;
+    }
+
+    public Integer getQv13161s() {
+        return qv13161s;
+    }
+
+    public void setQv13161s(Integer qv13161s) {
+        this.qv13161s = qv13161s;
+    }
+
+    public Date getQV13161Ss() {
+        return QV13161Ss;
+    }
+
+    public void setQV13161Ss(Date QV13161Ss) {
+        this.QV13161Ss = QV13161Ss;
+    }
+
+    public Date getQV13161Se() {
+        return QV13161Se;
+    }
+
+    public void setQV13161Se(Date QV13161Se) {
+        this.QV13161Se = QV13161Se;
+    }
+
+    public Integer getQv17011s() {
+        return qv17011s;
+    }
+
+    public void setQv17011s(Integer qv17011s) {
+        this.qv17011s = qv17011s;
+    }
+
+    public Date getQV17011Ss() {
+        return QV17011Ss;
+    }
+
+    public void setQV17011Ss(Date QV17011Ss) {
+        this.QV17011Ss = QV17011Ss;
+    }
+
+    public Date getQV17011Se() {
+        return QV17011Se;
+    }
+
+    public void setQV17011Se(Date QV17011Se) {
+        this.QV17011Se = QV17011Se;
+    }
+
+    public Integer getSysaPremTQS() {
+        return sysaPremTQS;
+    }
+
+    public void setSysaPremTQS(Integer sysaPremTQS) {
+        this.sysaPremTQS = sysaPremTQS;
+    }
+
+    public Date getSysaPremTQSs() {
+        return sysaPremTQSs;
+    }
+
+    public void setSysaPremTQSs(Date sysaPremTQSs) {
+        this.sysaPremTQSs = sysaPremTQSs;
+    }
+
+    public Date getSysaPremTQSe() {
+        return sysaPremTQSe;
+    }
+
+    public void setSysaPremTQSe(Date sysaPremTQSe) {
+        this.sysaPremTQSe = sysaPremTQSe;
+    }
+
+    public Integer getSysaPremTaQS() {
+        return sysaPremTaQS;
+    }
+
+    public void setSysaPremTaQS(Integer sysaPremTaQS) {
+        this.sysaPremTaQS = sysaPremTaQS;
+    }
+
+    public Date getSysaPremTaQSs() {
+        return sysaPremTaQSs;
+    }
+
+    public void setSysaPremTaQSs(Date sysaPremTaQSs) {
+        this.sysaPremTaQSs = sysaPremTaQSs;
+    }
+
+    public Date getSysaPremTaQSe() {
+        return sysaPremTaQSe;
+    }
+
+    public void setSysaPremTaQSe(Date sysaPremTaQSe) {
+        this.sysaPremTaQSe = sysaPremTaQSe;
+    }
+
+    public Integer getQv27011s() {
+        return qv27011s;
+    }
+
+    public void setQv27011s(Integer qv27011s) {
+        this.qv27011s = qv27011s;
+    }
+
+    public Date getQV27011Ss() {
+        return QV27011Ss;
+    }
+
+    public void setQV27011Ss(Date QV27011Ss) {
+        this.QV27011Ss = QV27011Ss;
+    }
+
+    public Date getQV27011Se() {
+        return QV27011Se;
+    }
+
+    public void setQV27011Se(Date QV27011Se) {
+        this.QV27011Se = QV27011Se;
+    }
+
+    public Integer getQv21011s() {
+        return qv21011s;
+    }
+
+    public void setQv21011s(Integer qv21011s) {
+        this.qv21011s = qv21011s;
+    }
+
+    public Date getQV21011Ss() {
+        return QV21011Ss;
+    }
+
+    public void setQV21011Ss(Date QV21011Ss) {
+        this.QV21011Ss = QV21011Ss;
+    }
+
+    public Date getQV21011Se() {
+        return QV21011Se;
+    }
+
+    public void setQV21011Se(Date QV21011Se) {
+        this.QV21011Se = QV21011Se;
+    }
+
+    public Integer getSysbPremTQS() {
+        return sysbPremTQS;
+    }
+
+    public void setSysbPremTQS(Integer sysbPremTQS) {
+        this.sysbPremTQS = sysbPremTQS;
+    }
+
+    public Date getSysbPremTQSs() {
+        return sysbPremTQSs;
+    }
+
+    public void setSysbPremTQSs(Date sysbPremTQSs) {
+        this.sysbPremTQSs = sysbPremTQSs;
+    }
+
+    public Date getSysbPremTQSe() {
+        return sysbPremTQSe;
+    }
+
+    public void setSysbPremTQSe(Date sysbPremTQSe) {
+        this.sysbPremTQSe = sysbPremTQSe;
+    }
+
+    public Integer getSysbPremTaQS() {
+        return sysbPremTaQS;
+    }
+
+    public void setSysbPremTaQS(Integer sysbPremTaQS) {
+        this.sysbPremTaQS = sysbPremTaQS;
+    }
+
+    public Date getSysbPremTaQSs() {
+        return sysbPremTaQSs;
+    }
+
+    public void setSysbPremTaQSs(Date sysbPremTaQSs) {
+        this.sysbPremTaQSs = sysbPremTaQSs;
+    }
+
+    public Date getSysbPremTaQSe() {
+        return sysbPremTaQSe;
+    }
+
+    public void setSysbPremTaQSe(Date sysbPremTaQSe) {
+        this.sysbPremTaQSe = sysbPremTaQSe;
+    }
+
+    public Integer getSysbValveTQS() {
+        return sysbValveTQS;
+    }
+
+    public void setSysbValveTQS(Integer sysbValveTQS) {
+        this.sysbValveTQS = sysbValveTQS;
+    }
+
+    public Date getSysbValveTQSs() {
+        return sysbValveTQSs;
+    }
+
+    public void setSysbValveTQSs(Date sysbValveTQSs) {
+        this.sysbValveTQSs = sysbValveTQSs;
+    }
+
+    public Date getSysbValveTQSe() {
+        return sysbValveTQSe;
+    }
+
+    public void setSysbValveTQSe(Date sysbValveTQSe) {
+        this.sysbValveTQSe = sysbValveTQSe;
+    }
+
+    public Integer getSysaValveTQOS() {
+        return sysaValveTQOS;
+    }
+
+    public void setSysaValveTQOS(Integer sysaValveTQOS) {
+        this.sysaValveTQOS = sysaValveTQOS;
+    }
+
+    public Date getSysaValveTQOSs() {
+        return sysaValveTQOSs;
+    }
+
+    public void setSysaValveTQOSs(Date sysaValveTQOSs) {
+        this.sysaValveTQOSs = sysaValveTQOSs;
+    }
+
+    public Date getSysaValveTQOSe() {
+        return sysaValveTQOSe;
+    }
+
+    public void setSysaValveTQOSe(Date sysaValveTQOSe) {
+        this.sysaValveTQOSe = sysaValveTQOSe;
+    }
+
+    public Integer getSysaValveTQCS() {
+        return sysaValveTQCS;
+    }
+
+    public void setSysaValveTQCS(Integer sysaValveTQCS) {
+        this.sysaValveTQCS = sysaValveTQCS;
+    }
+
+    public Date getSysaValveTQCSs() {
+        return sysaValveTQCSs;
+    }
+
+    public void setSysaValveTQCSs(Date sysaValveTQCSs) {
+        this.sysaValveTQCSs = sysaValveTQCSs;
+    }
+
+    public Date getSysaValveTQCSe() {
+        return sysaValveTQCSe;
+    }
+
+    public void setSysaValveTQCSe(Date sysaValveTQCSe) {
+        this.sysaValveTQCSe = sysaValveTQCSe;
+    }
+
+    public Integer getSysaValveTaQOS() {
+        return sysaValveTaQOS;
+    }
+
+    public void setSysaValveTaQOS(Integer sysaValveTaQOS) {
+        this.sysaValveTaQOS = sysaValveTaQOS;
+    }
+
+    public Date getSysaValveTaQOSs() {
+        return sysaValveTaQOSs;
+    }
+
+    public void setSysaValveTaQOSs(Date sysaValveTaQOSs) {
+        this.sysaValveTaQOSs = sysaValveTaQOSs;
+    }
+
+    public Date getSysaValveTaQOSe() {
+        return sysaValveTaQOSe;
+    }
+
+    public void setSysaValveTaQOSe(Date sysaValveTaQOSe) {
+        this.sysaValveTaQOSe = sysaValveTaQOSe;
+    }
+
+    public Integer getSysaValveTaQCS() {
+        return sysaValveTaQCS;
+    }
+
+    public void setSysaValveTaQCS(Integer sysaValveTaQCS) {
+        this.sysaValveTaQCS = sysaValveTaQCS;
+    }
+
+    public Date getSysaValveTaQCSs() {
+        return sysaValveTaQCSs;
+    }
+
+    public void setSysaValveTaQCSs(Date sysaValveTaQCSs) {
+        this.sysaValveTaQCSs = sysaValveTaQCSs;
+    }
+
+    public Date getSysaValveTaQCSe() {
+        return sysaValveTaQCSe;
+    }
+
+    public void setSysaValveTaQCSe(Date sysaValveTaQCSe) {
+        this.sysaValveTaQCSe = sysaValveTaQCSe;
+    }
+
+    public Integer getSysbValveTaQOS() {
+        return sysbValveTaQOS;
+    }
+
+    public void setSysbValveTaQOS(Integer sysbValveTaQOS) {
+        this.sysbValveTaQOS = sysbValveTaQOS;
+    }
+
+    public Date getSysbValveTaQOSs() {
+        return sysbValveTaQOSs;
+    }
+
+    public void setSysbValveTaQOSs(Date sysbValveTaQOSs) {
+        this.sysbValveTaQOSs = sysbValveTaQOSs;
+    }
+
+    public Date getSysbValveTaQOSe() {
+        return sysbValveTaQOSe;
+    }
+
+    public void setSysbValveTaQOSe(Date sysbValveTaQOSe) {
+        this.sysbValveTaQOSe = sysbValveTaQOSe;
+    }
+
+    public Integer getSysbValveTaQCS() {
+        return sysbValveTaQCS;
+    }
+
+    public void setSysbValveTaQCS(Integer sysbValveTaQCS) {
+        this.sysbValveTaQCS = sysbValveTaQCS;
+    }
+
+    public Date getSysbValveTaQCSs() {
+        return sysbValveTaQCSs;
+    }
+
+    public void setSysbValveTaQCSs(Date sysbValveTaQCSs) {
+        this.sysbValveTaQCSs = sysbValveTaQCSs;
+    }
+
+    public Date getSysbValveTaQCSe() {
+        return sysbValveTaQCSe;
+    }
+
+    public void setSysbValveTaQCSe(Date sysbValveTaQCSe) {
+        this.sysbValveTaQCSe = sysbValveTaQCSe;
+    }
+
+    public Integer getSyspClnTQr() {
+        return syspClnTQr;
+    }
+
+    public void setSyspClnTQr(Integer syspClnTQr) {
+        this.syspClnTQr = syspClnTQr;
+    }
+
+    public Date getSyspClnTQrs() {
+        return syspClnTQrs;
+    }
+
+    public void setSyspClnTQrs(Date syspClnTQrs) {
+        this.syspClnTQrs = syspClnTQrs;
+    }
+
+    public Date getSyspClnTQre() {
+        return syspClnTQre;
+    }
+
+    public void setSyspClnTQre(Date syspClnTQre) {
+        this.syspClnTQre = syspClnTQre;
+    }
+
+    public Integer getSysbHpumpTQr() {
+        return sysbHpumpTQr;
+    }
+
+    public void setSysbHpumpTQr(Integer sysbHpumpTQr) {
+        this.sysbHpumpTQr = sysbHpumpTQr;
+    }
+
+    public Date getSysbHpumpTQrs() {
+        return sysbHpumpTQrs;
+    }
+
+    public void setSysbHpumpTQrs(Date sysbHpumpTQrs) {
+        this.sysbHpumpTQrs = sysbHpumpTQrs;
+    }
+
+    public Date getSysbHpumpTQre() {
+        return sysbHpumpTQre;
+    }
+
+    public void setSysbHpumpTQre(Date sysbHpumpTQre) {
+        this.sysbHpumpTQre = sysbHpumpTQre;
+    }
+
+    public Integer getSysaSandAQr() {
+        return sysaSandAQr;
+    }
+
+    public void setSysaSandAQr(Integer sysaSandAQr) {
+        this.sysaSandAQr = sysaSandAQr;
+    }
+
+    public Date getSysaSandAQrs() {
+        return sysaSandAQrs;
+    }
+
+    public void setSysaSandAQrs(Date sysaSandAQrs) {
+        this.sysaSandAQrs = sysaSandAQrs;
+    }
+
+    public Date getSysaSandAQre() {
+        return sysaSandAQre;
+    }
+
+    public void setSysaSandAQre(Date sysaSandAQre) {
+        this.sysaSandAQre = sysaSandAQre;
+    }
+
+    public Integer getSysaEspTQr() {
+        return sysaEspTQr;
+    }
+
+    public void setSysaEspTQr(Integer sysaEspTQr) {
+        this.sysaEspTQr = sysaEspTQr;
+    }
+
+    public Date getSysaEspTQrs() {
+        return sysaEspTQrs;
+    }
+
+    public void setSysaEspTQrs(Date sysaEspTQrs) {
+        this.sysaEspTQrs = sysaEspTQrs;
+    }
+
+    public Date getSysaEspTQre() {
+        return sysaEspTQre;
+    }
+
+    public void setSysaEspTQre(Date sysaEspTQre) {
+        this.sysaEspTQre = sysaEspTQre;
+    }
+
+    public Integer getQV17031r() {
+        return QV17031r;
+    }
+
+    public void setQV17031r(Integer QV17031r) {
+        this.QV17031r = QV17031r;
+    }
+
+    public Date getQV17031rs() {
+        return QV17031rs;
+    }
+
+    public void setQV17031rs(Date QV17031rs) {
+        this.QV17031rs = QV17031rs;
+    }
+
+    public Date getQV17031re() {
+        return QV17031re;
+    }
+
+    public void setQV17031re(Date QV17031re) {
+        this.QV17031re = QV17031re;
+    }
+
+    public Integer getQV19411r() {
+        return QV19411r;
+    }
+
+    public void setQV19411r(Integer QV19411r) {
+        this.QV19411r = QV19411r;
+    }
+
+    public Date getQV19411rs() {
+        return QV19411rs;
+    }
+
+    public void setQV19411rs(Date QV19411rs) {
+        this.QV19411rs = QV19411rs;
+    }
+
+    public Date getQV19411re() {
+        return QV19411re;
+    }
+
+    public void setQV19411re(Date QV19411re) {
+        this.QV19411re = QV19411re;
+    }
+
+    public Integer getSysaPpumpTQr() {
+        return sysaPpumpTQr;
+    }
+
+    public void setSysaPpumpTQr(Integer sysaPpumpTQr) {
+        this.sysaPpumpTQr = sysaPpumpTQr;
+    }
+
+    public Date getSysaPpumpTQrs() {
+        return sysaPpumpTQrs;
+    }
+
+    public void setSysaPpumpTQrs(Date sysaPpumpTQrs) {
+        this.sysaPpumpTQrs = sysaPpumpTQrs;
+    }
+
+    public Date getSysaPpumpTQre() {
+        return sysaPpumpTQre;
+    }
+
+    public void setSysaPpumpTQre(Date sysaPpumpTQre) {
+        this.sysaPpumpTQre = sysaPpumpTQre;
+    }
+
+    public Integer getQV13111r() {
+        return QV13111r;
+    }
+
+    public void setQV13111r(Integer QV13111r) {
+        this.QV13111r = QV13111r;
+    }
+
+    public Date getQV13111rs() {
+        return QV13111rs;
+    }
+
+    public void setQV13111rs(Date QV13111rs) {
+        this.QV13111rs = QV13111rs;
+    }
+
+    public Date getQV13111re() {
+        return QV13111re;
+    }
+
+    public void setQV13111re(Date QV13111re) {
+        this.QV13111re = QV13111re;
+    }
+
+    public Integer getQV13151r() {
+        return QV13151r;
+    }
+
+    public void setQV13151r(Integer QV13151r) {
+        this.QV13151r = QV13151r;
+    }
+
+    public Date getQV13151rs() {
+        return QV13151rs;
+    }
+
+    public void setQV13151rs(Date QV13151rs) {
+        this.QV13151rs = QV13151rs;
+    }
+
+    public Date getQV13151re() {
+        return QV13151re;
+    }
+
+    public void setQV13151re(Date QV13151re) {
+        this.QV13151re = QV13151re;
+    }
+
+    public Integer getQV13121r() {
+        return QV13121r;
+    }
+
+    public void setQV13121r(Integer QV13121r) {
+        this.QV13121r = QV13121r;
+    }
+
+    public Date getQV13121rs() {
+        return QV13121rs;
+    }
+
+    public void setQV13121rs(Date QV13121rs) {
+        this.QV13121rs = QV13121rs;
+    }
+
+    public Date getQV13121re() {
+        return QV13121re;
+    }
+
+    public void setQV13121re(Date QV13121re) {
+        this.QV13121re = QV13121re;
+    }
+
+    public Integer getQV13081r() {
+        return QV13081r;
+    }
+
+    public void setQV13081r(Integer QV13081r) {
+        this.QV13081r = QV13081r;
+    }
+
+    public Date getQV13081rs() {
+        return QV13081rs;
+    }
+
+    public void setQV13081rs(Date QV13081rs) {
+        this.QV13081rs = QV13081rs;
+    }
+
+    public Date getQV13081re() {
+        return QV13081re;
+    }
+
+    public void setQV13081re(Date QV13081re) {
+        this.QV13081re = QV13081re;
+    }
+
+    public Integer getQV13161r() {
+        return QV13161r;
+    }
+
+    public void setQV13161r(Integer QV13161r) {
+        this.QV13161r = QV13161r;
+    }
+
+    public Date getQV13161rs() {
+        return QV13161rs;
+    }
+
+    public void setQV13161rs(Date QV13161rs) {
+        this.QV13161rs = QV13161rs;
+    }
+
+    public Date getQV13161re() {
+        return QV13161re;
+    }
+
+    public void setQV13161re(Date QV13161re) {
+        this.QV13161re = QV13161re;
+    }
+
+    public Integer getQV17011r() {
+        return QV17011r;
+    }
+
+    public void setQV17011r(Integer QV17011r) {
+        this.QV17011r = QV17011r;
+    }
+
+    public Date getQV17011rs() {
+        return QV17011rs;
+    }
+
+    public void setQV17011rs(Date QV17011rs) {
+        this.QV17011rs = QV17011rs;
+    }
+
+    public Date getQV17011re() {
+        return QV17011re;
+    }
+
+    public void setQV17011re(Date QV17011re) {
+        this.QV17011re = QV17011re;
+    }
+
+    public Integer getSysaPremTQr() {
+        return sysaPremTQr;
+    }
+
+    public void setSysaPremTQr(Integer sysaPremTQr) {
+        this.sysaPremTQr = sysaPremTQr;
+    }
+
+    public Date getSysaPremTQrs() {
+        return sysaPremTQrs;
+    }
+
+    public void setSysaPremTQrs(Date sysaPremTQrs) {
+        this.sysaPremTQrs = sysaPremTQrs;
+    }
+
+    public Date getSysaPremTQre() {
+        return sysaPremTQre;
+    }
+
+    public void setSysaPremTQre(Date sysaPremTQre) {
+        this.sysaPremTQre = sysaPremTQre;
+    }
+
+    public Integer getSysaPremTaQr() {
+        return sysaPremTaQr;
+    }
+
+    public void setSysaPremTaQr(Integer sysaPremTaQr) {
+        this.sysaPremTaQr = sysaPremTaQr;
+    }
+
+    public Date getSysaPremTaQrs() {
+        return sysaPremTaQrs;
+    }
+
+    public void setSysaPremTaQrs(Date sysaPremTaQrs) {
+        this.sysaPremTaQrs = sysaPremTaQrs;
+    }
+
+    public Date getSysaPremTaQre() {
+        return sysaPremTaQre;
+    }
+
+    public void setSysaPremTaQre(Date sysaPremTaQre) {
+        this.sysaPremTaQre = sysaPremTaQre;
+    }
+
+    public Integer getQV27011r() {
+        return QV27011r;
+    }
+
+    public void setQV27011r(Integer QV27011r) {
+        this.QV27011r = QV27011r;
+    }
+
+    public Date getQV27011rs() {
+        return QV27011rs;
+    }
+
+    public void setQV27011rs(Date QV27011rs) {
+        this.QV27011rs = QV27011rs;
+    }
+
+    public Date getQV27011re() {
+        return QV27011re;
+    }
+
+    public void setQV27011re(Date QV27011re) {
+        this.QV27011re = QV27011re;
+    }
+
+    public Integer getQV21011r() {
+        return QV21011r;
+    }
+
+    public void setQV21011r(Integer QV21011r) {
+        this.QV21011r = QV21011r;
+    }
+
+    public Date getQV21011rs() {
+        return QV21011rs;
+    }
+
+    public void setQV21011rs(Date QV21011rs) {
+        this.QV21011rs = QV21011rs;
+    }
+
+    public Date getQV21011re() {
+        return QV21011re;
+    }
+
+    public void setQV21011re(Date QV21011re) {
+        this.QV21011re = QV21011re;
+    }
+
+    public Integer getSysbPremTQr() {
+        return sysbPremTQr;
+    }
+
+    public void setSysbPremTQr(Integer sysbPremTQr) {
+        this.sysbPremTQr = sysbPremTQr;
+    }
+
+    public Date getSysbPremTQrs() {
+        return sysbPremTQrs;
+    }
+
+    public void setSysbPremTQrs(Date sysbPremTQrs) {
+        this.sysbPremTQrs = sysbPremTQrs;
+    }
+
+    public Date getSysbPremTQre() {
+        return sysbPremTQre;
+    }
+
+    public void setSysbPremTQre(Date sysbPremTQre) {
+        this.sysbPremTQre = sysbPremTQre;
+    }
+
+    public Integer getSysbPremTaQr() {
+        return sysbPremTaQr;
+    }
+
+    public void setSysbPremTaQr(Integer sysbPremTaQr) {
+        this.sysbPremTaQr = sysbPremTaQr;
+    }
+
+    public Date getSysbPremTaQrs() {
+        return sysbPremTaQrs;
+    }
+
+    public void setSysbPremTaQrs(Date sysbPremTaQrs) {
+        this.sysbPremTaQrs = sysbPremTaQrs;
+    }
+
+    public Date getSysbPremTaQre() {
+        return sysbPremTaQre;
+    }
+
+    public void setSysbPremTaQre(Date sysbPremTaQre) {
+        this.sysbPremTaQre = sysbPremTaQre;
+    }
+
+    public Integer getSysbValveTQr() {
+        return sysbValveTQr;
+    }
+
+    public void setSysbValveTQr(Integer sysbValveTQr) {
+        this.sysbValveTQr = sysbValveTQr;
+    }
+
+    public Date getSysbValveTQrs() {
+        return sysbValveTQrs;
+    }
+
+    public void setSysbValveTQrs(Date sysbValveTQrs) {
+        this.sysbValveTQrs = sysbValveTQrs;
+    }
+
+    public Date getSysbValveTQre() {
+        return sysbValveTQre;
+    }
+
+    public void setSysbValveTQre(Date sysbValveTQre) {
+        this.sysbValveTQre = sysbValveTQre;
+    }
+
+    public Integer getSysaValveTQOr() {
+        return sysaValveTQOr;
+    }
+
+    public void setSysaValveTQOr(Integer sysaValveTQOr) {
+        this.sysaValveTQOr = sysaValveTQOr;
+    }
+
+    public Date getSysaValveTQOrs() {
+        return sysaValveTQOrs;
+    }
+
+    public void setSysaValveTQOrs(Date sysaValveTQOrs) {
+        this.sysaValveTQOrs = sysaValveTQOrs;
+    }
+
+    public Date getSysaValveTQOre() {
+        return sysaValveTQOre;
+    }
+
+    public void setSysaValveTQOre(Date sysaValveTQOre) {
+        this.sysaValveTQOre = sysaValveTQOre;
+    }
+
+    public Integer getSysaValveTQCr() {
+        return sysaValveTQCr;
+    }
+
+    public void setSysaValveTQCr(Integer sysaValveTQCr) {
+        this.sysaValveTQCr = sysaValveTQCr;
+    }
+
+    public Date getSysaValveTQCrs() {
+        return sysaValveTQCrs;
+    }
+
+    public void setSysaValveTQCrs(Date sysaValveTQCrs) {
+        this.sysaValveTQCrs = sysaValveTQCrs;
+    }
+
+    public Date getSysaValveTQCre() {
+        return sysaValveTQCre;
+    }
+
+    public void setSysaValveTQCre(Date sysaValveTQCre) {
+        this.sysaValveTQCre = sysaValveTQCre;
+    }
+
+    public Integer getSysaValveTaQOr() {
+        return sysaValveTaQOr;
+    }
+
+    public void setSysaValveTaQOr(Integer sysaValveTaQOr) {
+        this.sysaValveTaQOr = sysaValveTaQOr;
+    }
+
+    public Date getSysaValveTaQOrs() {
+        return sysaValveTaQOrs;
+    }
+
+    public void setSysaValveTaQOrs(Date sysaValveTaQOrs) {
+        this.sysaValveTaQOrs = sysaValveTaQOrs;
+    }
+
+    public Date getSysaValveTaQOre() {
+        return sysaValveTaQOre;
+    }
+
+    public void setSysaValveTaQOre(Date sysaValveTaQOre) {
+        this.sysaValveTaQOre = sysaValveTaQOre;
+    }
+
+    public Integer getSysaValveTaQCr() {
+        return sysaValveTaQCr;
+    }
+
+    public void setSysaValveTaQCr(Integer sysaValveTaQCr) {
+        this.sysaValveTaQCr = sysaValveTaQCr;
+    }
+
+    public Date getSysaValveTaQCrs() {
+        return sysaValveTaQCrs;
+    }
+
+    public void setSysaValveTaQCrs(Date sysaValveTaQCrs) {
+        this.sysaValveTaQCrs = sysaValveTaQCrs;
+    }
+
+    public Date getSysaValveTaQCre() {
+        return sysaValveTaQCre;
+    }
+
+    public void setSysaValveTaQCre(Date sysaValveTaQCre) {
+        this.sysaValveTaQCre = sysaValveTaQCre;
+    }
+
+    public Integer getSysbValveTaQOr() {
+        return sysbValveTaQOr;
+    }
+
+    public void setSysbValveTaQOr(Integer sysbValveTaQOr) {
+        this.sysbValveTaQOr = sysbValveTaQOr;
+    }
+
+    public Date getSysbValveTaQOrs() {
+        return sysbValveTaQOrs;
+    }
+
+    public void setSysbValveTaQOrs(Date sysbValveTaQOrs) {
+        this.sysbValveTaQOrs = sysbValveTaQOrs;
+    }
+
+    public Date getSysbValveTaQOre() {
+        return sysbValveTaQOre;
+    }
+
+    public void setSysbValveTaQOre(Date sysbValveTaQOre) {
+        this.sysbValveTaQOre = sysbValveTaQOre;
+    }
+
+    public Integer getSysbValveTaQCr() {
+        return sysbValveTaQCr;
+    }
+
+    public void setSysbValveTaQCr(Integer sysbValveTaQCr) {
+        this.sysbValveTaQCr = sysbValveTaQCr;
+    }
+
+    public Date getSysbValveTaQCrs() {
+        return sysbValveTaQCrs;
+    }
+
+    public void setSysbValveTaQCrs(Date sysbValveTaQCrs) {
+        this.sysbValveTaQCrs = sysbValveTaQCrs;
+    }
+
+    public Date getSysbValveTaQCre() {
+        return sysbValveTaQCre;
+    }
+
+    public void setSysbValveTaQCre(Date sysbValveTaQCre) {
+        this.sysbValveTaQCre = sysbValveTaQCre;
+    }
+
+    @Override
+    protected Serializable pkVal() {
+        return this.id;
+    }
+
+    @Override
+    public String toString() {
+        return "Factleachtime{" +
+        "id=" + id +
+        ", factNum=" + factNum +
+        ", equmNum=" + equmNum +
+        ", factMan=" + factMan +
+        ", factMans=" + factMans +
+        ", factMane=" + factMane +
+        ", factAuto=" + factAuto +
+        ", factAutos=" + factAutos +
+        ", factAutoe=" + factAutoe +
+        ", factOnestep=" + factOnestep +
+        ", factOnesteps=" + factOnesteps +
+        ", factOnestepe=" + factOnestepe +
+        ", syspBoot=" + syspBoot +
+        ", syspBoots=" + syspBoots +
+        ", syspBoote=" + syspBoote +
+        ", sysaBoot=" + sysaBoot +
+        ", sysaBoots=" + sysaBoots +
+        ", sysaBoote=" + sysaBoote +
+        ", sysbBoot=" + sysbBoot +
+        ", sysbBoots=" + sysbBoots +
+        ", sysbBoote=" + sysbBoote +
+        ", sysaWash=" + sysaWash +
+        ", sysaWashs=" + sysaWashs +
+        ", sysaWashe=" + sysaWashe +
+        ", sysaSand=" + sysaSand +
+        ", sysaSands=" + sysaSands +
+        ", sysaSande=" + sysaSande +
+        ", sysaChem=" + sysaChem +
+        ", sysaChems=" + sysaChems +
+        ", sysaCheme=" + sysaCheme +
+        ", sysbChem=" + sysbChem +
+        ", sysbChems=" + sysbChems +
+        ", sysbCheme=" + sysbCheme +
+        ", factTermn=" + factTermn +
+        ", factTermns=" + factTermns +
+        ", factTermne=" + factTermne +
+        ", factRest=" + factRest +
+        ", factRests=" + factRests +
+        ", factReste=" + factReste +
+        ", factOnefin=" + factOnefin +
+        ", factOnefins=" + factOnefins +
+        ", factOnefine=" + factOnefine +
+        ", syspTermn=" + syspTermn +
+        ", syspTermns=" + syspTermns +
+        ", syspTermne=" + syspTermne +
+        ", sysaTermn=" + sysaTermn +
+        ", sysaTermns=" + sysaTermns +
+        ", sysaTermne=" + sysaTermne +
+        ", sysbTermn=" + sysbTermn +
+        ", sysbTermns=" + sysbTermns +
+        ", sysbTermne=" + sysbTermne +
+        ", sysaChemtermn=" + sysaChemtermn +
+        ", sysaChemtermns=" + sysaChemtermns +
+        ", sysaChemtermne=" + sysaChemtermne +
+        ", sysbChemtermn=" + sysbChemtermn +
+        ", sysbChemtermns=" + sysbChemtermns +
+        ", sysbChemtermne=" + sysbChemtermne +
+        ", syspStfin=" + syspStfin +
+        ", syspStfins=" + syspStfins +
+        ", syspStfine=" + syspStfine +
+        ", sysaStfin=" + sysaStfin +
+        ", sysaStfins=" + sysaStfins +
+        ", sysaStfine=" + sysaStfine +
+        ", sysbStfin=" + sysbStfin +
+        ", sysbStfins=" + sysbStfins +
+        ", sysbStfine=" + sysbStfine +
+        ", sysbTermnfin=" + sysbTermnfin +
+        ", sysbTermnfins=" + sysbTermnfins +
+        ", sysbTermnfine=" + sysbTermnfine +
+        ", sysaTermnfin=" + sysaTermnfin +
+        ", sysaTermnfins=" + sysaTermnfins +
+        ", sysaTermnfine=" + sysaTermnfine +
+        ", syspTermnfin=" + syspTermnfin +
+        ", syspTermnfins=" + syspTermnfins +
+        ", syspTermnfine=" + syspTermnfine +
+        ", sysaWashfin=" + sysaWashfin +
+        ", sysaWashfins=" + sysaWashfins +
+        ", sysaWashfine=" + sysaWashfine +
+        ", sysaSandfin=" + sysaSandfin +
+        ", sysaSandfins=" + sysaSandfins +
+        ", sysaSandfine=" + sysaSandfine +
+        ", sysaSandSrcfin=" + sysaSandSrcfin +
+        ", sysaSandSrcfins=" + sysaSandSrcfins +
+        ", sysaSandSrcfine=" + sysaSandSrcfine +
+        ", sysaSandWfin=" + sysaSandWfin +
+        ", sysaSandWfins=" + sysaSandWfins +
+        ", sysaSandWfine=" + sysaSandWfine +
+        ", sysaChemTfin=" + sysaChemTfin +
+        ", sysaChemTfins=" + sysaChemTfins +
+        ", sysaChemTfine=" + sysaChemTfine +
+        ", sysbChemTfin=" + sysbChemTfin +
+        ", sysbChemTfins=" + sysbChemTfins +
+        ", sysbChemTfine=" + sysbChemTfine +
+        ", resvF1=" + resvF1 +
+        ", resvF1s=" + resvF1s +
+        ", resvF1e=" + resvF1e +
+        ", factLock=" + factLock +
+        ", factLocks=" + factLocks +
+        ", factLocke=" + factLocke +
+        ", syspSpumpS=" + syspSpumpS +
+        ", syspSpumpSs=" + syspSpumpSs +
+        ", syspSpumpSe=" + syspSpumpSe +
+        ", syspSrcpumpS=" + syspSrcpumpS +
+        ", syspSrcpumpSs=" + syspSrcpumpSs +
+        ", syspSrcpumpSe=" + syspSrcpumpSe +
+        ", syspClnpumpS=" + syspClnpumpS +
+        ", syspClnpumpSs=" + syspClnpumpSs +
+        ", syspClnpumpSe=" + syspClnpumpSe +
+        ", syspHeat=" + syspHeat +
+        ", syspHeats=" + syspHeats +
+        ", syspHeate=" + syspHeate +
+        ", sysaPpumpS=" + sysaPpumpS +
+        ", sysaPpumpSs=" + sysaPpumpSs +
+        ", sysaPpumpSe=" + sysaPpumpSe +
+        ", sysaSandAS=" + sysaSandAS +
+        ", sysaSandASs=" + sysaSandASs +
+        ", sysaSandASe=" + sysaSandASe +
+        ", sysaOpumpS=" + sysaOpumpS +
+        ", sysaOpumpSs=" + sysaOpumpSs +
+        ", sysaOpumpSe=" + sysaOpumpSe +
+        ", sysaOutAS=" + sysaOutAS +
+        ", sysaOutASs=" + sysaOutASs +
+        ", sysaOutASe=" + sysaOutASe +
+        ", syspApresS=" + syspApresS +
+        ", syspApresSs=" + syspApresSs +
+        ", syspApresSe=" + syspApresSe +
+        ", sysaHpumpS=" + sysaHpumpS +
+        ", sysaHpumpSs=" + sysaHpumpSs +
+        ", sysaHpumpSe=" + sysaHpumpSe +
+        ", sysbHpumpS=" + sysbHpumpS +
+        ", sysbHpumpSs=" + sysbHpumpSs +
+        ", sysbHpumpSe=" + sysbHpumpSe +
+        ", syspScapumpS=" + syspScapumpS +
+        ", syspScapumpSs=" + syspScapumpSs +
+        ", syspScapumpSe=" + syspScapumpSe +
+        ", syspAcpumpS=" + syspAcpumpS +
+        ", syspAcpumpSs=" + syspAcpumpSs +
+        ", syspAcpumpSe=" + syspAcpumpSe +
+        ", syspSrcpumpaS=" + syspSrcpumpaS +
+        ", syspSrcpumpaSs=" + syspSrcpumpaSs +
+        ", syspSrcpumpaSe=" + syspSrcpumpaSe +
+        ", syspCpumpaS=" + syspCpumpaS +
+        ", syspCpumpaSs=" + syspCpumpaSs +
+        ", syspCpumpaSe=" + syspCpumpaSe +
+        ", syspCpumpcS=" + syspCpumpcS +
+        ", syspCpumpcSs=" + syspCpumpcSs +
+        ", syspCpumpcSe=" + syspCpumpcSe +
+        ", syspSpumpr=" + syspSpumpr +
+        ", syspSpumprs=" + syspSpumprs +
+        ", syspSpumpre=" + syspSpumpre +
+        ", syspSrcpumpr=" + syspSrcpumpr +
+        ", syspSrcpumprs=" + syspSrcpumprs +
+        ", syspSrcpumpre=" + syspSrcpumpre +
+        ", syspClnpumpr=" + syspClnpumpr +
+        ", syspClnpumprs=" + syspClnpumprs +
+        ", syspClnpumpre=" + syspClnpumpre +
+        ", sysaPpumpr=" + sysaPpumpr +
+        ", sysaPpumprs=" + sysaPpumprs +
+        ", sysaPpumpre=" + sysaPpumpre +
+        ", sysaSandAr=" + sysaSandAr +
+        ", sysaSandArs=" + sysaSandArs +
+        ", sysaSandAre=" + sysaSandAre +
+        ", sysaOpumpr=" + sysaOpumpr +
+        ", sysaOpumprs=" + sysaOpumprs +
+        ", sysaOpumpre=" + sysaOpumpre +
+        ", sysaOutAr=" + sysaOutAr +
+        ", sysaOutArs=" + sysaOutArs +
+        ", sysaOutAre=" + sysaOutAre +
+        ", syspApresr=" + syspApresr +
+        ", syspApresrs=" + syspApresrs +
+        ", syspApresre=" + syspApresre +
+        ", syspCpumpar=" + syspCpumpar +
+        ", syspCpumpars=" + syspCpumpars +
+        ", syspCpumpare=" + syspCpumpare +
+        ", syspCpumpcr=" + syspCpumpcr +
+        ", syspCpumpcrs=" + syspCpumpcrs +
+        ", syspCpumpcre=" + syspCpumpcre +
+        ", sysaHpumpr=" + sysaHpumpr +
+        ", sysaHpumprs=" + sysaHpumprs +
+        ", sysaHpumpre=" + sysaHpumpre +
+        ", sysbHpumpr=" + sysbHpumpr +
+        ", sysbHpumprs=" + sysbHpumprs +
+        ", sysbHpumpre=" + sysbHpumpre +
+        ", syspApresT=" + syspApresT +
+        ", syspApresTs=" + syspApresTs +
+        ", syspApresTe=" + syspApresTe +
+        ", sysaEspT=" + sysaEspT +
+        ", sysaEspTs=" + sysaEspTs +
+        ", sysaEspTe=" + sysaEspTe +
+        ", sysbHpumpreT=" + sysbHpumpreT +
+        ", sysbHpumpreTs=" + sysbHpumpreTs +
+        ", sysbHpumpreTe=" + sysbHpumpreTe +
+        ", sysbPremT=" + sysbPremT +
+        ", sysbPremTs=" + sysbPremTs +
+        ", sysbPremTe=" + sysbPremTe +
+        ", syspAlT=" + syspAlT +
+        ", syspAlTs=" + syspAlTs +
+        ", syspAlTe=" + syspAlTe +
+        ", syspScaT=" + syspScaT +
+        ", syspScaTs=" + syspScaTs +
+        ", syspScaTe=" + syspScaTe +
+        ", syspSrcT=" + syspSrcT +
+        ", syspSrcTs=" + syspSrcTs +
+        ", syspSrcTe=" + syspSrcTe +
+        ", syspSrcreT=" + syspSrcreT +
+        ", syspSrcreTs=" + syspSrcreTs +
+        ", syspSrcreTe=" + syspSrcreTe +
+        ", syspClnT=" + syspClnT +
+        ", syspClnTs=" + syspClnTs +
+        ", syspClnTe=" + syspClnTe +
+        ", sysaPpumpT=" + sysaPpumpT +
+        ", sysaPpumpTs=" + sysaPpumpTs +
+        ", sysaPpumpTe=" + sysaPpumpTe +
+        ", syspClnTQS=" + syspClnTQS +
+        ", syspClnTQSs=" + syspClnTQSs +
+        ", syspClnTQSe=" + syspClnTQSe +
+        ", sysbHpumpTQS=" + sysbHpumpTQS +
+        ", sysbHpumpTQSs=" + sysbHpumpTQSs +
+        ", sysbHpumpTQSe=" + sysbHpumpTQSe +
+        ", sysaSandAQS=" + sysaSandAQS +
+        ", sysaSandAQSs=" + sysaSandAQSs +
+        ", sysaSandAQSe=" + sysaSandAQSe +
+        ", sysaEspTQS=" + sysaEspTQS +
+        ", sysaEspTQSs=" + sysaEspTQSs +
+        ", sysaEspTQSe=" + sysaEspTQSe +
+        ", qv17031s=" + qv17031s +
+        ", QV17031Ss=" + QV17031Ss +
+        ", QV17031Se=" + QV17031Se +
+        ", qv19411s=" + qv19411s +
+        ", QV19411Ss=" + QV19411Ss +
+        ", QV19411Se=" + QV19411Se +
+        ", sysaPpumpTQS=" + sysaPpumpTQS +
+        ", sysaPpumpTQSs=" + sysaPpumpTQSs +
+        ", sysaPpumpTQSe=" + sysaPpumpTQSe +
+        ", qv13111s=" + qv13111s +
+        ", QV13111Ss=" + QV13111Ss +
+        ", QV13111Se=" + QV13111Se +
+        ", qv13151s=" + qv13151s +
+        ", QV13151Ss=" + QV13151Ss +
+        ", QV13151Se=" + QV13151Se +
+        ", qv13121s=" + qv13121s +
+        ", QV13121Ss=" + QV13121Ss +
+        ", QV13121Se=" + QV13121Se +
+        ", qv13081s=" + qv13081s +
+        ", QV13081Ss=" + QV13081Ss +
+        ", QV13081Se=" + QV13081Se +
+        ", qv13161s=" + qv13161s +
+        ", QV13161Ss=" + QV13161Ss +
+        ", QV13161Se=" + QV13161Se +
+        ", qv17011s=" + qv17011s +
+        ", QV17011Ss=" + QV17011Ss +
+        ", QV17011Se=" + QV17011Se +
+        ", sysaPremTQS=" + sysaPremTQS +
+        ", sysaPremTQSs=" + sysaPremTQSs +
+        ", sysaPremTQSe=" + sysaPremTQSe +
+        ", sysaPremTaQS=" + sysaPremTaQS +
+        ", sysaPremTaQSs=" + sysaPremTaQSs +
+        ", sysaPremTaQSe=" + sysaPremTaQSe +
+        ", qv27011s=" + qv27011s +
+        ", QV27011Ss=" + QV27011Ss +
+        ", QV27011Se=" + QV27011Se +
+        ", qv21011s=" + qv21011s +
+        ", QV21011Ss=" + QV21011Ss +
+        ", QV21011Se=" + QV21011Se +
+        ", sysbPremTQS=" + sysbPremTQS +
+        ", sysbPremTQSs=" + sysbPremTQSs +
+        ", sysbPremTQSe=" + sysbPremTQSe +
+        ", sysbPremTaQS=" + sysbPremTaQS +
+        ", sysbPremTaQSs=" + sysbPremTaQSs +
+        ", sysbPremTaQSe=" + sysbPremTaQSe +
+        ", sysbValveTQS=" + sysbValveTQS +
+        ", sysbValveTQSs=" + sysbValveTQSs +
+        ", sysbValveTQSe=" + sysbValveTQSe +
+        ", sysaValveTQOS=" + sysaValveTQOS +
+        ", sysaValveTQOSs=" + sysaValveTQOSs +
+        ", sysaValveTQOSe=" + sysaValveTQOSe +
+        ", sysaValveTQCS=" + sysaValveTQCS +
+        ", sysaValveTQCSs=" + sysaValveTQCSs +
+        ", sysaValveTQCSe=" + sysaValveTQCSe +
+        ", sysaValveTaQOS=" + sysaValveTaQOS +
+        ", sysaValveTaQOSs=" + sysaValveTaQOSs +
+        ", sysaValveTaQOSe=" + sysaValveTaQOSe +
+        ", sysaValveTaQCS=" + sysaValveTaQCS +
+        ", sysaValveTaQCSs=" + sysaValveTaQCSs +
+        ", sysaValveTaQCSe=" + sysaValveTaQCSe +
+        ", sysbValveTaQOS=" + sysbValveTaQOS +
+        ", sysbValveTaQOSs=" + sysbValveTaQOSs +
+        ", sysbValveTaQOSe=" + sysbValveTaQOSe +
+        ", sysbValveTaQCS=" + sysbValveTaQCS +
+        ", sysbValveTaQCSs=" + sysbValveTaQCSs +
+        ", sysbValveTaQCSe=" + sysbValveTaQCSe +
+        ", syspClnTQr=" + syspClnTQr +
+        ", syspClnTQrs=" + syspClnTQrs +
+        ", syspClnTQre=" + syspClnTQre +
+        ", sysbHpumpTQr=" + sysbHpumpTQr +
+        ", sysbHpumpTQrs=" + sysbHpumpTQrs +
+        ", sysbHpumpTQre=" + sysbHpumpTQre +
+        ", sysaSandAQr=" + sysaSandAQr +
+        ", sysaSandAQrs=" + sysaSandAQrs +
+        ", sysaSandAQre=" + sysaSandAQre +
+        ", sysaEspTQr=" + sysaEspTQr +
+        ", sysaEspTQrs=" + sysaEspTQrs +
+        ", sysaEspTQre=" + sysaEspTQre +
+        ", QV17031r=" + QV17031r +
+        ", QV17031rs=" + QV17031rs +
+        ", QV17031re=" + QV17031re +
+        ", QV19411r=" + QV19411r +
+        ", QV19411rs=" + QV19411rs +
+        ", QV19411re=" + QV19411re +
+        ", sysaPpumpTQr=" + sysaPpumpTQr +
+        ", sysaPpumpTQrs=" + sysaPpumpTQrs +
+        ", sysaPpumpTQre=" + sysaPpumpTQre +
+        ", QV13111r=" + QV13111r +
+        ", QV13111rs=" + QV13111rs +
+        ", QV13111re=" + QV13111re +
+        ", QV13151r=" + QV13151r +
+        ", QV13151rs=" + QV13151rs +
+        ", QV13151re=" + QV13151re +
+        ", QV13121r=" + QV13121r +
+        ", QV13121rs=" + QV13121rs +
+        ", QV13121re=" + QV13121re +
+        ", QV13081r=" + QV13081r +
+        ", QV13081rs=" + QV13081rs +
+        ", QV13081re=" + QV13081re +
+        ", QV13161r=" + QV13161r +
+        ", QV13161rs=" + QV13161rs +
+        ", QV13161re=" + QV13161re +
+        ", QV17011r=" + QV17011r +
+        ", QV17011rs=" + QV17011rs +
+        ", QV17011re=" + QV17011re +
+        ", sysaPremTQr=" + sysaPremTQr +
+        ", sysaPremTQrs=" + sysaPremTQrs +
+        ", sysaPremTQre=" + sysaPremTQre +
+        ", sysaPremTaQr=" + sysaPremTaQr +
+        ", sysaPremTaQrs=" + sysaPremTaQrs +
+        ", sysaPremTaQre=" + sysaPremTaQre +
+        ", QV27011r=" + QV27011r +
+        ", QV27011rs=" + QV27011rs +
+        ", QV27011re=" + QV27011re +
+        ", QV21011r=" + QV21011r +
+        ", QV21011rs=" + QV21011rs +
+        ", QV21011re=" + QV21011re +
+        ", sysbPremTQr=" + sysbPremTQr +
+        ", sysbPremTQrs=" + sysbPremTQrs +
+        ", sysbPremTQre=" + sysbPremTQre +
+        ", sysbPremTaQr=" + sysbPremTaQr +
+        ", sysbPremTaQrs=" + sysbPremTaQrs +
+        ", sysbPremTaQre=" + sysbPremTaQre +
+        ", sysbValveTQr=" + sysbValveTQr +
+        ", sysbValveTQrs=" + sysbValveTQrs +
+        ", sysbValveTQre=" + sysbValveTQre +
+        ", sysaValveTQOr=" + sysaValveTQOr +
+        ", sysaValveTQOrs=" + sysaValveTQOrs +
+        ", sysaValveTQOre=" + sysaValveTQOre +
+        ", sysaValveTQCr=" + sysaValveTQCr +
+        ", sysaValveTQCrs=" + sysaValveTQCrs +
+        ", sysaValveTQCre=" + sysaValveTQCre +
+        ", sysaValveTaQOr=" + sysaValveTaQOr +
+        ", sysaValveTaQOrs=" + sysaValveTaQOrs +
+        ", sysaValveTaQOre=" + sysaValveTaQOre +
+        ", sysaValveTaQCr=" + sysaValveTaQCr +
+        ", sysaValveTaQCrs=" + sysaValveTaQCrs +
+        ", sysaValveTaQCre=" + sysaValveTaQCre +
+        ", sysbValveTaQOr=" + sysbValveTaQOr +
+        ", sysbValveTaQOrs=" + sysbValveTaQOrs +
+        ", sysbValveTaQOre=" + sysbValveTaQOre +
+        ", sysbValveTaQCr=" + sysbValveTaQCr +
+        ", sysbValveTaQCrs=" + sysbValveTaQCrs +
+        ", sysbValveTaQCre=" + sysbValveTaQCre +
+        "}";
+    }
+}

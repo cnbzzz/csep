@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/csep.iml" filepath="$PROJECT_DIR$/.idea/csep.iml" />
+      <module fileurl="file://$PROJECT_DIR$/csep.common/csep.common.iml" filepath="$PROJECT_DIR$/csep.common/csep.common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/csep.etl/csep.etl.iml" filepath="$PROJECT_DIR$/csep.etl/csep.etl.iml" />
+      <module fileurl="file://$PROJECT_DIR$/csep.gendatatest/csep.gendatatest.iml" filepath="$PROJECT_DIR$/csep.gendatatest/csep.gendatatest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/csep.gpsreceiver/csep.gpsreceiver.iml" filepath="$PROJECT_DIR$/csep.gpsreceiver/csep.gpsreceiver.iml" />
+      <module fileurl="file://$PROJECT_DIR$/csep.handler/csep.handler.iml" filepath="$PROJECT_DIR$/csep.handler/csep.handler.iml" />
+      <module fileurl="file://$PROJECT_DIR$/csep.pojo/csep.pojo.iml" filepath="$PROJECT_DIR$/csep.pojo/csep.pojo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/csep.receiver/csep.receiver.iml" filepath="$PROJECT_DIR$/csep.receiver/csep.receiver.iml" />
+      <module fileurl="file://$PROJECT_DIR$/csep.restful/csep.restful.iml" filepath="$PROJECT_DIR$/csep.restful/csep.restful.iml" />
+      <module fileurl="file://$PROJECT_DIR$/csep.test/csep.test.iml" filepath="$PROJECT_DIR$/csep.test/csep.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring-boot-starter-rocketmq/spring-boot-starter-rocketmq.iml" filepath="$PROJECT_DIR$/spring-boot-starter-rocketmq/spring-boot-starter-rocketmq.iml" />
+    </modules>
+  </component>
+</project>

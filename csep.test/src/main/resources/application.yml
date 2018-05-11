@@ -1,0 +1,7 @@
+netty:
+  server:
+    port: 9901
+  client:
+    host: 127.0.0.1
+#    host: 112.74.180.11
+    port: 9901

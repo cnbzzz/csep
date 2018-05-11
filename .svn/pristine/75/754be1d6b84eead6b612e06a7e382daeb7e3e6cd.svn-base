@@ -1,0 +1,130 @@
+package com.infore.csep.gendatatest.gendata;
+
+import com.infore.csep.common.service.IFactleachhisService;
+import com.infore.csep.pojo.entity.Factleachhis;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+import java.util.Date;
+import java.util.Random;
+
+/**
+ * Created by steven ma
+ * 2018/4/20 17:46
+ */
+@Component
+public class GenFactLeachHis {
+
+    @Autowired
+    private IFactleachhisService factleachhisService;
+
+
+    private Integer genRamdomInt() {
+
+        Random random = new Random();
+        return random.nextInt(100);
+    }
+
+    private String genRamEqumNum() {
+        Random random = new Random();
+        int num = random.nextInt(5);
+        return String.format("ZL%04d", num+1);
+    }
+
+
+    /**
+     * 生成测试数据
+     */
+    public void genTestData() {
+
+        int nCnt =  5;
+        for(int i = 0; i < nCnt ; i ++) {
+
+            Factleachhis factleachhis= genPojo(i);
+            factleachhisService.insert(factleachhis);
+        }
+
+    }
+
+    //生成一条测试数据
+    public Factleachhis genOneRecord() {
+
+        Date date = new Date();
+        String timestamp = String.valueOf(date.getTime()/1000);
+
+        Factleachhis factleachhis = genPojo(Integer.parseInt(timestamp));
+        factleachhisService.insert(factleachhis);
+
+        return factleachhis;
+    }
+
+
+    private Factleachhis genPojo(Integer seq) {
+        Factleachhis factLeachhis = new Factleachhis();
+
+        factLeachhis.setCommand(100);
+        factLeachhis.setRevTime(new Date());
+        factLeachhis.setEqumSeq(seq);
+        factLeachhis.setEqumID(1001L);
+        factLeachhis.setEqumType(00);
+
+        factLeachhis.setFactNum(001);
+        factLeachhis.setEqumNum(genRamEqumNum());
+
+        factLeachhis.setDataType(01);
+        factLeachhis.setFlagAll("0101010101");
+
+        factLeachhis.setSyspInBy(genRamdomInt());
+        factLeachhis.setSyspSrcBy(genRamdomInt());
+        factLeachhis.setSyspClnBy(genRamdomInt());
+        factLeachhis.setSysaEspBy(genRamdomInt());
+        factLeachhis.setSysaPreSandBp(genRamdomInt());
+        factLeachhis.setSysaPosSandBp(genRamdomInt());
+        factLeachhis.setSysaHpumpPre(genRamdomInt());
+        factLeachhis.setSysaHpumpPos(genRamdomInt());
+        factLeachhis.setSysaOpumpP(genRamdomInt());
+        factLeachhis.setSysaPremBp(genRamdomInt());
+        factLeachhis.setSysbHpumpPos(genRamdomInt());
+        factLeachhis.setSyspSrcBl(genRamdomInt());
+        factLeachhis.setSyspBufBl(genRamdomInt());
+        factLeachhis.setSyspClnBl(genRamdomInt());
+        factLeachhis.setSyspSrcBn(genRamdomInt());
+        factLeachhis.setSysaPreSandBn(genRamdomInt());
+        factLeachhis.setSysaPremBn(genRamdomInt());
+        factLeachhis.setSysaEspBn(genRamdomInt());
+        factLeachhis.setSysbPremBn(genRamdomInt());
+        factLeachhis.setSysbEspBn(genRamdomInt());
+        factLeachhis.setSysaPremBf(genRamdomInt());
+        factLeachhis.setSysbPremBf(genRamdomInt());
+        factLeachhis.setSysaTemp(genRamdomInt());
+        factLeachhis.setSysbTemp(genRamdomInt());
+        factLeachhis.setSysaHpumpHz(genRamdomInt());
+        factLeachhis.setSysbHpumpHz(genRamdomInt());
+        factLeachhis.setSyspAcpumpHz(genRamdomInt());
+        factLeachhis.setSyspAlpumpHz(genRamdomInt());
+
+        factLeachhis.setReservV1(genRamdomInt());
+        factLeachhis.setReservV2(genRamdomInt());
+        factLeachhis.setReservV3(genRamdomInt());
+
+        factLeachhis.setFactRunHour(genRamdomInt());
+        factLeachhis.setFactOut(genRamdomInt());
+        factLeachhis.setFactPower(genRamdomInt());
+        factLeachhis.setFactIn(genRamdomInt());
+        factLeachhis.setFactSrc(genRamdomInt());
+        factLeachhis.setFactEsp(genRamdomInt());
+        factLeachhis.setFactCln(genRamdomInt());
+        factLeachhis.setFactCod(genRamdomInt());
+        factLeachhis.setFactNitr(genRamdomInt());
+
+        factLeachhis.setReservV4(genRamdomInt());
+        factLeachhis.setReservV5(genRamdomInt());
+        factLeachhis.setReservV6(genRamdomInt());
+
+        factLeachhis.setCout(genRamdomInt());
+        factLeachhis.setEquipmentNo("EQ0001");
+        factLeachhis.setPlcComm(1);
+
+        return factLeachhis;
+    }
+}

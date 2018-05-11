@@ -1,0 +1,23 @@
+package com.infore.csep.gpsreceiver.service;
+
+import com.infore.csep.gpsreceiver.param.BaseReqParam;
+import lombok.Data;
+import org.springframework.stereotype.Service;
+
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
+
+/**
+ * Created by steven ma
+ * 2018/4/27 15:21
+ */
+@Data
+@Service
+public class DownService extends BaseReqParam{
+
+    private String serialId;
+    private String dataLen;
+    private String dataBlock;
+    private String checkCode;
+
+}

@@ -1,0 +1,91 @@
+package com.infore.csep.common.netty.dto;
+
+import com.infore.csep.common.netty.annotation.Unpack;
+import lombok.Data;
+
+import java.io.Serializable;
+
+/**
+ * This file is part of csep Project
+ * Created by cnbzzz (cnbzzz@126.com) on 2018/3/28 17:33
+ * Copyright (c) 2018 github.com/cnbzzz
+ */
+@Data
+public class CsepPack implements Serializable {
+
+    public enum Commond {
+
+        GETWAY_LOGIN(0x19), //网关登录
+        GETWAY_LOGIN_RESP(0x14), //网关登录返回
+        GETWAY_UP(0xC0), //网关上传
+        PLC_TIMER(0xC1), //PLC定时上传
+        PLC_NOW(0xC2), //PLC即时上传
+        PLC_RECALL(0xC3); //PLC工况召回数据
+
+        private int commond;
+
+        Commond(int commond){
+            this.commond = commond;
+        }
+
+        public static Commond valueOf(int value) {    //    手写的从int到enum的转换函数
+            switch (value) {
+                case 0x19:
+                    return GETWAY_LOGIN;
+                case 0x14:
+                    return GETWAY_LOGIN_RESP;
+                case 0xC0:
+                    return GETWAY_UP;
+                case 0xC1:
+                    return PLC_TIMER;
+                case 0xC2:
+                    return PLC_NOW;
+                case 0xC3:
+                    return PLC_RECALL;
+                default:
+                    return null;
+            }
+        }
+
+        public int value() {
+            return this.commond;
+        }
+    }
+
+    @Unpack(index = 0, length = 2)
+    private String start; //起始符 2字节
+
+    @Unpack(index = 2, length = 1)
+    private int commond; //命令码 1字节
+
+    @Unpack(index = 3, length = 4)
+    private int fromNum; //流水号 4字节
+
+    @Unpack(index = 7, length = 8)
+    private String clientId; //终端id 8字节 平台下发至终端时，”终端ID号“中存放的是目标PLC的IP地址4个字节，存放位置是后4个字节；终端上传时，”终端ID号“中存放的是终端设备唯一标示。
+
+    @Unpack(index = 15, length = 2)
+    private int contentLength; //数据长度 2字节
+
+    @Unpack(index = 17, lenRef = "contentLength")
+    private byte[] content;//数据内容 16进制格式，1帧数据包不超过500个字节
+
+    @Unpack(idxRef = "content", length = 1)
+    private int checkByte; //1字节，从命令码开始到数据块结束（命令码+流水号+终端ID号+数据长度+数据块）所有字符的异或和；
+
+    @Unpack(idxRef = "checkByte", length = 1)
+    private int end; //1字节，回车（0x0D）
+
+    public static CsepPack buildPack(int commond, int fromNum, String clientId, byte[] content){
+        CsepPack pack = new CsepPack();
+        pack.setStart("ZL");
+        pack.setCommond(commond);
+        pack.setFromNum(fromNum);
+        pack.setClientId(clientId);
+        pack.setContentLength(content.length);
+        pack.setContent(content);
+        pack.setEnd(0x0d);
+
+        return pack;
+    }
+}

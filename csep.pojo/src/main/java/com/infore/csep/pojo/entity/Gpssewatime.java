@@ -1,0 +1,1383 @@
+package com.infore.csep.pojo.entity;
+
+import java.util.Date;
+import com.baomidou.mybatisplus.activerecord.Model;
+import java.io.Serializable;
+
+/**
+ * <p>
+ * 
+ * </p>
+ *
+ * @author bzzz
+ * @since 2018-04-23
+ */
+public class Gpssewatime extends Model<Gpssewatime> {
+
+    private static final long serialVersionUID = 1L;
+
+    private Long id;
+    private String factNum;
+    private String equmNum;
+    private Integer valMan;
+    private Date valMans;
+    private Date valMane;
+    private Integer valAuto;
+    private Date valAutos;
+    private Date valAutoe;
+    private Integer setMan;
+    private Date setMans;
+    private Date setMane;
+    private Integer setAuto;
+    private Date setAutos;
+    private Date setAutoe;
+    private Integer setStart;
+    private Date setStarts;
+    private Date setStarte;
+    private Integer setStop;
+    private Date setStops;
+    private Date setStope;
+    private Integer setTerm;
+    private Date setTerms;
+    private Date setTerme;
+    private Integer setRest;
+    private Date setRests;
+    private Date setReste;
+    private Integer setSubBlowMan;
+    private Date setSubBlowMans;
+    private Date setSubBlowMane;
+    private Integer setAgit1man;
+    private Date setAgit1mans;
+    private Date setAgit1mane;
+    private Integer setAgit2Man;
+    private Date setAgit2Mans;
+    private Date setAgit2Mane;
+    private Integer setPiPumpMan;
+    private Date setPiPumpMans;
+    private Date setPiPumpMane;
+    private Integer setLiPumpMan;
+    private Date setLiPumpMans;
+    private Date setLiPumpMane;
+    private Integer setUvMan;
+    private Date setUvMans;
+    private Date setUvMane;
+    private Integer setMudValve;
+    private Date setMudValves;
+    private Date setMudValvee;
+    private Integer runSubBlow;
+    private Date runSubBlows;
+    private Date runSubBlowe;
+    private Integer runSubBlowOL;
+    private Date runSubBlowOLs;
+    private Date runSubBlowOLe;
+    private Integer runAgit1;
+    private Date runAgit1s;
+    private Date runAgit1e;
+    private Integer runAgit1OL;
+    private Date runAgit1OLs;
+    private Date runAgit1OLe;
+    private Integer runAgit2;
+    private Date runAgit2s;
+    private Date runAgit2e;
+    private Integer runAgit2OL;
+    private Date runAgit2OLs;
+    private Date runAgit2OLe;
+    private Integer runPiPump;
+    private Date runPiPumps;
+    private Date runPiPumpe;
+    private Integer runPipumpOL;
+    private Date runPipumpOLs;
+    private Date runPipumpOLe;
+    private Integer runLipump;
+    private Date runLipumps;
+    private Date runLipumpe;
+    private Integer runLipumpOL;
+    private Date runLipumpOLs;
+    private Date runLipumpOLe;
+    private Integer runUv;
+    private Date runUvs;
+    private Date runUve;
+    private Integer runUvOL;
+    private Date runUvOLs;
+    private Date runUvOLe;
+    private Integer runTankLl;
+    private Date runTankLls;
+    private Date runTankLle;
+    private Integer runTankL;
+    private Date runTankLs;
+    private Date runTankLe;
+    private Integer runTankH;
+    private Date runTankHs;
+    private Date runTankHe;
+    private Integer runMvC;
+    private Date runMvCs;
+    private Date runMvCe;
+    private Integer runMvO;
+    private Date runMvOs;
+    private Date runMvOe;
+    private Integer runLiL;
+    private Date runLiLs;
+    private Date runLiLe;
+    private Integer runTerm;
+    private Date runTerms;
+    private Date runTerme;
+    private Integer setSubBlow;
+    private Date setSubBlows;
+    private Date setSubBlowe;
+    private Integer setAgit1;
+    private Date setAgit1s;
+    private Date setAgit1e;
+    private Integer setAgit2;
+    private Date setAgit2s;
+    private Date setAgit2e;
+    private Integer setPiPump;
+    private Date setPiPumps;
+    private Date setPiPumpe;
+    private Integer setLiPump;
+    private Date setLiPumps;
+    private Date setLiPumpe;
+    private Integer setUv;
+    private Date setUvs;
+    private Date setUve;
+    private Integer setMvO;
+    private Date setMvOs;
+    private Date setMvOe;
+    private Integer setMvC;
+    private Date setMvCs;
+    private Date setMvCe;
+    private Integer setTScrn;
+    private Date setTScrns;
+    private Date setTScrne;
+    private Integer setLock;
+    private Date setLocks;
+    private Date setLocke;
+
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+
+
+    public Integer getValMan() {
+        return valMan;
+    }
+
+    public void setValMan(Integer valMan) {
+        this.valMan = valMan;
+    }
+
+    public Date getValMans() {
+        return valMans;
+    }
+
+    public void setValMans(Date valMans) {
+        this.valMans = valMans;
+    }
+
+    public Date getValMane() {
+        return valMane;
+    }
+
+    public void setValMane(Date valMane) {
+        this.valMane = valMane;
+    }
+
+    public Integer getValAuto() {
+        return valAuto;
+    }
+
+    public void setValAuto(Integer valAuto) {
+        this.valAuto = valAuto;
+    }
+
+    public Date getValAutos() {
+        return valAutos;
+    }
+
+    public void setValAutos(Date valAutos) {
+        this.valAutos = valAutos;
+    }
+
+    public Date getValAutoe() {
+        return valAutoe;
+    }
+
+    public void setValAutoe(Date valAutoe) {
+        this.valAutoe = valAutoe;
+    }
+
+    public Integer getSetMan() {
+        return setMan;
+    }
+
+    public void setSetMan(Integer setMan) {
+        this.setMan = setMan;
+    }
+
+    public Date getSetMans() {
+        return setMans;
+    }
+
+    public void setSetMans(Date setMans) {
+        this.setMans = setMans;
+    }
+
+    public Date getSetMane() {
+        return setMane;
+    }
+
+    public void setSetMane(Date setMane) {
+        this.setMane = setMane;
+    }
+
+    public Integer getSetAuto() {
+        return setAuto;
+    }
+
+    public void setSetAuto(Integer setAuto) {
+        this.setAuto = setAuto;
+    }
+
+    public Date getSetAutos() {
+        return setAutos;
+    }
+
+    public void setSetAutos(Date setAutos) {
+        this.setAutos = setAutos;
+    }
+
+    public Date getSetAutoe() {
+        return setAutoe;
+    }
+
+    public void setSetAutoe(Date setAutoe) {
+        this.setAutoe = setAutoe;
+    }
+
+    public Integer getSetStart() {
+        return setStart;
+    }
+
+    public void setSetStart(Integer setStart) {
+        this.setStart = setStart;
+    }
+
+    public Date getSetStarts() {
+        return setStarts;
+    }
+
+    public void setSetStarts(Date setStarts) {
+        this.setStarts = setStarts;
+    }
+
+    public Date getSetStarte() {
+        return setStarte;
+    }
+
+    public void setSetStarte(Date setStarte) {
+        this.setStarte = setStarte;
+    }
+
+    public Integer getSetStop() {
+        return setStop;
+    }
+
+    public void setSetStop(Integer setStop) {
+        this.setStop = setStop;
+    }
+
+    public Date getSetStops() {
+        return setStops;
+    }
+
+    public void setSetStops(Date setStops) {
+        this.setStops = setStops;
+    }
+
+    public Date getSetStope() {
+        return setStope;
+    }
+
+    public void setSetStope(Date setStope) {
+        this.setStope = setStope;
+    }
+
+    public Integer getSetTerm() {
+        return setTerm;
+    }
+
+    public void setSetTerm(Integer setTerm) {
+        this.setTerm = setTerm;
+    }
+
+    public Date getSetTerms() {
+        return setTerms;
+    }
+
+    public void setSetTerms(Date setTerms) {
+        this.setTerms = setTerms;
+    }
+
+    public Date getSetTerme() {
+        return setTerme;
+    }
+
+    public void setSetTerme(Date setTerme) {
+        this.setTerme = setTerme;
+    }
+
+    public Integer getSetRest() {
+        return setRest;
+    }
+
+    public void setSetRest(Integer setRest) {
+        this.setRest = setRest;
+    }
+
+    public Date getSetRests() {
+        return setRests;
+    }
+
+    public void setSetRests(Date setRests) {
+        this.setRests = setRests;
+    }
+
+    public Date getSetReste() {
+        return setReste;
+    }
+
+    public void setSetReste(Date setReste) {
+        this.setReste = setReste;
+    }
+
+    public Integer getSetSubBlowMan() {
+        return setSubBlowMan;
+    }
+
+    public void setSetSubBlowMan(Integer setSubBlowMan) {
+        this.setSubBlowMan = setSubBlowMan;
+    }
+
+    public Date getSetSubBlowMans() {
+        return setSubBlowMans;
+    }
+
+    public void setSetSubBlowMans(Date setSubBlowMans) {
+        this.setSubBlowMans = setSubBlowMans;
+    }
+
+    public Date getSetSubBlowMane() {
+        return setSubBlowMane;
+    }
+
+    public void setSetSubBlowMane(Date setSubBlowMane) {
+        this.setSubBlowMane = setSubBlowMane;
+    }
+
+    public Integer getSetAgit1man() {
+        return setAgit1man;
+    }
+
+    public void setSetAgit1man(Integer setAgit1man) {
+        this.setAgit1man = setAgit1man;
+    }
+
+    public Date getSetAgit1mans() {
+        return setAgit1mans;
+    }
+
+    public void setSetAgit1mans(Date setAgit1mans) {
+        this.setAgit1mans = setAgit1mans;
+    }
+
+    public Date getSetAgit1mane() {
+        return setAgit1mane;
+    }
+
+    public void setSetAgit1mane(Date setAgit1mane) {
+        this.setAgit1mane = setAgit1mane;
+    }
+
+    public Integer getSetAgit2Man() {
+        return setAgit2Man;
+    }
+
+    public void setSetAgit2Man(Integer setAgit2Man) {
+        this.setAgit2Man = setAgit2Man;
+    }
+
+    public Date getSetAgit2Mans() {
+        return setAgit2Mans;
+    }
+
+    public void setSetAgit2Mans(Date setAgit2Mans) {
+        this.setAgit2Mans = setAgit2Mans;
+    }
+
+    public Date getSetAgit2Mane() {
+        return setAgit2Mane;
+    }
+
+    public void setSetAgit2Mane(Date setAgit2Mane) {
+        this.setAgit2Mane = setAgit2Mane;
+    }
+
+    public Integer getSetPiPumpMan() {
+        return setPiPumpMan;
+    }
+
+    public void setSetPiPumpMan(Integer setPiPumpMan) {
+        this.setPiPumpMan = setPiPumpMan;
+    }
+
+    public Date getSetPiPumpMans() {
+        return setPiPumpMans;
+    }
+
+    public void setSetPiPumpMans(Date setPiPumpMans) {
+        this.setPiPumpMans = setPiPumpMans;
+    }
+
+    public Date getSetPiPumpMane() {
+        return setPiPumpMane;
+    }
+
+    public void setSetPiPumpMane(Date setPiPumpMane) {
+        this.setPiPumpMane = setPiPumpMane;
+    }
+
+    public Integer getSetLiPumpMan() {
+        return setLiPumpMan;
+    }
+
+    public void setSetLiPumpMan(Integer setLiPumpMan) {
+        this.setLiPumpMan = setLiPumpMan;
+    }
+
+    public Date getSetLiPumpMans() {
+        return setLiPumpMans;
+    }
+
+    public void setSetLiPumpMans(Date setLiPumpMans) {
+        this.setLiPumpMans = setLiPumpMans;
+    }
+
+    public Date getSetLiPumpMane() {
+        return setLiPumpMane;
+    }
+
+    public void setSetLiPumpMane(Date setLiPumpMane) {
+        this.setLiPumpMane = setLiPumpMane;
+    }
+
+    public Integer getSetUvMan() {
+        return setUvMan;
+    }
+
+    public void setSetUvMan(Integer setUvMan) {
+        this.setUvMan = setUvMan;
+    }
+
+    public Date getSetUvMans() {
+        return setUvMans;
+    }
+
+    public void setSetUvMans(Date setUvMans) {
+        this.setUvMans = setUvMans;
+    }
+
+    public Date getSetUvMane() {
+        return setUvMane;
+    }
+
+    public void setSetUvMane(Date setUvMane) {
+        this.setUvMane = setUvMane;
+    }
+
+    public Integer getSetMudValve() {
+        return setMudValve;
+    }
+
+    public void setSetMudValve(Integer setMudValve) {
+        this.setMudValve = setMudValve;
+    }
+
+    public Date getSetMudValves() {
+        return setMudValves;
+    }
+
+    public void setSetMudValves(Date setMudValves) {
+        this.setMudValves = setMudValves;
+    }
+
+    public Date getSetMudValvee() {
+        return setMudValvee;
+    }
+
+    public void setSetMudValvee(Date setMudValvee) {
+        this.setMudValvee = setMudValvee;
+    }
+
+    public Integer getRunSubBlow() {
+        return runSubBlow;
+    }
+
+    public void setRunSubBlow(Integer runSubBlow) {
+        this.runSubBlow = runSubBlow;
+    }
+
+    public Date getRunSubBlows() {
+        return runSubBlows;
+    }
+
+    public void setRunSubBlows(Date runSubBlows) {
+        this.runSubBlows = runSubBlows;
+    }
+
+    public Date getRunSubBlowe() {
+        return runSubBlowe;
+    }
+
+    public void setRunSubBlowe(Date runSubBlowe) {
+        this.runSubBlowe = runSubBlowe;
+    }
+
+    public Integer getRunSubBlowOL() {
+        return runSubBlowOL;
+    }
+
+    public void setRunSubBlowOL(Integer runSubBlowOL) {
+        this.runSubBlowOL = runSubBlowOL;
+    }
+
+    public Date getRunSubBlowOLs() {
+        return runSubBlowOLs;
+    }
+
+    public void setRunSubBlowOLs(Date runSubBlowOLs) {
+        this.runSubBlowOLs = runSubBlowOLs;
+    }
+
+    public Date getRunSubBlowOLe() {
+        return runSubBlowOLe;
+    }
+
+    public void setRunSubBlowOLe(Date runSubBlowOLe) {
+        this.runSubBlowOLe = runSubBlowOLe;
+    }
+
+    public Integer getRunAgit1() {
+        return runAgit1;
+    }
+
+    public void setRunAgit1(Integer runAgit1) {
+        this.runAgit1 = runAgit1;
+    }
+
+    public Date getRunAgit1s() {
+        return runAgit1s;
+    }
+
+    public void setRunAgit1s(Date runAgit1s) {
+        this.runAgit1s = runAgit1s;
+    }
+
+    public Date getRunAgit1e() {
+        return runAgit1e;
+    }
+
+    public void setRunAgit1e(Date runAgit1e) {
+        this.runAgit1e = runAgit1e;
+    }
+
+    public Integer getRunAgit1OL() {
+        return runAgit1OL;
+    }
+
+    public void setRunAgit1OL(Integer runAgit1OL) {
+        this.runAgit1OL = runAgit1OL;
+    }
+
+    public Date getRunAgit1OLs() {
+        return runAgit1OLs;
+    }
+
+    public void setRunAgit1OLs(Date runAgit1OLs) {
+        this.runAgit1OLs = runAgit1OLs;
+    }
+
+    public Date getRunAgit1OLe() {
+        return runAgit1OLe;
+    }
+
+    public void setRunAgit1OLe(Date runAgit1OLe) {
+        this.runAgit1OLe = runAgit1OLe;
+    }
+
+    public Integer getRunAgit2() {
+        return runAgit2;
+    }
+
+    public void setRunAgit2(Integer runAgit2) {
+        this.runAgit2 = runAgit2;
+    }
+
+    public Date getRunAgit2s() {
+        return runAgit2s;
+    }
+
+    public void setRunAgit2s(Date runAgit2s) {
+        this.runAgit2s = runAgit2s;
+    }
+
+    public Date getRunAgit2e() {
+        return runAgit2e;
+    }
+
+    public void setRunAgit2e(Date runAgit2e) {
+        this.runAgit2e = runAgit2e;
+    }
+
+    public Integer getRunAgit2OL() {
+        return runAgit2OL;
+    }
+
+    public void setRunAgit2OL(Integer runAgit2OL) {
+        this.runAgit2OL = runAgit2OL;
+    }
+
+    public Date getRunAgit2OLs() {
+        return runAgit2OLs;
+    }
+
+    public void setRunAgit2OLs(Date runAgit2OLs) {
+        this.runAgit2OLs = runAgit2OLs;
+    }
+
+    public Date getRunAgit2OLe() {
+        return runAgit2OLe;
+    }
+
+    public void setRunAgit2OLe(Date runAgit2OLe) {
+        this.runAgit2OLe = runAgit2OLe;
+    }
+
+    public Integer getRunPiPump() {
+        return runPiPump;
+    }
+
+    public void setRunPiPump(Integer runPiPump) {
+        this.runPiPump = runPiPump;
+    }
+
+    public Date getRunPiPumps() {
+        return runPiPumps;
+    }
+
+    public void setRunPiPumps(Date runPiPumps) {
+        this.runPiPumps = runPiPumps;
+    }
+
+    public Date getRunPiPumpe() {
+        return runPiPumpe;
+    }
+
+    public void setRunPiPumpe(Date runPiPumpe) {
+        this.runPiPumpe = runPiPumpe;
+    }
+
+    public Integer getRunPipumpOL() {
+        return runPipumpOL;
+    }
+
+    public void setRunPipumpOL(Integer runPipumpOL) {
+        this.runPipumpOL = runPipumpOL;
+    }
+
+    public Date getRunPipumpOLs() {
+        return runPipumpOLs;
+    }
+
+    public void setRunPipumpOLs(Date runPipumpOLs) {
+        this.runPipumpOLs = runPipumpOLs;
+    }
+
+    public Date getRunPipumpOLe() {
+        return runPipumpOLe;
+    }
+
+    public void setRunPipumpOLe(Date runPipumpOLe) {
+        this.runPipumpOLe = runPipumpOLe;
+    }
+
+    public Integer getRunLipump() {
+        return runLipump;
+    }
+
+    public void setRunLipump(Integer runLipump) {
+        this.runLipump = runLipump;
+    }
+
+    public Date getRunLipumps() {
+        return runLipumps;
+    }
+
+    public void setRunLipumps(Date runLipumps) {
+        this.runLipumps = runLipumps;
+    }
+
+    public Date getRunLipumpe() {
+        return runLipumpe;
+    }
+
+    public void setRunLipumpe(Date runLipumpe) {
+        this.runLipumpe = runLipumpe;
+    }
+
+    public Integer getRunLipumpOL() {
+        return runLipumpOL;
+    }
+
+    public void setRunLipumpOL(Integer runLipumpOL) {
+        this.runLipumpOL = runLipumpOL;
+    }
+
+    public Date getRunLipumpOLs() {
+        return runLipumpOLs;
+    }
+
+    public void setRunLipumpOLs(Date runLipumpOLs) {
+        this.runLipumpOLs = runLipumpOLs;
+    }
+
+    public Date getRunLipumpOLe() {
+        return runLipumpOLe;
+    }
+
+    public void setRunLipumpOLe(Date runLipumpOLe) {
+        this.runLipumpOLe = runLipumpOLe;
+    }
+
+    public Integer getRunUv() {
+        return runUv;
+    }
+
+    public void setRunUv(Integer runUv) {
+        this.runUv = runUv;
+    }
+
+    public Date getRunUvs() {
+        return runUvs;
+    }
+
+    public void setRunUvs(Date runUvs) {
+        this.runUvs = runUvs;
+    }
+
+    public Date getRunUve() {
+        return runUve;
+    }
+
+    public void setRunUve(Date runUve) {
+        this.runUve = runUve;
+    }
+
+    public Integer getRunUvOL() {
+        return runUvOL;
+    }
+
+    public void setRunUvOL(Integer runUvOL) {
+        this.runUvOL = runUvOL;
+    }
+
+    public Date getRunUvOLs() {
+        return runUvOLs;
+    }
+
+    public void setRunUvOLs(Date runUvOLs) {
+        this.runUvOLs = runUvOLs;
+    }
+
+    public Date getRunUvOLe() {
+        return runUvOLe;
+    }
+
+    public void setRunUvOLe(Date runUvOLe) {
+        this.runUvOLe = runUvOLe;
+    }
+
+    public Integer getRunTankLl() {
+        return runTankLl;
+    }
+
+    public void setRunTankLl(Integer runTankLl) {
+        this.runTankLl = runTankLl;
+    }
+
+    public Date getRunTankLls() {
+        return runTankLls;
+    }
+
+    public void setRunTankLls(Date runTankLls) {
+        this.runTankLls = runTankLls;
+    }
+
+    public Date getRunTankLle() {
+        return runTankLle;
+    }
+
+    public void setRunTankLle(Date runTankLle) {
+        this.runTankLle = runTankLle;
+    }
+
+    public Integer getRunTankL() {
+        return runTankL;
+    }
+
+    public void setRunTankL(Integer runTankL) {
+        this.runTankL = runTankL;
+    }
+
+    public Date getRunTankLs() {
+        return runTankLs;
+    }
+
+    public void setRunTankLs(Date runTankLs) {
+        this.runTankLs = runTankLs;
+    }
+
+    public Date getRunTankLe() {
+        return runTankLe;
+    }
+
+    public void setRunTankLe(Date runTankLe) {
+        this.runTankLe = runTankLe;
+    }
+
+    public Integer getRunTankH() {
+        return runTankH;
+    }
+
+    public void setRunTankH(Integer runTankH) {
+        this.runTankH = runTankH;
+    }
+
+    public Date getRunTankHs() {
+        return runTankHs;
+    }
+
+    public void setRunTankHs(Date runTankHs) {
+        this.runTankHs = runTankHs;
+    }
+
+    public Date getRunTankHe() {
+        return runTankHe;
+    }
+
+    public void setRunTankHe(Date runTankHe) {
+        this.runTankHe = runTankHe;
+    }
+
+    public Integer getRunMvC() {
+        return runMvC;
+    }
+
+    public void setRunMvC(Integer runMvC) {
+        this.runMvC = runMvC;
+    }
+
+    public Date getRunMvCs() {
+        return runMvCs;
+    }
+
+    public void setRunMvCs(Date runMvCs) {
+        this.runMvCs = runMvCs;
+    }
+
+    public Date getRunMvCe() {
+        return runMvCe;
+    }
+
+    public void setRunMvCe(Date runMvCe) {
+        this.runMvCe = runMvCe;
+    }
+
+    public Integer getRunMvO() {
+        return runMvO;
+    }
+
+    public void setRunMvO(Integer runMvO) {
+        this.runMvO = runMvO;
+    }
+
+    public Date getRunMvOs() {
+        return runMvOs;
+    }
+
+    public void setRunMvOs(Date runMvOs) {
+        this.runMvOs = runMvOs;
+    }
+
+    public Date getRunMvOe() {
+        return runMvOe;
+    }
+
+    public void setRunMvOe(Date runMvOe) {
+        this.runMvOe = runMvOe;
+    }
+
+    public Integer getRunLiL() {
+        return runLiL;
+    }
+
+    public void setRunLiL(Integer runLiL) {
+        this.runLiL = runLiL;
+    }
+
+    public Date getRunLiLs() {
+        return runLiLs;
+    }
+
+    public void setRunLiLs(Date runLiLs) {
+        this.runLiLs = runLiLs;
+    }
+
+    public Date getRunLiLe() {
+        return runLiLe;
+    }
+
+    public void setRunLiLe(Date runLiLe) {
+        this.runLiLe = runLiLe;
+    }
+
+    public Integer getRunTerm() {
+        return runTerm;
+    }
+
+    public void setRunTerm(Integer runTerm) {
+        this.runTerm = runTerm;
+    }
+
+    public Date getRunTerms() {
+        return runTerms;
+    }
+
+    public void setRunTerms(Date runTerms) {
+        this.runTerms = runTerms;
+    }
+
+    public Date getRunTerme() {
+        return runTerme;
+    }
+
+    public void setRunTerme(Date runTerme) {
+        this.runTerme = runTerme;
+    }
+
+    public Integer getSetSubBlow() {
+        return setSubBlow;
+    }
+
+    public void setSetSubBlow(Integer setSubBlow) {
+        this.setSubBlow = setSubBlow;
+    }
+
+    public Date getSetSubBlows() {
+        return setSubBlows;
+    }
+
+    public void setSetSubBlows(Date setSubBlows) {
+        this.setSubBlows = setSubBlows;
+    }
+
+    public Date getSetSubBlowe() {
+        return setSubBlowe;
+    }
+
+    public void setSetSubBlowe(Date setSubBlowe) {
+        this.setSubBlowe = setSubBlowe;
+    }
+
+    public Integer getSetAgit1() {
+        return setAgit1;
+    }
+
+    public void setSetAgit1(Integer setAgit1) {
+        this.setAgit1 = setAgit1;
+    }
+
+    public Date getSetAgit1s() {
+        return setAgit1s;
+    }
+
+    public void setSetAgit1s(Date setAgit1s) {
+        this.setAgit1s = setAgit1s;
+    }
+
+    public Date getSetAgit1e() {
+        return setAgit1e;
+    }
+
+    public void setSetAgit1e(Date setAgit1e) {
+        this.setAgit1e = setAgit1e;
+    }
+
+    public Integer getSetAgit2() {
+        return setAgit2;
+    }
+
+    public void setSetAgit2(Integer setAgit2) {
+        this.setAgit2 = setAgit2;
+    }
+
+    public Date getSetAgit2s() {
+        return setAgit2s;
+    }
+
+    public void setSetAgit2s(Date setAgit2s) {
+        this.setAgit2s = setAgit2s;
+    }
+
+    public Date getSetAgit2e() {
+        return setAgit2e;
+    }
+
+    public void setSetAgit2e(Date setAgit2e) {
+        this.setAgit2e = setAgit2e;
+    }
+
+    public Integer getSetPiPump() {
+        return setPiPump;
+    }
+
+    public void setSetPiPump(Integer setPiPump) {
+        this.setPiPump = setPiPump;
+    }
+
+    public Date getSetPiPumps() {
+        return setPiPumps;
+    }
+
+    public void setSetPiPumps(Date setPiPumps) {
+        this.setPiPumps = setPiPumps;
+    }
+
+    public Date getSetPiPumpe() {
+        return setPiPumpe;
+    }
+
+    public void setSetPiPumpe(Date setPiPumpe) {
+        this.setPiPumpe = setPiPumpe;
+    }
+
+    public Integer getSetLiPump() {
+        return setLiPump;
+    }
+
+    public void setSetLiPump(Integer setLiPump) {
+        this.setLiPump = setLiPump;
+    }
+
+    public Date getSetLiPumps() {
+        return setLiPumps;
+    }
+
+    public void setSetLiPumps(Date setLiPumps) {
+        this.setLiPumps = setLiPumps;
+    }
+
+    public Date getSetLiPumpe() {
+        return setLiPumpe;
+    }
+
+    public void setSetLiPumpe(Date setLiPumpe) {
+        this.setLiPumpe = setLiPumpe;
+    }
+
+    public Integer getSetUv() {
+        return setUv;
+    }
+
+    public void setSetUv(Integer setUv) {
+        this.setUv = setUv;
+    }
+
+    public Date getSetUvs() {
+        return setUvs;
+    }
+
+    public void setSetUvs(Date setUvs) {
+        this.setUvs = setUvs;
+    }
+
+    public Date getSetUve() {
+        return setUve;
+    }
+
+    public void setSetUve(Date setUve) {
+        this.setUve = setUve;
+    }
+
+    public Integer getSetMvO() {
+        return setMvO;
+    }
+
+    public void setSetMvO(Integer setMvO) {
+        this.setMvO = setMvO;
+    }
+
+    public Date getSetMvOs() {
+        return setMvOs;
+    }
+
+    public void setSetMvOs(Date setMvOs) {
+        this.setMvOs = setMvOs;
+    }
+
+    public Date getSetMvOe() {
+        return setMvOe;
+    }
+
+    public void setSetMvOe(Date setMvOe) {
+        this.setMvOe = setMvOe;
+    }
+
+    public Integer getSetMvC() {
+        return setMvC;
+    }
+
+    public void setSetMvC(Integer setMvC) {
+        this.setMvC = setMvC;
+    }
+
+    public Date getSetMvCs() {
+        return setMvCs;
+    }
+
+    public void setSetMvCs(Date setMvCs) {
+        this.setMvCs = setMvCs;
+    }
+
+    public Date getSetMvCe() {
+        return setMvCe;
+    }
+
+    public void setSetMvCe(Date setMvCe) {
+        this.setMvCe = setMvCe;
+    }
+
+    public Integer getSetTScrn() {
+        return setTScrn;
+    }
+
+    public void setSetTScrn(Integer setTScrn) {
+        this.setTScrn = setTScrn;
+    }
+
+    public Date getSetTScrns() {
+        return setTScrns;
+    }
+
+    public void setSetTScrns(Date setTScrns) {
+        this.setTScrns = setTScrns;
+    }
+
+    public Date getSetTScrne() {
+        return setTScrne;
+    }
+
+    public void setSetTScrne(Date setTScrne) {
+        this.setTScrne = setTScrne;
+    }
+
+    public Integer getSetLock() {
+        return setLock;
+    }
+
+    public void setSetLock(Integer setLock) {
+        this.setLock = setLock;
+    }
+
+    public Date getSetLocks() {
+        return setLocks;
+    }
+
+    public void setSetLocks(Date setLocks) {
+        this.setLocks = setLocks;
+    }
+
+    public Date getSetLocke() {
+        return setLocke;
+    }
+
+    public void setSetLocke(Date setLocke) {
+        this.setLocke = setLocke;
+    }
+
+    public String getFactNum() {
+        return factNum;
+    }
+
+    public void setFactNum(String factNum) {
+        this.factNum = factNum;
+    }
+
+    public String getEqumNum() {
+        return equmNum;
+    }
+
+    public void setEqumNum(String equmNum) {
+        this.equmNum = equmNum;
+    }
+
+    @Override
+    protected Serializable pkVal() {
+        return this.id;
+    }
+
+    @Override
+    public String toString() {
+        return "Gpssewatime{" +
+                "id=" + id +
+                ", factNum='" + factNum + '\'' +
+                ", equmNum='" + equmNum + '\'' +
+                ", valMan=" + valMan +
+                ", valMans=" + valMans +
+                ", valMane=" + valMane +
+                ", valAuto=" + valAuto +
+                ", valAutos=" + valAutos +
+                ", valAutoe=" + valAutoe +
+                ", setMan=" + setMan +
+                ", setMans=" + setMans +
+                ", setMane=" + setMane +
+                ", setAuto=" + setAuto +
+                ", setAutos=" + setAutos +
+                ", setAutoe=" + setAutoe +
+                ", setStart=" + setStart +
+                ", setStarts=" + setStarts +
+                ", setStarte=" + setStarte +
+                ", setStop=" + setStop +
+                ", setStops=" + setStops +
+                ", setStope=" + setStope +
+                ", setTerm=" + setTerm +
+                ", setTerms=" + setTerms +
+                ", setTerme=" + setTerme +
+                ", setRest=" + setRest +
+                ", setRests=" + setRests +
+                ", setReste=" + setReste +
+                ", setSubBlowMan=" + setSubBlowMan +
+                ", setSubBlowMans=" + setSubBlowMans +
+                ", setSubBlowMane=" + setSubBlowMane +
+                ", setAgit1man=" + setAgit1man +
+                ", setAgit1mans=" + setAgit1mans +
+                ", setAgit1mane=" + setAgit1mane +
+                ", setAgit2Man=" + setAgit2Man +
+                ", setAgit2Mans=" + setAgit2Mans +
+                ", setAgit2Mane=" + setAgit2Mane +
+                ", setPiPumpMan=" + setPiPumpMan +
+                ", setPiPumpMans=" + setPiPumpMans +
+                ", setPiPumpMane=" + setPiPumpMane +
+                ", setLiPumpMan=" + setLiPumpMan +
+                ", setLiPumpMans=" + setLiPumpMans +
+                ", setLiPumpMane=" + setLiPumpMane +
+                ", setUvMan=" + setUvMan +
+                ", setUvMans=" + setUvMans +
+                ", setUvMane=" + setUvMane +
+                ", setMudValve=" + setMudValve +
+                ", setMudValves=" + setMudValves +
+                ", setMudValvee=" + setMudValvee +
+                ", runSubBlow=" + runSubBlow +
+                ", runSubBlows=" + runSubBlows +
+                ", runSubBlowe=" + runSubBlowe +
+                ", runSubBlowOL=" + runSubBlowOL +
+                ", runSubBlowOLs=" + runSubBlowOLs +
+                ", runSubBlowOLe=" + runSubBlowOLe +
+                ", runAgit1=" + runAgit1 +
+                ", runAgit1s=" + runAgit1s +
+                ", runAgit1e=" + runAgit1e +
+                ", runAgit1OL=" + runAgit1OL +
+                ", runAgit1OLs=" + runAgit1OLs +
+                ", runAgit1OLe=" + runAgit1OLe +
+                ", runAgit2=" + runAgit2 +
+                ", runAgit2s=" + runAgit2s +
+                ", runAgit2e=" + runAgit2e +
+                ", runAgit2OL=" + runAgit2OL +
+                ", runAgit2OLs=" + runAgit2OLs +
+                ", runAgit2OLe=" + runAgit2OLe +
+                ", runPiPump=" + runPiPump +
+                ", runPiPumps=" + runPiPumps +
+                ", runPiPumpe=" + runPiPumpe +
+                ", runPipumpOL=" + runPipumpOL +
+                ", runPipumpOLs=" + runPipumpOLs +
+                ", runPipumpOLe=" + runPipumpOLe +
+                ", runLipump=" + runLipump +
+                ", runLipumps=" + runLipumps +
+                ", runLipumpe=" + runLipumpe +
+                ", runLipumpOL=" + runLipumpOL +
+                ", runLipumpOLs=" + runLipumpOLs +
+                ", runLipumpOLe=" + runLipumpOLe +
+                ", runUv=" + runUv +
+                ", runUvs=" + runUvs +
+                ", runUve=" + runUve +
+                ", runUvOL=" + runUvOL +
+                ", runUvOLs=" + runUvOLs +
+                ", runUvOLe=" + runUvOLe +
+                ", runTankLl=" + runTankLl +
+                ", runTankLls=" + runTankLls +
+                ", runTankLle=" + runTankLle +
+                ", runTankL=" + runTankL +
+                ", runTankLs=" + runTankLs +
+                ", runTankLe=" + runTankLe +
+                ", runTankH=" + runTankH +
+                ", runTankHs=" + runTankHs +
+                ", runTankHe=" + runTankHe +
+                ", runMvC=" + runMvC +
+                ", runMvCs=" + runMvCs +
+                ", runMvCe=" + runMvCe +
+                ", runMvO=" + runMvO +
+                ", runMvOs=" + runMvOs +
+                ", runMvOe=" + runMvOe +
+                ", runLiL=" + runLiL +
+                ", runLiLs=" + runLiLs +
+                ", runLiLe=" + runLiLe +
+                ", runTerm=" + runTerm +
+                ", runTerms=" + runTerms +
+                ", runTerme=" + runTerme +
+                ", setSubBlow=" + setSubBlow +
+                ", setSubBlows=" + setSubBlows +
+                ", setSubBlowe=" + setSubBlowe +
+                ", setAgit1=" + setAgit1 +
+                ", setAgit1s=" + setAgit1s +
+                ", setAgit1e=" + setAgit1e +
+                ", setAgit2=" + setAgit2 +
+                ", setAgit2s=" + setAgit2s +
+                ", setAgit2e=" + setAgit2e +
+                ", setPiPump=" + setPiPump +
+                ", setPiPumps=" + setPiPumps +
+                ", setPiPumpe=" + setPiPumpe +
+                ", setLiPump=" + setLiPump +
+                ", setLiPumps=" + setLiPumps +
+                ", setLiPumpe=" + setLiPumpe +
+                ", setUv=" + setUv +
+                ", setUvs=" + setUvs +
+                ", setUve=" + setUve +
+                ", setMvO=" + setMvO +
+                ", setMvOs=" + setMvOs +
+                ", setMvOe=" + setMvOe +
+                ", setMvC=" + setMvC +
+                ", setMvCs=" + setMvCs +
+                ", setMvCe=" + setMvCe +
+                ", setTScrn=" + setTScrn +
+                ", setTScrns=" + setTScrns +
+                ", setTScrne=" + setTScrne +
+                ", setLock=" + setLock +
+                ", setLocks=" + setLocks +
+                ", setLocke=" + setLocke +
+                '}';
+    }
+}

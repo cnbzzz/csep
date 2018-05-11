@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/csep.common" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/csep.etl" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/csep.gendatatest" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/csep.gpsreceiver" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/csep.handler" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/csep.pojo" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/csep.receiver" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/csep.restful" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/csep.test" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spring-boot-starter-rocketmq" charset="UTF-8" />
+  </component>
+</project>

@@ -1,0 +1,4 @@
+spring:
+  rocketmq:
+    name-server: 39.108.106.70:9876
+

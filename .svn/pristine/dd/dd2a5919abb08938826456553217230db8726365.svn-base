@@ -1,0 +1,282 @@
+package com.infore.csep.common.netty.dto;
+
+import com.infore.csep.common.annotation.Unpack;
+import lombok.Data;
+
+import java.util.Date;
+
+/**
+ * This file is part of csep Project
+ * Created by cnbzzz (cnbzzz@126.com) on 2018/4/16 11:19
+ * Copyright (c) 2018 github.com/cnbzzz
+ */
+@Data
+public class FactLeach {
+
+    //1层包命令
+    private int command; //C1、C2、C3
+
+
+    //当前时间
+    private Date revTime = new Date(); //接收到消息包的系统时间
+
+
+    //1层包流水号
+    private int equmSeq; //原始流水号,可能会存在不同设备之间重复
+
+
+    //1层包终端id
+    private String equmID; //估计是只有4位的一个数字
+
+
+    //2层包设备类型
+    private int equmType; //固定是40，留作扩展
+
+
+    //2层包厂站编号
+    private int factNum; //估计是数字
+
+
+    //2层包设备出厂编号
+    private String equmNum; //应该是一串字符
+
+
+    //2层包数据类型
+    private int dataType; //固定是00,留作扩展
+
+
+
+    @Unpack(index =10, length = 28)
+    private byte[] flagAll; //从报文块的第10到第38个字段的二进制0101格式的字符串
+
+
+
+    @Unpack(index =38, length =2)
+    private short syspInBy; //进水PH值BY02321
+
+
+
+    @Unpack(index =40, length =2)
+    private short syspSrcBy; //原水罐PH值BY02221
+
+
+
+    @Unpack(index =42, length =2)
+    private short syspClnBy; //清水罐PH值BY09721
+
+
+
+    @Unpack(index =44, length =2)
+    private short sysaEspBy; //一级浓缩液PH值BY17021
+
+
+
+    @Unpack(index =46, length =2)
+    private short sysaPreSandBp; //砂滤器前压力BP13011
+
+
+
+    @Unpack(index =48, length =2)
+    private short sysaPosSandBp; //砂滤器后压力BP14011
+
+
+
+    @Unpack(index =50, length =2)
+    private short sysaHpumpPre; //一级高压泵前压力BP15011
+
+
+
+    @Unpack(index =52, length =2)
+    private short sysaHpumpPos; //一级高压泵后压力BP16011
+
+
+
+    @Unpack(index =54, length =2)
+    private short sysaOpumpP; //在线泵出口压力BP16111
+
+
+
+    @Unpack(index =56, length =2)
+    private short sysaPremBp; //一级透过液压力BP18011
+
+
+
+    @Unpack(index =58, length =2)
+    private short sysbHpumpPos; //二级高压泵后压力BP26011
+
+
+
+    @Unpack(index =60, length =2)
+    private short syspSrcBl; //原水罐液位BL02211
+
+
+
+    @Unpack(index =62, length =2)
+    private short syspBufBl; //缓冲罐液位BL11011
+
+
+
+    @Unpack(index =64, length =2)
+    private short syspClnBl; //清水罐液位BL09711
+
+
+
+    @Unpack(index =66, length =2)
+    private short syspSrcBn; //原水电导率BN02321
+
+
+
+    @Unpack(index =68, length =2)
+    private short sysaPreSandBn; //砂滤器前电导率BN13021
+
+
+
+    @Unpack(index =70, length =2)
+    private short sysaPremBn; //一级透过液电导率BN18021
+
+
+
+    @Unpack(index =72, length =2)
+    private short sysaEspBn; //一级浓缩液电导率BN17021
+
+
+
+    @Unpack(index =74, length =2)
+    private short sysbPremBn; //二级透过液电导率BN28021
+
+
+
+    @Unpack(index =76, length =2)
+    private short sysbEspBn; //二级浓缩液电导率BN27021
+
+
+
+    @Unpack(index =78, length =2)
+    private short sysaPremBf; //一级透过液流量BF18021
+
+
+
+    @Unpack(index =80, length =2)
+    private short sysbPremBf; //二级透过液流量BF28021
+
+
+
+    @Unpack(index =82, length =2)
+    private short sysaTemp; //一级系统运行温度BT17021
+
+
+
+    @Unpack(index =84, length =2)
+    private short sysbTemp; //二级系统运行温度BT27021
+
+
+
+    @Unpack(index =86, length =2)
+    private short sysaHpumpHz; //一级高压泵频率给定M16011_QF
+
+
+
+    @Unpack(index =88, length =2)
+    private short sysbHpumpHz; //二级高压泵频率给定M26011_QF
+
+
+
+    @Unpack(index =90, length =2)
+    private short syspAcpumpHz; //酸泵频率给定M00111_QF
+
+
+
+    @Unpack(index =92, length =2)
+    private short syspAlpumpHz; //碱泵频率给定M00211_QF
+
+
+
+    @Unpack(index =94, length =2)
+    private short reservV1; //预留
+
+
+
+    @Unpack(index =96, length =2)
+    private short reservV2; //预留
+
+
+
+    @Unpack(index =98, length =2)
+    private short reservV3; //预留
+
+
+
+    @Unpack(index =100, length =4)
+    private int factRunHour; //总运行时间（小时）
+
+
+
+    @Unpack(index =104, length =4)
+    private int factOut; //日产水量（吨）
+
+
+
+    @Unpack(index =108, length =4)
+    private int factPower; //用电量总数
+
+
+
+    @Unpack(index =112, length =4)
+    private int factIn; //进水表总量
+
+
+
+    @Unpack(index =116, length =4)
+    private int factSrc; //原水处理总量
+
+
+
+    @Unpack(index =120, length =4)
+    private int factEsp; //浓缩液出水总量
+
+
+
+    @Unpack(index =124, length =4)
+    private int factCln; //清水出水总量
+
+
+
+    @Unpack(index =128, length =2)
+    private short factCod; //出水COD
+
+
+
+    @Unpack(index =130, length =2)
+    private short factNitr; //出水氨氮
+
+
+
+    @Unpack(index =132, length =2)
+    private short reservV4; //备用
+
+
+
+    @Unpack(index =134, length =2)
+    private short reservV5; //备用
+
+
+
+    @Unpack(index =136, length =2)
+    private short reservV6; //备用
+
+
+
+    @Unpack(index =138, length =2)
+    private short cout; //估计是即时上传的工况数据帧数，用于响应工况即时查询的请求
+
+
+
+    @Unpack(index =140, length =12)
+    private String equipmentNo; //可能与前面字段重复，待后续调整
+
+
+
+    @Unpack(index =152, length =1)
+    private byte plcComm; //暂时没有明确用途
+
+}
